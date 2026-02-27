@@ -1,0 +1,113 @@
+name: Factiva
+description: Factiva is a business information and research tool from Dow Jones that provides access to global news, company information, and market data from thousands of sources.
+image: https://www.dowjones.com/wp-content/uploads/sites/9/2021/03/factiva-logo.png
+url: https://www.dowjones.com/professional/factiva/
+created: '2024'
+modified: '2024'
+specificationVersion: '0.16'
+tags:
+- news
+- business intelligence
+- market data
+- research
+- media monitoring
+- content aggregation
+apis:
+- name: Factiva Snapshots API
+  description: Provides programmatic access to create, retrieve, and manage news snapshots based on search queries and filters.
+  image: https://www.dowjones.com/wp-content/uploads/sites/9/2021/03/factiva-logo.png
+  humanURL: https://developer.dowjones.com/site/global/apis/factiva_snapshots/index.gsp
+  baseURL: https://api.dowjones.com/factiva/snapshots/v1
+  tags:
+  - news
+  - snapshots
+  - search
+  properties:
+  - type: X-documentation
+    url: https://developer.dowjones.com/site/global/apis/factiva_snapshots/index.gsp
+  - type: X-authentication
+    url: https://developer.dowjones.com/site/global/apis/authentication/index.gsp
+  - type: X-pricing
+    url: https://www.dowjones.com/professional/factiva/pricing/
+  contact:
+  - FN: Dow Jones Developer Support
+    email: api.support@dowjones.com
+    url: https://developer.dowjones.com/support
+- name: Factiva Streams API
+  description: Real-time streaming API that delivers continuous feeds of news content matching specified criteria and filters.
+  image: https://www.dowjones.com/wp-content/uploads/sites/9/2021/03/factiva-logo.png
+  humanURL: https://developer.dowjones.com/site/global/apis/factiva_streams/index.gsp
+  baseURL: https://api.dowjones.com/factiva/streams/v1
+  tags:
+  - streaming
+  - real-time
+  - news feed
+  properties:
+  - type: X-documentation
+    url: https://developer.dowjones.com/site/global/apis/factiva_streams/index.gsp
+  - type: X-authentication
+    url: https://developer.dowjones.com/site/global/apis/authentication/index.gsp
+  - type: X-pricing
+    url: https://www.dowjones.com/professional/factiva/pricing/
+  contact:
+  - FN: Dow Jones Developer Support
+    email: api.support@dowjones.com
+    url: https://developer.dowjones.com/support
+- name: Factiva Extractions API
+  description: Enables large-scale extraction of historical news articles and content based on complex queries and date ranges.
+  image: https://www.dowjones.com/wp-content/uploads/sites/9/2021/03/factiva-logo.png
+  humanURL: https://developer.dowjones.com/site/global/apis/factiva_extractions/index.gsp
+  baseURL: https://api.dowjones.com/factiva/extractions/v1
+  tags:
+  - extractions
+  - bulk data
+  - historical data
+  properties:
+  - type: X-documentation
+    url: https://developer.dowjones.com/site/global/apis/factiva_extractions/index.gsp
+  - type: X-authentication
+    url: https://developer.dowjones.com/site/global/apis/authentication/index.gsp
+  - type: X-pricing
+    url: https://www.dowjones.com/professional/factiva/pricing/
+  contact:
+  - FN: Dow Jones Developer Support
+    email: api.support@dowjones.com
+    url: https://developer.dowjones.com/support
+- name: Factiva Analytics API
+  description: Provides access to aggregated analytics, trends, and insights derived from Factiva's news and content database.
+  image: https://www.dowjones.com/wp-content/uploads/sites/9/2021/03/factiva-logo.png
+  humanURL: https://developer.dowjones.com/site/global/apis/factiva_analytics/index.gsp
+  baseURL: https://api.dowjones.com/factiva/analytics/v1
+  tags:
+  - analytics
+  - insights
+  - trends
+  properties:
+  - type: X-documentation
+    url: https://developer.dowjones.com/site/global/apis/factiva_analytics/index.gsp
+  - type: X-authentication
+    url: https://developer.dowjones.com/site/global/apis/authentication/index.gsp
+  - type: X-pricing
+    url: https://www.dowjones.com/professional/factiva/pricing/
+  contact:
+  - FN: Dow Jones Developer Support
+    email: api.support@dowjones.com
+    url: https://developer.dowjones.com/support
+common:
+- type: X-portal
+  url: https://developer.dowjones.com
+- type: X-signup
+  url: https://developer.dowjones.com/site/global/register/index.gsp
+- type: X-terms-of-service
+  url: https://www.dowjones.com/terms-of-use/
+- type: X-privacy-policy
+  url: https://www.dowjones.com/privacy-policy/
+- type: X-status
+  url: https://status.dowjones.com
+- type: X-linkedin
+  url: https://www.linkedin.com/company/dow-jones
+- type: X-twitter
+  url: https://twitter.com/DowJones
+maintainers:
+- FN: Dow Jones API Team
+  email: api.support@dowjones.com
