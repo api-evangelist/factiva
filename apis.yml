@@ -3,8 +3,8 @@ description: Factiva is a business information and research tool from Dow Jones 
 image: https://www.dowjones.com/wp-content/uploads/sites/9/2021/03/factiva-logo.png
 url: https://www.dowjones.com/professional/factiva/
 created: '2024'
-modified: '2026-03-04'
-specificationVersion: '0.18'
+modified: '2026-03-16'
+specificationVersion: '0.19'
 tags:
 - news
 - business intelligence
@@ -260,5 +260,5 @@ common:
 - type: X
   url: https://twitter.com/DowJones
 maintainers:
-- name: Kin Lane
-  email: kin@apievangelist.com
+  - FN: Kin Lane
+    email: kin@apievangelist.com
