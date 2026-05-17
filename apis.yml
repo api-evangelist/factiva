@@ -195,7 +195,7 @@ apis:
         url: https://www.postman.com/dj-cse/factiva-developer/collection/7qbhcvz/factiva-retrieval-api
       - type: Authentication
         url: https://developer.dowjones.com/site/global/apis/authentication/index.gsp
-      - type: GitHub Repository
+      - type: GitHubRepository
         url: https://github.com/dowjones/factiva-retrievalapi-demo
     contact:
       - FN: Dow Jones Developer Support
@@ -227,9 +227,9 @@ apis:
 common:
   - type: Portal
     url: https://developer.dowjones.com
-  - type: Sign Up
+  - type: SignUp
     url: https://developer.dowjones.com/site/global/register/index.gsp
-  - type: Getting Started
+  - type: GettingStarted
     url: https://www.postman.com/dj-cse/dow-jones-apis/collection/l9tpql6/factiva-apis
   - type: Authentication
     url: https://developer.dowjones.com/site/global/apis/authentication/index.gsp
@@ -237,11 +237,11 @@ common:
     url: https://www.postman.com/dj-cse/dow-jones-apis/documentation/l9tpql6/factiva-apis
   - type: Postman Collection
     url: https://www.postman.com/dj-cse/dow-jones-apis/documentation/l9tpql6/factiva-apis
-  - type: Terms of Service
+  - type: TermsOfService
     url: https://www.dowjones.com/terms-of-use/
-  - type: Privacy Policy
+  - type: PrivacyPolicy
     url: https://www.dowjones.com/privacy-policy/
-  - type: Status
+  - type: StatusPage
     url: https://status.dowjones.com
   - type: Support
     url: https://developer.dowjones.com/support
@@ -249,9 +249,9 @@ common:
     url: https://www.dowjones.com/professional/factiva/
   - type: Blog
     url: https://medium.com/dowjones
-  - type: GitHub Organization
+  - type: GitHubOrganization
     url: https://github.com/dowjones
-  - type: GitHub Repository
+  - type: GitHubRepository
     url: https://github.com/dowjones/developer-platform
   - type: SDKs
     url: https://github.com/dowjones/factiva-news-python
