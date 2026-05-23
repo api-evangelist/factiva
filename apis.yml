@@ -249,6 +249,9 @@ common:
     url: https://www.dowjones.com/professional/factiva/
   - type: Blog
     url: https://medium.com/dowjones
+  - url: https://medium.com/feed/dowjones
+    type: BlogRSS
+    description: Discovered RSS/Atom feed for https://medium.com/dowjones
   - type: GitHubOrganization
     url: https://github.com/dowjones
   - type: GitHubRepository

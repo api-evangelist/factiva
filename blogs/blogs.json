@@ -1,14 +1,6 @@
 {
   "repo": "factiva",
-  "feeds": [
-    {
-      "source": "https://medium.com/dowjones",
-      "feed_url": "",
-      "title": "",
-      "saved": 0,
-      "error": "no_feed"
-    }
-  ],
+  "feeds": [],
   "fetched": "2026-05-17T20:48:52Z",
   "post_count": 0
 }
