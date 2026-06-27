@@ -34,7 +34,7 @@ apis:
         url: https://developer.dowjones.com/site/global/apis/authentication/index.gsp
       - type: Pricing
         url: https://www.dowjones.com/professional/factiva/pricing/
-      - type: Postman Collection
+      - type: PostmanCollection
         url: https://www.postman.com/dj-cse/dow-jones-apis/documentation/l9tpql6/factiva-apis
       - type: Client Libraries
         url: https://github.com/dowjones/factiva-news-python
@@ -62,7 +62,7 @@ apis:
         url: https://developer.dowjones.com/site/global/apis/authentication/index.gsp
       - type: Pricing
         url: https://www.dowjones.com/professional/factiva/pricing/
-      - type: Postman Collection
+      - type: PostmanCollection
         url: https://www.postman.com/dj-cse/dow-jones-apis/documentation/l9tpql6/factiva-apis
       - type: Client Libraries
         url: https://github.com/dowjones/factiva-news-python
@@ -89,7 +89,7 @@ apis:
         url: https://developer.dowjones.com/site/global/apis/authentication/index.gsp
       - type: Pricing
         url: https://www.dowjones.com/professional/factiva/pricing/
-      - type: Postman Collection
+      - type: PostmanCollection
         url: https://www.postman.com/dj-cse/dow-jones-apis/documentation/l9tpql6/factiva-apis
       - type: Client Libraries
         url: https://github.com/dowjones/factiva-news-python
@@ -116,7 +116,7 @@ apis:
         url: https://developer.dowjones.com/site/global/apis/authentication/index.gsp
       - type: Pricing
         url: https://www.dowjones.com/professional/factiva/pricing/
-      - type: Postman Collection
+      - type: PostmanCollection
         url: https://www.postman.com/dj-cse/dow-jones-apis/documentation/l9tpql6/factiva-apis
       - type: Client Libraries
         url: https://github.com/dowjones/factiva-analytics-python
@@ -143,7 +143,7 @@ apis:
         url: https://dowjones.developerprogram.org/site/docs/factiva_apis/factiva_djid_taxonomy_api/index.gsp
       - type: Authentication
         url: https://developer.dowjones.com/site/global/apis/authentication/index.gsp
-      - type: Postman Collection
+      - type: PostmanCollection
         url: https://www.postman.com/dj-cse/dow-jones-apis/documentation/l9tpql6/factiva-apis
       - type: Client Libraries
         url: https://github.com/dowjones/factiva-analytics-python
@@ -170,7 +170,7 @@ apis:
         url: https://dowjones.developerprogram.org/site/docs/factiva_apis/factiva_code_api/index.gsp
       - type: Authentication
         url: https://developer.dowjones.com/site/global/apis/authentication/index.gsp
-      - type: Postman Collection
+      - type: PostmanCollection
         url: https://www.postman.com/dj-cse/dow-jones-apis/documentation/l9tpql6/factiva-apis
     contact:
       - FN: Dow Jones Developer Support
@@ -227,7 +227,7 @@ apis:
 common:
   - type: Portal
     url: https://developer.dowjones.com
-  - type: SignUp
+  - type: Signup
     url: https://developer.dowjones.com/site/global/register/index.gsp
   - type: GettingStarted
     url: https://www.postman.com/dj-cse/dow-jones-apis/collection/l9tpql6/factiva-apis
@@ -235,7 +235,7 @@ common:
     url: https://developer.dowjones.com/site/global/apis/authentication/index.gsp
   - type: Documentation
     url: https://www.postman.com/dj-cse/dow-jones-apis/documentation/l9tpql6/factiva-apis
-  - type: Postman Collection
+  - type: PostmanCollection
     url: https://www.postman.com/dj-cse/dow-jones-apis/documentation/l9tpql6/factiva-apis
   - type: TermsOfService
     url: https://www.dowjones.com/terms-of-use/
