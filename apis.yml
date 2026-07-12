@@ -225,6 +225,8 @@ apis:
         email: api.support@dowjones.com
         url: https://developer.dowjones.com/support
 common:
+  - type: DomainSecurity
+    url: security/factiva-domain-security.yml
   - type: Portal
     url: https://developer.dowjones.com
   - type: Signup
