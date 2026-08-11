@@ -237,6 +237,8 @@ apis:
         email: api.support@dowjones.com
         url: https://developer.dowjones.com/support
 common:
+  - type: IssueTracker
+    url: https://github.com/dowjones/developer-platform/issues
   - type: DomainSecurity
     url: security/factiva-domain-security.yml
   - type: Portal
