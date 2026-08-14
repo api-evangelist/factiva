@@ -1,5 +1,11 @@
 name: Factiva
-description: Factiva is a business information and research tool from Dow Jones that provides access to global news, company information, and market data from thousands of sources.
+description: 'Factiva is Dow Jones'' business information and research service, providing licensed access to a global
+  news and data archive drawn from more than 33,000 sources across 200 countries and 28 languages. Its API suite
+  lets organizations search and retrieve licensed articles, run one-time historical extractions (Snapshots), subscribe
+  to real-time filtered news streams over Google Cloud Pub/Sub, resolve the ~350,000-code Dow Jones Intelligent
+  Identifiers taxonomy of companies, industries, regions and news subjects, and feed copyright-compliant content
+  into retrieval-augmented generation stacks. Access is contract-based: there is no self-service signup and no published
+  pricing, and credentials are issued by Dow Jones after a trial request.'
 accessModel:
   pricing: freemium
   onboarding: unknown
@@ -13,271 +19,393 @@ accessModel:
   generated: '2026-07-22'
   method: derived
 image: https://www.dowjones.com/wp-content/uploads/sites/9/2021/03/factiva-logo.png
-url: https://www.dowjones.com/professional/factiva/
+url: https://www.dowjones.com/business-intelligence/factiva/
 created: '2024'
-modified: '2026-04-28'
+modified: '2026-08-13'
 specificationVersion: '0.19'
 tags:
-  - Business Intelligence
-  - Content Aggregation
-  - Market Data
-  - Media Monitoring
-  - News
-  - Research
+- AI
+- Business Intelligence
+- Content Aggregation
+- Enterprise Data
+- GenAI
+- Market Data
+- Media Monitoring
+- News
+- News API
+- Research
+- Taxonomy
 apis:
-  - name: Factiva Snapshots API
-    description: >-
-      Provides programmatic access to create, retrieve, and manage news snapshots
-      based on search queries and filters. Supports analytics explain jobs and
-      time series operations for volume estimation and trend analysis over Factiva
-      content.
-    image: https://www.dowjones.com/wp-content/uploads/sites/9/2021/03/factiva-logo.png
-    humanURL: https://developer.dowjones.com/site/global/apis/factiva_snapshots/index.gsp
-    baseURL: https://api.dowjones.com/factiva/snapshots/v1
-    tags:
-      - Analytics
-      - News
-      - Search
-      - Snapshots
-    properties:
-      - type: Documentation
-        url: https://developer.dowjones.com/site/global/apis/factiva_snapshots/index.gsp
-      - type: Authentication
-        url: https://developer.dowjones.com/site/global/apis/authentication/index.gsp
-      - type: Pricing
-        url: https://www.dowjones.com/professional/factiva/pricing/
-      - type: PostmanCollection
-        url: https://www.postman.com/dj-cse/dow-jones-apis/documentation/l9tpql6/factiva-apis
-      - type: Client Libraries
-        url: https://github.com/dowjones/factiva-news-python
-    contact:
-      - FN: Dow Jones Developer Support
-        email: api.support@dowjones.com
-        url: https://developer.dowjones.com/support
-  - name: Factiva Streams API
-    description: >-
-      Real-time streaming API that delivers continuous feeds of news content
-      matching specified criteria and filters. Supports creating and managing
-      stream subscriptions with listener methods for pushing content to
-      downstream systems in high-availability setups.
-    image: https://www.dowjones.com/wp-content/uploads/sites/9/2021/03/factiva-logo.png
-    humanURL: https://developer.dowjones.com/site/global/apis/factiva_streams/index.gsp
-    baseURL: https://api.dowjones.com/factiva/streams/v1
-    tags:
-      - News Feed
-      - Real-Time
-      - Streaming
-    properties:
-      - type: Documentation
-        url: https://developer.dowjones.com/site/global/apis/factiva_streams/index.gsp
-      - type: Authentication
-        url: https://developer.dowjones.com/site/global/apis/authentication/index.gsp
-      - type: Pricing
-        url: https://www.dowjones.com/professional/factiva/pricing/
-      - type: PostmanCollection
-        url: https://www.postman.com/dj-cse/dow-jones-apis/documentation/l9tpql6/factiva-apis
-      - type: Client Libraries
-        url: https://github.com/dowjones/factiva-news-python
-    contact:
-      - FN: Dow Jones Developer Support
-        email: api.support@dowjones.com
-        url: https://developer.dowjones.com/support
-  - name: Factiva Extractions API
-    description: >-
-      Enables large-scale extraction of historical news articles and content
-      based on complex queries and date ranges. After job validation, a Snapshot
-      ID is provided along with a list of files to download for offline analysis.
-    image: https://www.dowjones.com/wp-content/uploads/sites/9/2021/03/factiva-logo.png
-    humanURL: https://developer.dowjones.com/site/global/apis/factiva_extractions/index.gsp
-    baseURL: https://api.dowjones.com/factiva/extractions/v1
-    tags:
-      - Bulk Data
-      - Extractions
-      - Historical Data
-    properties:
-      - type: Documentation
-        url: https://developer.dowjones.com/site/global/apis/factiva_extractions/index.gsp
-      - type: Authentication
-        url: https://developer.dowjones.com/site/global/apis/authentication/index.gsp
-      - type: Pricing
-        url: https://www.dowjones.com/professional/factiva/pricing/
-      - type: PostmanCollection
-        url: https://www.postman.com/dj-cse/dow-jones-apis/documentation/l9tpql6/factiva-apis
-      - type: Client Libraries
-        url: https://github.com/dowjones/factiva-news-python
-    contact:
-      - FN: Dow Jones Developer Support
-        email: api.support@dowjones.com
-        url: https://developer.dowjones.com/support
-  - name: Factiva Analytics API
-    description: >-
-      Provides access to aggregated analytics, trends, and insights derived from
-      Factiva's news and content database. Supports volume estimation, explain
-      jobs, and time series analysis for understanding news coverage patterns.
-    image: https://www.dowjones.com/wp-content/uploads/sites/9/2021/03/factiva-logo.png
-    humanURL: https://developer.dowjones.com/site/global/apis/factiva_analytics/index.gsp
-    baseURL: https://api.dowjones.com/factiva/analytics/v1
-    tags:
-      - Analytics
-      - Insights
-      - Trends
-    properties:
-      - type: Documentation
-        url: https://developer.dowjones.com/site/global/apis/factiva_analytics/index.gsp
-      - type: Authentication
-        url: https://developer.dowjones.com/site/global/apis/authentication/index.gsp
-      - type: Pricing
-        url: https://www.dowjones.com/professional/factiva/pricing/
-      - type: PostmanCollection
-        url: https://www.postman.com/dj-cse/dow-jones-apis/documentation/l9tpql6/factiva-apis
-      - type: Client Libraries
-        url: https://github.com/dowjones/factiva-analytics-python
-    contact:
-      - FN: Dow Jones Developer Support
-        email: api.support@dowjones.com
-        url: https://developer.dowjones.com/support
-  - name: Factiva DJID Taxonomy API
-    description: >-
-      Explores the taxonomy of the Factiva databases using Dow Jones Intelligent
-      Identifiers (DJID). Provides access to approximately 350,000 taxonomy codes
-      covering industries, regions, news subjects, companies, and organizations
-      used to classify Factiva content.
-    image: https://www.dowjones.com/wp-content/uploads/sites/9/2021/03/factiva-logo.png
-    humanURL: https://dowjones.developerprogram.org/site/docs/factiva_apis/factiva_djid_taxonomy_api/index.gsp
-    baseURL: https://api.dowjones.com
-    tags:
-      - Classification
-      - Metadata
-      - Reference Data
-      - Taxonomy
-    properties:
-      - type: Documentation
-        url: https://dowjones.developerprogram.org/site/docs/factiva_apis/factiva_djid_taxonomy_api/index.gsp
-      - type: Authentication
-        url: https://developer.dowjones.com/site/global/apis/authentication/index.gsp
-      - type: PostmanCollection
-        url: https://www.postman.com/dj-cse/dow-jones-apis/documentation/l9tpql6/factiva-apis
-      - type: Client Libraries
-        url: https://github.com/dowjones/factiva-analytics-python
-    contact:
-      - FN: Dow Jones Developer Support
-        email: api.support@dowjones.com
-        url: https://developer.dowjones.com/support
-  - name: Factiva Code API
-    description: >-
-      Enables retrieval of codes necessary to search for companies, currencies,
-      exchanges, locations, industries, instruments, and news subjects within
-      Factiva. Each data item is identified by a unique Factiva Code and supports
-      lookups by Dow Jones Ticker, CUSIP, DUNS, and ISIN identifiers.
-    image: https://www.dowjones.com/wp-content/uploads/sites/9/2021/03/factiva-logo.png
-    humanURL: https://dowjones.developerprogram.org/site/docs/factiva_apis/factiva_code_api/index.gsp
-    baseURL: https://api.dowjones.com
-    tags:
-      - Codes
-      - Companies
-      - Identifiers
-      - Reference Data
-    properties:
-      - type: Documentation
-        url: https://dowjones.developerprogram.org/site/docs/factiva_apis/factiva_code_api/index.gsp
-      - type: Authentication
-        url: https://developer.dowjones.com/site/global/apis/authentication/index.gsp
-      - type: PostmanCollection
-        url: https://www.postman.com/dj-cse/dow-jones-apis/documentation/l9tpql6/factiva-apis
-    contact:
-      - FN: Dow Jones Developer Support
-        email: api.support@dowjones.com
-        url: https://developer.dowjones.com/support
-  - name: Factiva Retrieval API
-    description: >-
-      Provides retrieval functionality that returns licensed news articles as
-      part of trusted data sources in a retrieval-augmented generation (RAG)
-      stack. Designed for enterprise customers building chatbots, research tools,
-      and other AI applications using copyright-compliant Factiva content.
-    image: https://www.dowjones.com/wp-content/uploads/sites/9/2021/03/factiva-logo.png
-    humanURL: https://www.postman.com/dj-cse/factiva-developer/collection/7qbhcvz/factiva-retrieval-api
-    baseURL: https://api.dowjones.com
-    tags:
-      - AI
-      - Content
-      - RAG
-      - Retrieval
-    properties:
-      - type: Documentation
-        url: https://www.postman.com/dj-cse/factiva-developer/collection/7qbhcvz/factiva-retrieval-api
-      - type: Authentication
-        url: https://developer.dowjones.com/site/global/apis/authentication/index.gsp
-      - type: GitHubRepository
-        url: https://github.com/dowjones/factiva-retrievalapi-demo
-    contact:
-      - FN: Dow Jones Developer Support
-        email: api.support@dowjones.com
-        url: https://developer.dowjones.com/support
-  - name: Factiva Market Data API
-    description: >-
-      Retrieves real-time quotes, delayed quotes, and time series market data
-      for US, Canadian, and global companies. Supports lookups by Dow Jones
-      Ticker, Factiva Code, CUSIP, DUNS, or ISIN to retrieve market
-      fundamentals such as revenue, earnings, assets, liabilities, and growth.
-    image: https://www.dowjones.com/wp-content/uploads/sites/9/2021/03/factiva-logo.png
-    humanURL: https://developer.dowjones.com
-    baseURL: https://api.dowjones.com
-    tags:
-      - Financials
-      - Market Data
-      - Quotes
-      - Time Series
-    properties:
-      - type: Documentation
-        url: https://developer.dowjones.com
-      - type: Authentication
-        url: https://developer.dowjones.com/site/global/apis/authentication/index.gsp
-    contact:
-      - FN: Dow Jones Developer Support
-        email: api.support@dowjones.com
-        url: https://developer.dowjones.com/support
-common:
-  - type: IssueTracker
-    url: https://github.com/dowjones/developer-platform/issues
-  - type: DomainSecurity
-    url: security/factiva-domain-security.yml
-  - type: Portal
-    url: https://developer.dowjones.com
-  - type: Signup
-    url: https://developer.dowjones.com/site/global/register/index.gsp
-  - type: GettingStarted
-    url: https://www.postman.com/dj-cse/dow-jones-apis/collection/l9tpql6/factiva-apis
-  - type: Authentication
-    url: https://developer.dowjones.com/site/global/apis/authentication/index.gsp
+- name: Factiva Snapshots API
+  description: Provides programmatic access to create, retrieve, and manage news snapshots based on search queries
+    and filters. Supports analytics explain jobs and time series operations for volume estimation and trend analysis
+    over Factiva content.
+  image: https://www.dowjones.com/wp-content/uploads/sites/9/2021/03/factiva-logo.png
+  humanURL: https://developer.dowjones.com/documents/factiva_integration-factiva_analytics-endpoints-snapshots-snapshots_3_0
+  baseURL: https://api.dowjones.com/factiva/snapshots/v1
+  tags:
+  - Analytics
+  - News
+  - Search
+  - Snapshots
+  properties:
   - type: Documentation
-    url: https://www.postman.com/dj-cse/dow-jones-apis/documentation/l9tpql6/factiva-apis
+    url: https://developer.dowjones.com/documents/factiva_integration-factiva_analytics-endpoints-snapshots-snapshots_3_0
+  - type: Authentication
+    url: https://developer.dowjones.com/documents/factiva_integration-essentials-authentication
   - type: PostmanCollection
     url: https://www.postman.com/dj-cse/dow-jones-apis/documentation/l9tpql6/factiva-apis
-  - type: TermsOfService
-    url: https://www.dowjones.com/terms-of-use/
-  - type: PrivacyPolicy
-    url: https://www.dowjones.com/privacy-policy/
-  - type: StatusPage
-    url: https://status.dowjones.com
-  - type: Support
-    url: https://developer.dowjones.com/support
-  - type: Website
-    url: https://www.dowjones.com/professional/factiva/
-  - type: Blog
-    url: https://medium.com/dowjones
-  - url: https://medium.com/feed/dowjones
-    type: BlogRSS
-    description: Discovered RSS/Atom feed for https://medium.com/dowjones
-  - type: GitHubOrganization
-    url: https://github.com/dowjones
-  - type: GitHubRepository
-    url: https://github.com/dowjones/developer-platform
-  - type: SDKs
+  - type: Client Libraries
     url: https://github.com/dowjones/factiva-news-python
-  - type: LinkedIn
-    url: https://www.linkedin.com/company/dow-jones
-  - type: X
-    url: https://twitter.com/DowJones
+  contact:
+  - FN: Dow Jones Developer Support
+    email: api.support@dowjones.com
+    url: https://developer.dowjones.com/support
+- name: Factiva Streams API
+  description: Real-time streaming API that delivers continuous feeds of news content matching specified criteria
+    and filters. Supports creating and managing stream subscriptions with listener methods for pushing content to
+    downstream systems in high-availability setups.
+  image: https://www.dowjones.com/wp-content/uploads/sites/9/2021/03/factiva-logo.png
+  humanURL: https://developer.dowjones.com/documents/factiva_integration-factiva_analytics-endpoints-streams-streams_3_0
+  baseURL: https://api.dowjones.com/factiva/streams/v1
+  tags:
+  - News Feed
+  - Real-Time
+  - Streaming
+  properties:
+  - type: Documentation
+    url: https://developer.dowjones.com/documents/factiva_integration-factiva_analytics-endpoints-streams-streams_3_0
+  - type: Authentication
+    url: https://developer.dowjones.com/documents/factiva_integration-essentials-authentication
+  - type: PostmanCollection
+    url: https://www.postman.com/dj-cse/dow-jones-apis/documentation/l9tpql6/factiva-apis
+  - type: Client Libraries
+    url: https://github.com/dowjones/factiva-news-python
+  contact:
+  - FN: Dow Jones Developer Support
+    email: api.support@dowjones.com
+    url: https://developer.dowjones.com/support
+- name: Factiva Extractions API
+  description: Enables large-scale extraction of historical news articles and content based on complex queries and
+    date ranges. After job validation, a Snapshot ID is provided along with a list of files to download for offline
+    analysis.
+  image: https://www.dowjones.com/wp-content/uploads/sites/9/2021/03/factiva-logo.png
+  humanURL: https://developer.dowjones.com/documents/factiva_integration-factiva_analytics-endpoints-bulk_source_events
+  baseURL: https://api.dowjones.com/factiva/extractions/v1
+  tags:
+  - Bulk Data
+  - Extractions
+  - Historical Data
+  properties:
+  - type: Documentation
+    url: https://developer.dowjones.com/documents/factiva_integration-factiva_analytics-endpoints-bulk_source_events
+  - type: Authentication
+    url: https://developer.dowjones.com/documents/factiva_integration-essentials-authentication
+  - type: PostmanCollection
+    url: https://www.postman.com/dj-cse/dow-jones-apis/documentation/l9tpql6/factiva-apis
+  - type: Client Libraries
+    url: https://github.com/dowjones/factiva-news-python
+  contact:
+  - FN: Dow Jones Developer Support
+    email: api.support@dowjones.com
+    url: https://developer.dowjones.com/support
+- name: Factiva Analytics API
+  description: Provides access to aggregated analytics, trends, and insights derived from Factiva's news and content
+    database. Supports volume estimation, explain jobs, and time series analysis for understanding news coverage
+    patterns.
+  image: https://www.dowjones.com/wp-content/uploads/sites/9/2021/03/factiva-logo.png
+  humanURL: https://developer.dowjones.com/documents/factiva_integration-factiva_analytics
+  baseURL: https://api.dowjones.com/factiva/analytics/v1
+  tags:
+  - Analytics
+  - Insights
+  - Trends
+  properties:
+  - type: Documentation
+    url: https://developer.dowjones.com/documents/factiva_integration-factiva_analytics
+  - type: Authentication
+    url: https://developer.dowjones.com/documents/factiva_integration-essentials-authentication
+  - type: PostmanCollection
+    url: https://www.postman.com/dj-cse/dow-jones-apis/documentation/l9tpql6/factiva-apis
+  - type: Client Libraries
+    url: https://github.com/dowjones/factiva-analytics-python
+  contact:
+  - FN: Dow Jones Developer Support
+    email: api.support@dowjones.com
+    url: https://developer.dowjones.com/support
+- name: Factiva DJID Taxonomy API
+  description: Explores the taxonomy of the Factiva databases using Dow Jones Intelligent Identifiers (DJID). Provides
+    access to approximately 350,000 taxonomy codes covering industries, regions, news subjects, companies, and organizations
+    used to classify Factiva content.
+  image: https://www.dowjones.com/wp-content/uploads/sites/9/2021/03/factiva-logo.png
+  humanURL: https://developer.dowjones.com/documents/factiva_integration-factiva_analytics-endpoints-taxonomy_list_download
+  baseURL: https://api.dowjones.com
+  tags:
+  - Classification
+  - Metadata
+  - Reference Data
+  - Taxonomy
+  properties:
+  - type: Documentation
+    url: https://developer.dowjones.com/documents/factiva_integration-factiva_analytics-endpoints-taxonomy_list_download
+  - type: Authentication
+    url: https://developer.dowjones.com/documents/factiva_integration-essentials-authentication
+  - type: PostmanCollection
+    url: https://www.postman.com/dj-cse/dow-jones-apis/documentation/l9tpql6/factiva-apis
+  - type: Client Libraries
+    url: https://github.com/dowjones/factiva-analytics-python
+  contact:
+  - FN: Dow Jones Developer Support
+    email: api.support@dowjones.com
+    url: https://developer.dowjones.com/support
+- name: Factiva Code API
+  description: Enables retrieval of codes necessary to search for companies, currencies, exchanges, locations, industries,
+    instruments, and news subjects within Factiva. Each data item is identified by a unique Factiva Code and supports
+    lookups by Dow Jones Ticker, CUSIP, DUNS, and ISIN identifiers.
+  image: https://www.dowjones.com/wp-content/uploads/sites/9/2021/03/factiva-logo.png
+  humanURL: https://developer.dowjones.com/documents/site-docs-factiva_apis-factiva_workflow_apis_rest-factiva_news_search-factiva_code_api
+  baseURL: https://api.dowjones.com
+  tags:
+  - Codes
+  - Companies
+  - Identifiers
+  - Reference Data
+  properties:
+  - type: Documentation
+    url: https://developer.dowjones.com/documents/site-docs-factiva_apis-factiva_workflow_apis_rest-factiva_news_search-factiva_code_api
+  - type: Authentication
+    url: https://developer.dowjones.com/documents/factiva_integration-essentials-authentication
+  - type: PostmanCollection
+    url: https://www.postman.com/dj-cse/dow-jones-apis/documentation/l9tpql6/factiva-apis
+  contact:
+  - FN: Dow Jones Developer Support
+    email: api.support@dowjones.com
+    url: https://developer.dowjones.com/support
+- name: Factiva Retrieval API
+  description: Provides retrieval functionality that returns licensed news articles as part of trusted data sources
+    in a retrieval-augmented generation (RAG) stack. Designed for enterprise customers building chatbots, research
+    tools, and other AI applications using copyright-compliant Factiva content.
+  image: https://www.dowjones.com/wp-content/uploads/sites/9/2021/03/factiva-logo.png
+  humanURL: https://developer.dowjones.com/documents/factiva_integration-factiva_retrieval_api
+  baseURL: https://api.dowjones.com
+  tags:
+  - AI
+  - Content
+  - RAG
+  - Retrieval
+  properties:
+  - type: Documentation
+    url: https://developer.dowjones.com/documents/factiva_integration-factiva_retrieval_api
+  - type: Authentication
+    url: https://developer.dowjones.com/documents/factiva_integration-essentials-authentication
+  - type: GitHubRepository
+    url: https://github.com/dowjones/factiva-retrievalapi-demo
+  contact:
+  - FN: Dow Jones Developer Support
+    email: api.support@dowjones.com
+    url: https://developer.dowjones.com/support
+- name: Factiva Market Data API
+  description: Retrieves real-time quotes, delayed quotes, and time series market data for US, Canadian, and global
+    companies. Supports lookups by Dow Jones Ticker, Factiva Code, CUSIP, DUNS, or ISIN to retrieve market fundamentals
+    such as revenue, earnings, assets, liabilities, and growth.
+  image: https://www.dowjones.com/wp-content/uploads/sites/9/2021/03/factiva-logo.png
+  humanURL: https://developer.dowjones.com/documents/factiva_integration-factiva_workflow_toolkit-endpoints-company_executives-market_data
+  baseURL: https://api.dowjones.com
+  tags:
+  - Financials
+  - Market Data
+  - Quotes
+  - Time Series
+  properties:
+  - type: Documentation
+    url: https://developer.dowjones.com/documents/factiva_integration-factiva_workflow_toolkit-endpoints-company_executives-market_data
+  - type: Authentication
+    url: https://developer.dowjones.com/documents/factiva_integration-essentials-authentication
+  contact:
+  - FN: Dow Jones Developer Support
+    email: api.support@dowjones.com
+    url: https://developer.dowjones.com/support
+- name: Factiva Content API
+  description: Search the Factiva archive and retrieve licensed articles by accession number, including binary renditions
+    (PDF, image) and publisher redirects. Also covers alert result retrieval, NewsPlus collections, newsletter edition
+    content, realtime search, and entity-scoped search by company, person or portfolio. This is the surface Factiva
+    documents as Factiva Article Fetch / the Factiva Content Endpoint.
+  image: https://www.dowjones.com/wp-content/uploads/sites/9/2021/03/factiva-logo.png
+  humanURL: https://developer.dowjones.com/documents/factiva_integration-factiva_analytics-article_viewing_options-factiva_article_fetch
+  baseURL: https://api.dowjones.com/content
+  tags:
+  - Articles
+  - Content
+  - Retrieval
+  - Search
+  properties:
+  - type: OpenAPI
+    url: openapi/factiva-content-api-swagger.json
+  - type: Overlay
+    url: overlays/factiva-content-api-overlay.yaml
+  - type: Documentation
+    url: https://developer.dowjones.com/documents/factiva_integration-factiva_analytics-article_viewing_options-factiva_article_fetch
+  - type: APIReference
+    url: https://developer.dowjones.com/swagger/content_api
+  - type: Authentication
+    url: https://developer.dowjones.com/documents/factiva_integration-essentials-authentication
+  - type: AgentSkill
+    url: skills/factiva-search-and-fetch-article.md
+  - type: PostmanCollection
+    url: https://www.postman.com/dj-cse/dow-jones-apis/documentation/l9tpql6/factiva-apis
+  contact: &id001
+  - FN: Dow Jones Developer Support
+    email: api.support@dowjones.com
+    url: https://developer.dowjones.com/support
+- name: DJ Factiva Newsletters API
+  description: Retrieve the Factiva newsletters available to an account, walk each newsletter's editions and deliveries,
+    and read the content items inside an edition. Responses are JSON:API documents served as application/vnd.api+json,
+    with relationship links between newsletters, editions, deliveries and content.
+  image: https://www.dowjones.com/wp-content/uploads/sites/9/2021/03/factiva-logo.png
+  humanURL: https://developer.dowjones.com/documents/factiva_integration-factiva_workflow_toolkit-endpoints-newsletters-newsletters
+  baseURL: https://api.dowjones.com
+  tags:
+  - Content
+  - Editions
+  - Newsletters
+  - Publishing
+  properties:
+  - type: OpenAPI
+    url: openapi/factiva-newsletters-api-openapi.json
+  - type: Overlay
+    url: overlays/factiva-newsletters-api-overlay.yaml
+  - type: Documentation
+    url: https://developer.dowjones.com/documents/factiva_integration-factiva_workflow_toolkit-endpoints-newsletters-newsletters
+  - type: APIReference
+    url: https://developer.dowjones.com/swagger/newsletters_api
+  - type: Authentication
+    url: https://developer.dowjones.com/documents/factiva_integration-essentials-authentication
+  - type: AgentSkill
+    url: skills/factiva-read-newsletter-editions.md
+  contact: *id001
+- name: Factiva Company News Radar API
+  description: Perform a full search of the Factiva realtime search system and return the company screening list
+    and company news radar for an entitled user. This is the REST replacement for the PerformContentSearch operation
+    on the deprecated Factiva Search SOAP service.
+  image: https://www.dowjones.com/wp-content/uploads/sites/9/2021/03/factiva-logo.png
+  humanURL: https://developer.dowjones.com/documents/site-docs-factiva_apis-factiva_workflow_apis_rest-factiva_news_search-news_radar_api-news_radar
+  baseURL: https://api.dowjones.com/search-realtime
+  tags:
+  - Companies
+  - News Radar
+  - Realtime
+  - Screening
+  properties:
+  - type: OpenAPI
+    url: openapi/factiva-company-news-radar-api-openapi.json
+  - type: Overlay
+    url: overlays/factiva-company-news-radar-api-overlay.yaml
+  - type: Documentation
+    url: https://developer.dowjones.com/documents/site-docs-factiva_apis-factiva_workflow_apis_rest-factiva_news_search-news_radar_api-news_radar
+  - type: APIReference
+    url: https://developer.dowjones.com/swagger/company_news_radar
+  - type: Authentication
+    url: https://developer.dowjones.com/documents/factiva_integration-essentials-authentication
+  - type: AgentSkill
+    url: skills/factiva-company-news-radar.md
+  contact: *id001
+common:
+- type: AgenticAccess
+  url: agentic-access/factiva-agentic-access.yml
+- type: Authentication
+  url: https://developer.dowjones.com/documents/factiva_integration-essentials-authentication
+- type: IssueTracker
+  url: https://github.com/dowjones/developer-platform-archived/issues
+- type: DomainSecurity
+  url: security/factiva-domain-security.yml
+- type: GettingStarted
+  url: https://www.postman.com/dj-cse/dow-jones-apis/collection/l9tpql6/factiva-apis
+- type: Documentation
+  url: https://www.postman.com/dj-cse/dow-jones-apis/documentation/l9tpql6/factiva-apis
+- type: PostmanCollection
+  url: https://www.postman.com/dj-cse/dow-jones-apis/documentation/l9tpql6/factiva-apis
+- type: TermsOfService
+  url: https://www.dowjones.com/terms-of-use/
+- type: PrivacyPolicy
+  url: https://www.dowjones.com/privacy-notice/
+- type: Support
+  url: https://developer.dowjones.com/support
+- type: Website
+  url: https://www.dowjones.com/business-intelligence/factiva/
+- type: Blog
+  url: https://medium.com/dowjones
+- url: https://medium.com/feed/dowjones
+  type: BlogRSS
+  description: Discovered RSS/Atom feed for https://medium.com/dowjones
+- type: GitHubOrganization
+  url: https://github.com/dowjones
+- type: GitHubRepository
+  url: https://github.com/dowjones/developer-platform-archived
+- type: SDKs
+  url: packages/factiva-packages.yml
+- type: LinkedIn
+  url: https://www.linkedin.com/company/dow-jones
+- type: X
+  url: https://twitter.com/DowJones
+- type: SignUp
+  url: https://developer.dowjones.com/request-trial
+- type: DeveloperPortal
+  url: https://developer.dowjones.com
+- type: APIReference
+  url: https://www.postman.com/dj-cse/dow-jones-apis/documentation/l9tpql6/factiva-apis
+- type: Quickstart
+  url: https://developer.dowjones.com/documents/site-docs-getting_started-quick_start-getting_credentials
+- type: Packages
+  url: packages/factiva-packages.yml
+- type: WellKnown
+  url: well-known/factiva-well-known.yml
+- type: OAuthScopes
+  url: scopes/factiva-scopes.yml
+- type: OpenIDConnect
+  url: https://accounts.dowjones.com/.well-known/openid-configuration
+- type: Conventions
+  url: conventions/factiva-conventions.yml
+- type: Lifecycle
+  url: lifecycle/factiva-lifecycle.yml
+- type: Deprecation
+  url: https://developer.dowjones.com/documents/factiva_integration-essentials-deprecation_and_sunset-policy
+- type: Versioning
+  url: https://developer.dowjones.com/documents/factiva_integration-essentials-versioning
+- type: ChangeLog
+  url: changelog/factiva-changelog.yml
+- type: ErrorCatalog
+  url: errors/factiva-problem-types.yml
+- type: ErrorCodes
+  url: errors/factiva-error-codes.yml
+- type: Conformance
+  url: conformance/factiva-conformance.yml
+- type: Compliance
+  url: https://www.dowjones.com/iso-certification/
+- type: VulnerabilityDisclosure
+  url: security/factiva-vulnerability-disclosure.yml
+- type: Security
+  url: https://www.dowjones.com/security/
+- type: DataModel
+  url: data-model/factiva-data-model.yml
+- type: LLMsTxt
+  url: llms/factiva-llms.txt
+- type: AgentSkill
+  url: skills/_index.yml
+- type: Webhooks
+  url: asyncapi/factiva-streams-events.yml
+- type: Plans
+  url: plans/factiva-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/factiva-rate-limits.yml
+- type: FinOps
+  url: finops/factiva-finops.yml
+- type: Postman
+  url: https://www.postman.com/dj-cse/dow-jones-apis/documentation/l9tpql6/factiva-apis
 maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
+- FN: Kin Lane
+  email: kin@apievangelist.com
+x-enrichment:
+  date: '2026-08-13'
+  status: enriched
+  artifacts_added: 28
+  pass: local-v1
