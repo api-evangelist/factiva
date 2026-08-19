@@ -22,7 +22,7 @@ image: https://www.dowjones.com/wp-content/uploads/sites/9/2021/03/factiva-logo.
 url: https://www.dowjones.com/business-intelligence/factiva/
 created: '2024'
 modified: '2026-08-13'
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 tags:
 - AI
 - Business Intelligence
