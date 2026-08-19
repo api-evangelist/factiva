@@ -1,0 +1,145 @@
+generated: '2026-08-13'
+method: derived
+status: candidate
+source: openapi/factiva-content-api-swagger.json, openapi/factiva-newsletters-api-openapi.json,
+  openapi/factiva-company-news-radar-api-openapi.json
+description: >-
+  Dow Jones publishes no Model Context Protocol server for Factiva. This is a CANDIDATE tool list
+  derived from the operations in the three harvested Factiva specs — a design sketch of what an
+  MCP server over Factiva would expose, not something anyone can call. Every tool below names the
+  backing operation so the input contract can be read from the spec rather than guessed.
+deployment:
+  mode: none
+  endpoint: null
+  install: null
+  package: null
+  auth: unknown
+  verified: derived
+search:
+  registry_modelcontextprotocol_io:
+    query: [factiva, dowjones]
+    result: 0 servers
+    checked: '2026-08-13'
+  probed:
+    - url: https://mcp.dowjones.com/mcp
+      result: DNS failure
+    - url: https://api.dowjones.com/mcp
+      http_status: 404
+    - url: https://developer.dowjones.com/mcp
+      http_status: 404
+  note: >-
+    Dow Jones does address the AI-agent use case, but through licensed content APIs (Factiva
+    Retrieval for RAG, the AI News Feed) rather than through MCP. Do not confuse this with
+    FactSet, a different company, which does ship an MCP server.
+server:
+  name: factiva
+  transport: null
+  url: null
+tools:
+  - name: search_content
+    description: Search Factiva content with the Factiva query language and return matching articles.
+    source_operation: openapi/factiva-content-api-swagger.json#GET /search
+    read_only: true
+  - name: search_content_post
+    description: Search Factiva content with a structured query body.
+    source_operation: openapi/factiva-content-api-swagger.json#Search_Post
+    read_only: true
+  - name: search_content_refs
+    description: Search Factiva content and return article reference identifiers only.
+    source_operation: openapi/factiva-content-api-swagger.json#GET /search/refs
+    read_only: true
+  - name: search_realtime
+    description: Search the realtime content index.
+    source_operation: openapi/factiva-content-api-swagger.json#GET /search/realtime
+    read_only: true
+  - name: search_person
+    description: Search content associated with a person, by Factiva person code.
+    source_operation: openapi/factiva-content-api-swagger.json#GET /search/people/{code}
+    read_only: true
+  - name: search_organization
+    description: Search content associated with an organization, by Factiva company code.
+    source_operation: openapi/factiva-content-api-swagger.json#GET /search/organization/{code}
+    read_only: true
+  - name: search_portfolio
+    description: Search content based on a portfolio of companies.
+    source_operation: openapi/factiva-content-api-swagger.json#POST /search/portfolio
+    read_only: true
+  - name: search_emerging_topics
+    description: Search the most relevant emerging topics in the content set.
+    source_operation: openapi/factiva-content-api-swagger.json#Search_Post (/search/emerging)
+    read_only: true
+  - name: get_article
+    description: Retrieve a complete article by its Factiva reference (accession number).
+    source_operation: openapi/factiva-content-api-swagger.json#GET /refs/{ref}
+    read_only: true
+  - name: list_articles_by_refs
+    description: Retrieve multiple articles by reference.
+    source_operation: openapi/factiva-content-api-swagger.json#GET /refs
+    read_only: true
+  - name: get_article_binary
+    description: Retrieve the binary rendition (PDF, image) of an article.
+    source_operation: openapi/factiva-content-api-swagger.json#GET /refs/{ref}/binary
+    read_only: true
+  - name: get_article_redirect
+    description: Resolve an article reference to its external publisher URL.
+    source_operation: openapi/factiva-content-api-swagger.json#GET /refs/{ref}/redirect
+    read_only: true
+  - name: get_alert
+    description: Retrieve the articles matched by a Factiva alert.
+    source_operation: openapi/factiva-content-api-swagger.json#GET /alerts/{id}
+    read_only: true
+  - name: get_newsplus_collection
+    description: Retrieve a NewsPlus collection by code.
+    source_operation: openapi/factiva-content-api-swagger.json#GET /newsplus/collections/{code}
+    read_only: true
+  - name: get_newsletter_edition_content
+    description: Retrieve the content of a newsletter edition.
+    source_operation: openapi/factiva-content-api-swagger.json#GET /newsletter/editions/{id}
+    read_only: true
+  - name: list_newsletters
+    description: List the newsletters available to the account.
+    source_operation: openapi/factiva-newsletters-api-openapi.json#NewslettersRead
+    read_only: true
+  - name: get_newsletter
+    description: Read a newsletter by id.
+    source_operation: openapi/factiva-newsletters-api-openapi.json#NewsletterReadById
+    read_only: true
+  - name: list_newsletter_editions
+    description: List all editions of a newsletter.
+    source_operation: openapi/factiva-newsletters-api-openapi.json#EditionsRead
+    read_only: true
+  - name: get_newsletter_edition
+    description: Read a specific newsletter edition by id.
+    source_operation: openapi/factiva-newsletters-api-openapi.json#EditionReadById
+    read_only: true
+  - name: company_news_radar_search
+    description: >-
+      Perform a full search of the realtime search system and return the company screening list
+      and company news radar.
+    source_operation: openapi/factiva-company-news-radar-api-openapi.json#POST /content/realtime/search
+    read_only: true
+coverage:
+  tools_derived: 20
+  rest_operations_total: 22
+  rest_operations_unbound: 2
+  unbound:
+    - GET /swagger (spec self-service endpoint; not a content capability)
+    - GET /search/consumer (undocumented consumer search variant)
+constraints:
+  - >-
+    Every tool would require an authenticated bearer token; there is no anonymous Factiva surface,
+    and content entitlement is provisioned per contract.
+  - >-
+    Factiva content is licensed. The published GenAI usage guidelines require per-transaction
+    usage reporting (user_id / work_id) when article text is passed to an LLM, which any real MCP
+    server over this content would have to carry.
+  - >-
+    The Snapshots, Streams, Extractions, Analytics, Taxonomy and Retrieval surfaces have no
+    published spec, so they are absent from this derivation even though they are the products
+    most agents would want.
+related:
+  - openapi/
+  - authentication/factiva-authentication.yml
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

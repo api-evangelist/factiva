@@ -1,0 +1,133 @@
+generated: '2026-08-13'
+method: searched
+source: openapi/factiva-company-news-radar-api-openapi.json, openapi/factiva-content-api-swagger.json,
+  openapi/factiva-newsletters-api-openapi.json
+docs: https://developer.dowjones.com/documents/factiva_integration-essentials-authentication
+description: >-
+  Factiva Integration implements two authentication methods side by side: a user key (API key)
+  sent in a `user-key` header, and a bearer authorization token obtained through a two-step
+  exchange against the Dow Jones identity service. The harvested OpenAPI/Swagger documents
+  declare only the bearer half; the user-key half is documented but not modelled in any
+  published spec, which is why this file is `searched` rather than `derived`.
+summary:
+  types:
+    - apiKey
+    - http
+    - oauth2
+  api_key_in:
+    - header
+  api_key_names:
+    - user-key
+    - Authorization
+  oauth2_flows:
+    - password
+    - refresh_token
+  credential_issuance: sales-issued
+  self_service_signup: false
+methods:
+  - id: user-key
+    name: User Key-Based Authentication
+    type: apiKey
+    in: header
+    parameter: user-key
+    description: >-
+      The most widely used method within Factiva. Dow Jones issues the user key to the customer;
+      it is sent on every request in the `user-key` header, typically alongside an
+      `X-API-VERSION` header naming the endpoint version.
+    example: >-
+      curl --location --request GET 'https://api.dowjones.com/taxonomies'
+      --header 'user-key: {your-user-key-here}' --header 'X-API-VERSION: 3.0'
+    applies_to:
+      - Factiva Snapshots
+      - Factiva Streams
+      - Factiva Extractions
+      - Factiva Analytics
+      - Factiva Taxonomy
+    source: https://developer.dowjones.com/documents/factiva_integration-essentials-authentication
+  - id: bearer-token
+    name: Token-Based Authentication
+    type: http
+    scheme: bearer
+    bearerFormat: JWT
+    in: header
+    parameter: Authorization
+    description: >-
+      An authorization (AuthZ) token sent in the `Authorization: Bearer` header. Obtained in a
+      two-step exchange: first POST service-account credentials to the identity service to get
+      the AuthN tokens (id_token + access_token, plus a refresh token when offline_access is
+      requested), then exchange those for the AuthZ token used against the Factiva endpoints.
+    applies_to:
+      - Factiva Content / Article Fetch
+      - Factiva Newsletters
+      - Factiva Retrieval (GenAI)
+      - Company News Radar
+    source: https://developer.dowjones.com/documents/factiva_integration-essentials-authentication
+oauth2:
+  issuer: https://sso.accounts.dowjones.com/
+  discovery: https://accounts.dowjones.com/.well-known/openid-configuration
+  discovery_file: well-known/factiva-openid-configuration.json
+  token_endpoint: https://accounts.dowjones.com/oauth2/v1/token
+  issuer_token_endpoint: https://sso.accounts.dowjones.com/oauth/token
+  authorization_endpoint: https://sso.accounts.dowjones.com/authorize
+  jwks_uri: https://sso.accounts.dowjones.com/.well-known/jwks.json
+  grant_types_supported:
+    - authorization_code
+    - implicit
+    - refresh_token
+    - password
+    - client_credentials
+    - urn:ietf:params:oauth:grant-type:jwt-bearer
+  grant_type_used_by_factiva: password
+  connection: service-account
+  pkce: [S256, plain]
+  id_token_signing_alg: [RS256, HS256]
+  documented_flows:
+    - name: Service Account Integration
+      grant: password
+      note: >-
+        The flow the Factiva Integration docs prescribe for server-to-server use; parameters are
+        username, client_id, password, connection=service-account, grant_type=password, scope.
+    - name: Authorization Code Grant Flow
+      grant: authorization_code
+      source: https://developer.dowjones.com/documents/site-docs-factiva_apis-factiva_analytics_apis-factiva_article_retrieval-authentication-authorization_code_grant_flow
+    - name: Implicit Grant Flow
+      grant: implicit
+      source: https://developer.dowjones.com/documents/site-docs-factiva_apis-factiva_analytics_apis-factiva_article_retrieval-authentication-implicit_grant_flow
+schemes:
+  - name: bearerAuth
+    type: http
+    scheme: bearer
+    bearerFormat: JWT
+    sources:
+      - openapi/factiva-company-news-radar-api-openapi.json
+      - openapi/factiva-newsletters-api-openapi.json
+  - name: Bearer
+    type: apiKey
+    in: header
+    parameter: Authorization
+    sources:
+      - openapi/factiva-content-api-swagger.json
+    note: >-
+      Modelled as an apiKey header in the Swagger 2.0 Content API document; semantically the same
+      bearer token as `bearerAuth` in the OpenAPI 3 documents.
+credentials:
+  issuance: >-
+    Credentials are not self-service. A customer submits the Request Trial form, a Dow Jones
+    representative matches the use case to a product, and credentials arrive by email.
+  request_url: https://developer.dowjones.com/request-trial
+  docs: https://developer.dowjones.com/documents/site-docs-getting_started-quick_start-getting_credentials
+observed:
+  - request: GET https://api.dowjones.com/content/swagger (unauthenticated)
+    http_status: 403
+    body: '{"errors":[{"title":"Authentication parameters missing","status":403,"code":1011001}]}'
+    fetched: '2026-08-13'
+    note: >-
+      Live unauthenticated probe. Confirms the gateway rejects with 403 (not 401) and returns a
+      JSON:API-shaped `errors[]` envelope carrying a numeric Dow Jones error code.
+related:
+  - scopes/factiva-scopes.yml
+  - conventions/factiva-conventions.yml
+  - well-known/factiva-well-known.yml
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

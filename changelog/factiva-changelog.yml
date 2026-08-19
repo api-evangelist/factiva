@@ -1,0 +1,149 @@
+generated: '2026-08-13'
+method: searched
+source: https://developer.dowjones.com/documents/factiva_integration
+description: >-
+  Factiva does not publish a single platform changelog. Each endpoint family publishes its own
+  "Revision History" table inside its documentation page, dated by month and keyed to the API
+  version served through the X-API-VERSION header. This artifact consolidates the recent window
+  of those per-endpoint histories into one dated view. Changes are announced to customers by
+  email through the Factiva Integration Suite product-update and deprecation lists.
+scheme: per-endpoint-version-history
+version_format: >-
+  Two-part number (major.minor). Major may include breaking changes; minor is backward-compatible.
+  Selected with the X-API-VERSION request header, or with an Accept vendor media type
+  (application/vnd.dowjones.genai-content.v_N.N) on the GenAI endpoints.
+current_versions:
+  factiva_streams: '3.1'
+  factiva_snapshots: '3.0'
+  factiva_lists: '3.1'
+  factiva_company_mapping: '3.0'
+  factiva_taxonomy_download: 'dated (Dec 2025)'
+  factiva_retrieval: '1.0'
+  factiva_sentiment_signals: '1.0'
+  factiva_genai_article_usage: '1.0'
+announcements:
+  - name: Factiva Integration Suite — Product Updates
+    channel: email
+  - name: Factiva Integration Suite — Deprecation Announcements
+    channel: email
+    subscription_page: https://developer.dowjones.com/documents/factiva_integration-essentials-deprecation_and_sunset-schedule
+entries:
+  - date: '2026-03'
+    surface: Factiva Streams
+    version: '3.1'
+    type: addition
+    breaking: false
+    highlights:
+      - Added includesList and excludesList parameters when creating a Stream, filtering content in or out for code fields previously added to a stream-type list.
+    source: https://developer.dowjones.com/documents/factiva_integration-factiva_analytics-endpoints-streams-streams_3_0
+  - date: '2025-12'
+    surface: Factiva Taxonomy list download
+    type: addition
+    breaking: false
+    highlights:
+      - Added the `extended` parameter when downloading the companies taxonomy list.
+      - Added a new set of attributes to the companies taxonomy list when extended=true.
+    source: https://developer.dowjones.com/documents/factiva_integration-factiva_analytics-endpoints-taxonomy_list_download
+  - date: '2025-11'
+    surface: Factiva Taxonomy list download
+    type: addition
+    breaking: false
+    highlights:
+      - Added `json` as a supported file format.
+      - Introduced the `extended` parameter for downloading the regions taxonomy list.
+    source: https://developer.dowjones.com/documents/factiva_integration-factiva_analytics-endpoints-taxonomy_list_download
+  - date: '2025-08-26'
+    surface: Factiva Bulk Source Events
+    type: addition
+    breaking: false
+    highlights:
+      - First public-facing version of GET /extractions/bulk-events.
+    source: https://developer.dowjones.com/documents/factiva_integration-factiva_analytics-endpoints-bulk_source_events
+  - date: '2025-07'
+    surface: Factiva Retrieval API
+    version: '1.0'
+    type: release
+    breaking: false
+    highlights:
+      - First public-facing version of the Retrieval endpoint (RAG-oriented licensed article retrieval).
+      - First public-facing version of the Usage Metrics endpoint.
+    source: https://developer.dowjones.com/documents/factiva_integration-factiva_retrieval_api-endpoints-retrieval
+  - date: '2025-07'
+    surface: Factiva Snapshots / Streams
+    version: '3.0 / 2.44'
+    type: addition
+    breaking: false
+    highlights:
+      - New parameter on the request that monitors Snapshot status (Snapshots Extended Status).
+      - New parameter on the request that retrieves Stream information (Streams Extended Status).
+    source: https://developer.dowjones.com/documents/factiva_integration-factiva_analytics-endpoints-snapshots-snapshots_3_0
+  - date: '2025-05'
+    surface: Factiva Streams
+    type: addition
+    breaking: false
+    highlights:
+      - Introduced bulk events, starting with source_delete events instructing removal of all content for a source code.
+    source: https://developer.dowjones.com/documents/factiva_integration-factiva_analytics-endpoints-streams
+  - date: '2025-03'
+    surface: Factiva Snapshots (Analytics)
+    version: '3.0'
+    type: change
+    breaking: true
+    highlights:
+      - The format of Analytics data changed from JSON to JSON Lines, changing the response data schema.
+    source: https://developer.dowjones.com/documents/factiva_integration-factiva_analytics-endpoints-snapshots-snapshots_3_0
+  - date: '2025-01'
+    surface: Factiva Snapshots (Time Series)
+    version: '3.0 / 2.44'
+    type: change
+    breaking: true
+    highlights:
+      - The `group_dimensions` body parameter changed data type — from an array accepting up to four values to a string limited to one value.
+      - New `availability_datetime` attribute on the Snapshot creation response.
+      - Added the use of Lists on Snapshots Explains and Snapshots Analytics.
+    source: https://developer.dowjones.com/documents/factiva_integration-factiva_analytics-endpoints-snapshots-snapshots_2_0
+  - date: '2024-09'
+    surface: Factiva Sentiment Signals API
+    version: '1.0'
+    type: release
+    breaking: false
+    highlights:
+      - First public-facing version.
+    source: https://developer.dowjones.com/documents/factiva_integration-factiva_sentiment_signals-endpoints-sentiment_signals
+  - date: '2024-08'
+    surface: Factiva GenAI Article Usage
+    version: '1.0'
+    type: release
+    breaking: false
+    highlights:
+      - First public-facing version.
+    source: https://developer.dowjones.com/documents/factiva_integration-factiva_ai_news_feed-endpoints-genai_article_usage
+  - date: '2024-01'
+    surface: Factiva Streams / Snapshots / Lists / Company Mapping
+    version: '3.0'
+    type: release
+    breaking: true
+    highlights:
+      - Version 3.0 released. Endpoint paths restructured; the /alpha/ path segment removed.
+      - X-API-VERSION header now required on all POST requests to get 3.0 behavior.
+      - First public-facing version of the Company Mapping endpoints.
+    source: https://developer.dowjones.com/documents/factiva_integration-factiva_analytics-endpoints-lists
+  - date: '2023-06'
+    surface: Factiva Lists
+    version: '2.44'
+    type: addition
+    breaking: false
+    highlights:
+      - Added a DELETE operation to remove a specific list.
+    source: https://developer.dowjones.com/documents/factiva_integration-factiva_analytics-endpoints-lists
+documentation_changelog:
+  url: https://developer.dowjones.com/documents/site-docs-getting_started-whats-new
+  note: >-
+    The portal also keeps a dated "What's New" log of documentation and site changes (URL format
+    change November 2024, overview cards July 2023, accessibility work May–June 2023). That log
+    covers the developer platform itself, not the API contract.
+related:
+  - lifecycle/factiva-lifecycle.yml
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

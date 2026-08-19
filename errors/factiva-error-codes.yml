@@ -1,0 +1,2962 @@
+generated: '2026-08-13'
+method: searched
+source: https://developer.dowjones.com/documents/site-docs-factiva_apis-factiva_workflow_apis_soap-soap-error_codes_and_messages
+description: The published Factiva numeric error-code registry, harvested from the Dow Jones Developer
+  Platform troubleshooting pages. Dow Jones documents these under the Factiva Workflow (SOAP/FDK) section,
+  but the same numeric code families surface on the live REST gateway — an unauthenticated call to api.dowjones.com
+  returns code 1011001, and the Factiva Retrieval GenAI endpoint documents code 950012 — so this is the
+  error vocabulary of the platform, not only of the legacy SOAP surface. Each code carries a type of Client
+  (the caller must change the request) or Server (retry or contact support). Dow Jones explicitly recommends
+  customizing the MESSAGES for end users but never the CODES.
+envelope: errors[] with code / title / status / detail — see errors/factiva-problem-types.yml
+note: The SOAP FDK surface these pages were written for is deprecated and largely sunset (see lifecycle/factiva-lifecycle.yml);
+  the code registry itself remains the published reference and is still the only enumerated error vocabulary
+  Factiva publishes.
+summary:
+  code_count: 861
+  service_areas: 11
+  observed_live_codes:
+  - code: '1011001'
+    title: Authentication parameters missing
+    status: 403
+    observed_request: GET https://api.dowjones.com/content/swagger
+    observed_at: '2026-08-13'
+  documented_rest_codes:
+  - code: '950012'
+    title: Gen-ai Malformed Request
+    status: 400
+    source: https://developer.dowjones.com/documents/factiva_integration-factiva_retrieval_api-endpoints-retrieval
+services:
+- id: companies_industries_execs
+  name: Companies, Industries & Executives Service
+  docs: https://developer.dowjones.com/documents/site-docs-factiva_apis-factiva_workflow_apis_soap-soap-error_codes_and_messages-errors_companies_industries_execs
+  code_count: 192
+  codes:
+  - code: '376200'
+    type: Client
+    message: The reference is invalid. Please provide a valid reference.
+  - code: '376201'
+    type: Client
+    message: The references are invalid. Please provide valid references.
+  - code: '376202'
+    type: Client
+    message: No reports found for this company code. Please make sure that company code you entered is
+      correct.
+  - code: '376203'
+    type: Server
+    message: We are unable to process your request at this time. For assistance, please contact Factiva
+      Customer Service.
+  - code: '376204'
+    type: Client
+    message: Industry code can not be empty. Please provide valid code.
+  - code: '376205'
+    type: Client
+    message: Empty or Invalid company code.
+  - code: '376206'
+    type: Client
+    message: One or more search parameters are missing. Executive’s first name and last name or full name
+      and executive’s company name or company code are required to perform search.
+  - code: '376207'
+    type: Client
+    message: Invalid SearchContext.
+  - code: '376208'
+    type: Client
+    message: Either you have entered invalid language code or this language code is not supported for
+      this transaction.
+  - code: '376209'
+    type: Client
+    message: Either you have entered invalid language code or this language code is not supported for
+      this transaction.
+  - code: '410001'
+    type: Server
+    message: We are unable to process your request at this time. For assistance, please contact Factiva
+      Customer Service.
+  - code: '410002'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '410003'
+    type: Server
+    message: We are unable to process your request at this time. Database connection failed. Please try
+      again in a few minutes.
+  - code: '410004'
+    type: Client
+    message: Your criteria set contains a general syntax error. Please re-enter your criteria using the
+      correct syntax.
+  - code: '410005'
+    type: Client
+    message: The company name criteria must have an search operator of; ‘BeginsWith’, ‘Contains’ or ‘Equals’.
+  - code: '410006'
+    type: Client
+    message: The company name criteria must have a value specified.
+  - code: '410007'
+    type: Client
+    message: Failed to parse company name criteria.
+  - code: '410008'
+    type: Client
+    message: The city criteria must have an search operator of; ‘BeginsWith’, ‘Contains’ or ‘Equals’.
+  - code: '410009'
+    type: Client
+    message: The city criteria must have a value specified.
+  - code: '410010'
+    type: Client
+    message: Failed to parse city criteria.
+  - code: '410011'
+    type: Client
+    message: The primary exchange criteria type must have a factivaCode specified.
+  - code: '410012'
+    type: Client
+    message: Failed to parse primary exchange criteria.
+  - code: '410013'
+    type: Client
+    message: The region criteria type must have a factivaCode specified.
+  - code: '410014'
+    type: Client
+    message: Failed to parse region criteria.
+  - code: '410015'
+    type: Client
+    message: The company symbol criteria type must have a code specified.
+  - code: '410016'
+    type: Client
+    message: Failed to parse region criteria.
+  - code: '410017'
+    type: Client
+    message: The industry range criteria may contain only one range operator (hyphen).
+  - code: '410018'
+    type: Client
+    message: The industry criteria type must have a code specified.
+  - code: '410019'
+    type: Client
+    message: Failed to parse industry criteria.
+  - code: '410020'
+    type: Client
+    message: The postal code criteria type must have a value specified.
+  - code: '410021'
+    type: Client
+    message: Failed to parse postal code criteria.
+  - code: '410022'
+    type: Client
+    message: The area code criteria type must have a value specified.
+  - code: '410023'
+    type: Client
+    message: Failed to parse area code criteria.
+  - code: '410024'
+    type: Client
+    message: The sales criteria type must have a minimum or maximum value specified.
+  - code: '410025'
+    type: Client
+    message: Failed to parse sales criteria.
+  - code: '410026'
+    type: Client
+    message: The minimum value for the employees criteria type must be less than or equal to the maximum
+      value.
+  - code: '410027'
+    type: Client
+    message: The employees criteria type must have a minimum or maximum value specified.
+  - code: '410028'
+    type: Client
+    message: Failed to parse employees criteria.
+  - code: '410029'
+    type: Client
+    message: The minimum value for the debt to equity ratio criteria type must be less than or equal to
+      the maximum value.
+  - code: '410030'
+    type: Client
+    message: The debt to equity ratio criteria type must have either; a minimum or maximum value, or the
+      comparison to industry average operator specified, but not both.
+  - code: '410031'
+    type: Client
+    message: Failed to parse debt to equity ratio criteria.
+  - code: '410032'
+    type: Client
+    message: The minimum value for the debt to assets ratio criteria type must be less than or equal to
+      the maximum value.
+  - code: '410033'
+    type: Client
+    message: The debt to assets ratio criteria type must have either; a minimum or maximum value, or the
+      comparison to industry average operator specified, but not both.
+  - code: '410034'
+    type: Client
+    message: Failed to parse debt to assets ratio criteria.
+  - code: '410035'
+    type: Client
+    message: The minimum value for the return on assets ratio criteria type must be less than or equal
+      to the maximum value.
+  - code: '410036'
+    type: Client
+    message: The return on assets ratio criteria type must have either; a minimum or maximum value, or
+      the comparison to industry average operator specified, but not both.
+  - code: '410037'
+    type: Client
+    message: Failed to parse return on assets criteria.
+  - code: '410038'
+    type: Client
+    message: The minimum value for the return on equity ratio criteria type must be less than or equal
+      to the maximum value.
+  - code: '410039'
+    type: Client
+    message: The return on equity ratio criteria type must have either; a minimum or maximum value, or
+      the comparison to industry average operator specified, but not both.
+  - code: '410040'
+    type: Client
+    message: Failed to parse return on equity ratio criteria.
+  - code: '410041'
+    type: Client
+    message: The minimum value for the asset turnover ratio criteria type must be less than or equal to
+      the maximum value.
+  - code: '410042'
+    type: Client
+    message: The asset turnover ratio criteria type must have either; a minimum or maximum value, or the
+      comparison to industry average operator specified, but not both.
+  - code: '410043'
+    type: Client
+    message: Failed to parse asset turnover criteria.
+  - code: '410044'
+    type: Client
+    message: The minimum value for the inventory turnover ratio criteria type must be less than or equal
+      to the maximum value.
+  - code: '410045'
+    type: Client
+    message: The inventory turnover ratio criteria type must have either; a minimum or maximum value,
+      or the comparison to industry average operator specified, but not both.
+  - code: '410046'
+    type: Client
+    message: Failed to parse inventory turnover ratio criteria.
+  - code: '410048'
+    type: Client
+    message: The minimum value for the beta last 60 months criteria type must be less than or equal to
+      the maximum value.
+  - code: '410049'
+    type: Client
+    message: The beta last 60 months criteria type must have a minimum or maximum value specified.
+  - code: '410050'
+    type: Client
+    message: Failed to parse beta last 60 months criteria.
+  - code: '410051'
+    type: Client
+    message: The minimum value for the sales growth criteria type must be less than or equal to the maximum
+      value.
+  - code: '410052'
+    type: Client
+    message: The sales growth criteria type must have a minimum or maximum value specified.
+  - code: '410053'
+    type: Client
+    message: Failed to parse sales growth ratio criteria.
+  - code: '410054'
+    type: Client
+    message: The minimum value for the employee growth criteria type must be less than or equal to the
+      maximum value.
+  - code: '410055'
+    type: Client
+    message: The employee growth criteria type must have a minimum or maximum value specified.
+  - code: '410056'
+    type: Client
+    message: Failed to parse employee growth ratio criteria.
+  - code: '410057'
+    type: Client
+    message: The minimum value for the net profit margin criteria type must be less than or equal to the
+      maximum value.
+  - code: '410058'
+    type: Client
+    message: The net profit margin criteria type must have a minimum or maximum value specified.
+  - code: '410059'
+    type: Client
+    message: Failed to parse net profit margin criteria.
+  - code: '410060'
+    type: Client
+    message: The minimum value for the price to earnings ratio criteria type must be less than or equal
+      to the maximum value.
+  - code: '410061'
+    type: Client
+    message: The price to earnings ratio criteria type must have a minimum or maximum value specified.
+  - code: '410062'
+    type: Client
+    message: Failed to parse price to earnings ratio criteria.
+  - code: '410063'
+    type: Client
+    message: The minimum value for the current ratio criteria type must be less than or equal to the maximum
+      value.
+  - code: '410064'
+    type: Client
+    message: The current ratio criteria type must have a minimum or maximum value specified.
+  - code: '410065'
+    type: Client
+    message: Failed to parse current ratio criteria.
+  - code: '410066'
+    type: Client
+    message: The minimum value for the earnings per share criteria type must be less than or equal to
+      the maximum value.
+  - code: '410067'
+    type: Client
+    message: The earnings per share criteria type must have a minimum or maximum value specified.
+  - code: '410068'
+    type: Client
+    message: Failed to parse earnings per share criteria.
+  - code: '410069'
+    type: Client
+    message: The minimum value for the market capitalization criteria type must be less than or equal
+      to the maximum value.
+  - code: '410070'
+    type: Client
+    message: The market capitalization criteria type must have a minimum or maximum value specified.
+  - code: '410071'
+    type: Client
+    message: Failed to parse market capitalization criteria.
+  - code: '410072'
+    type: Client
+    message: The minimum value for the most recent close price criteria type must be less than or equal
+      to the maximum value.
+  - code: '410073'
+    type: Client
+    message: The most recent close price criteria type must have a minimum or maximum value specified.
+  - code: '410074'
+    type: Client
+    message: Failed to parse most recent close price criteria.
+  - code: '410075'
+    type: Client
+    message: The minimum value for the trend last 52 weeks criteria type must be less than or equal to
+      the maximum value.
+  - code: '410076'
+    type: Client
+    message: The trend last 52 weeks criteria type must have a minimum or maximum value specified.
+  - code: '410077'
+    type: Client
+    message: Failed to parse trend last 52 weeks criteria.
+  - code: '410078'
+    type: Client
+    message: The minimum value for the net income criteria type must be less than or equal to the maximum
+      value.
+  - code: '410079'
+    type: Client
+    message: The net income criteria type must have a minimum or maximum value specified.
+  - code: '410080'
+    type: Client
+    message: Failed to parse net income criteria.
+  - code: '410081'
+    type: Client
+    message: The minimum value for the total assets criteria type must be less than or equal to the maximum
+      value.
+  - code: '410082'
+    type: Client
+    message: The total assets criteria type must have a minimum or maximum value specified.
+  - code: '410083'
+    type: Client
+    message: Failed to parse total assets criteria.
+  - code: '410084'
+    type: Client
+    message: The minimum value for the total liabilities criteria type must be less than or equal to the
+      maximum value.
+  - code: '410085'
+    type: Client
+    message: The total liabilities criteria type must have a minimum or maximum value specified.
+  - code: '410086'
+    type: Client
+    message: Failed to parse total liabilities criteria.
+  - code: '410087'
+    type: Client
+    message: Failed to convert string to the appropriate enumeration value.
+  - code: '410088'
+    type: Server
+    message: Unable to parse input criteria.
+  - code: '410089'
+    type: Client
+    message: The auditor criteria type must have a factivaCode specified.
+  - code: '410090'
+    type: Client
+    message: Failed to parse auditor criteria.
+  - code: '410091'
+    type: Server
+    message: Unable to deserialize screening context.
+  - code: '410093'
+    type: Client
+    message: The company index criteria type must have a factivaCode specified.
+  - code: '410094'
+    type: Client
+    message: Failed to parse company index criteria.
+  - code: '410095'
+    type: Client
+    message: The SortBy field specified is not included the selected fields based on the display option
+      chosen.
+  - code: '410096'
+    type: Client
+    message: The GetReportList service only supports category values of ‘Company’ and ‘Industry’.
+  - code: '410097'
+    type: Client
+    message: Unable to retrieve report information from the database.
+  - code: '410098'
+    type: Client
+    message: The postal code range criteria type must have a minimum or maximum value specified.
+  - code: '410099'
+    type: Client
+    message: Failed to parse postal code range criteria.
+  - code: '410100'
+    type: Client
+    message: The minimum value for the postal code range criteria type must be less than or equal to the
+      maximum value.
+  - code: '410101'
+    type: Client
+    message: The business description criteria type must be specified.
+  - code: '410102'
+    type: Client
+    message: Failed to parse business description criteria.
+  - code: '410110'
+    type: Client
+    message: The specified criteria type must have a provided currency.
+  - code: '410111'
+    type: Client
+    message: The specified criteria type must have the same currency for all values.
+  - code: '410112'
+    type: Client
+    message: Failed to Parse Screening Context String. The Screening Context String returned from an FCP
+      screening request contains opaque data that must not be altered.
+  - code: '410113'
+    type: Client
+    message: The criteria type specified is not allowed when also specifying the OwnershipType criteria
+      of private companies only.
+  - code: '410114'
+    type: Client
+    message: The SortOrder parameter entered has an invalid value. Valid values include; ‘Ascending’ or
+      ‘Descending’.
+  - code: '410115'
+    type: Client
+    message: The OwnershipType parameter entered has an invalid value. Valid values include; ‘Public’,
+      ‘Private’, or ‘All’.
+  - code: '410116'
+    type: Client
+    message: The IndustryCodeScheme parameter entered has an invalid value. Valid values include; ‘Factiva’,
+      ‘SIC’, ‘NACE’ or ‘NAICS’.
+  - code: '410117'
+    type: Client
+    message: The Aggregator parameter entered has an invalid value. Valid values include; ‘Sales’, ‘Employees’,
+      or ‘MarketCap’.
+  - code: '410118'
+    type: Client
+    message: The MaxResultsToReturn parameter entered has an invalid value. Valid values must be non-negative
+      integers.
+  - code: '410119'
+    type: Client
+    message: The FirstResultToReturn parameter entered has an invalid value. Valid values must be non-negative
+      integers.
+  - code: '410120'
+    type: Client
+    message: The SortBy parameter entered has an invalid value.
+  - code: '410121'
+    type: Client
+    message: The industryCode parameter must have a value specified.
+  - code: '410122'
+    type: Client
+    message: The referenceCompanyFcode parameter must have a value specified.
+  - code: '410123'
+    type: Client
+    message: The fcode parameter must have a factiva company or industry fcode value specified.
+  - code: '410124'
+    type: Client
+    message: The referenceCompanyFcode was not found.
+  - code: '410125'
+    type: Client
+    message: The referenceCompanyFcode does not have an associated primary industry.
+  - code: '410126'
+    type: Client
+    message: There are no companies that have an associated primary industry specified.
+  - code: '410127'
+    type: Client
+    message: The FirstResultToReturn parameter entered exceeds the total number of available results.
+  - code: '410128'
+    type: Client
+    message: Minimum or Maximum parameter out of range. The Asset Turnover criteria may have a minimum
+      or maximum value from -9,999,999.99 to 9,999,999.99.
+  - code: '410129'
+    type: Client
+    message: Minimum or Maximum parameter out of range. The Inventory Turnover criteria may have a minimum
+      or maximum value from -9,999,999.99 to 9,999,999.99.
+  - code: '410130'
+    type: Client
+    message: Minimum or Maximum parameter out of range. The Beta Last 60 Months criteria may have a minimum
+      or maximum value from -9,999,999.99 to 9,999,999.99.
+  - code: '410131'
+    type: Client
+    message: Minimum or Maximum parameter out of range. The Current Ratio criteria may have a minimum
+      or maximum value from -9,999,999.99 to 9,999,999.99.
+  - code: '410132'
+    type: Client
+    message: Minimum or Maximum parameter out of range. The Debt to Assets Ratio criteria may have a minimum
+      or maximum value from -9,999,999.99 to 9,999,999.99.
+  - code: '410133'
+    type: Client
+    message: Minimum or Maximum parameter out of range. The Debt to Equity Ratio criteria may have a minimum
+      or maximum value from -9,999,999.99 to 9,999,999.99.
+  - code: '410134'
+    type: Client
+    message: Minimum or Maximum parameter out of range. The Employee Growth criteria may have a minimum
+      or maximum value from -9,999,999.99 to 9,999,999.99.
+  - code: '410135'
+    type: Client
+    message: Minimum or Maximum parameter out of range. The Net Profit Margin criteria may have a minimum
+      or maximum value from -9,999,999.99 to 9,999,999.99.
+  - code: '410136'
+    type: Client
+    message: Minimum or Maximum parameter out of range. The Price to Earnings Ratio criteria may have
+      a minimum or maximum value from -9,999,999.99 to 9,999,999.99.
+  - code: '410137'
+    type: Client
+    message: Minimum or Maximum parameter out of range. The Return on Assets Ratio criteria may have a
+      minimum or maximum value from -9,999,999.99 to 9,999,999.99.
+  - code: '410138'
+    type: Client
+    message: Minimum or Maximum parameter out of range. The Return on Equity Ratio criteria may have a
+      minimum or maximum value from -9,999,999.99 to 9,999,999.99.
+  - code: '410139'
+    type: Client
+    message: Minimum or Maximum parameter out of range. The Sales Growth criteria may have a minimum or
+      maximum value from -9,999,999.99 to 9,999,999.99.
+  - code: '410140'
+    type: Client
+    message: Minimum or Maximum parameter out of range. The Trend Last 52 Weeks criteria may have a minimum
+      or maximum value from -9,999,999.99 to 9,999,999.99.
+  - code: '410141'
+    type: Client
+    message: Minimum or Maximum parameter out of range. The Most Recent Close criteria may have a minimum
+      or maximum value from -9,999,999.9999 to 9,999,999.9999.
+  - code: '410142'
+    type: Client
+    message: Minimum or Maximum parameter out of range. The Earnings Per Share criteria may have a minimum
+      or maximum value from -9,999,999.9999 to 9,999,999.9999.
+  - code: '410143'
+    type: Client
+    message: The following criteria are not allowed when the Ownership Type criteria is also set to “Private”;
+  - code: '410144'
+    type: Client
+    message: The total hits are greater than the max results to return and the “return error if hits greater
+      than max results” was set to true.
+  - code: '410189'
+    type: Client
+    message: The family tree region criteria type must have a location type and/or a company designation
+      specified.
+  - code: '410190'
+    type: Client
+    message: The family tree designation criteria must have at least designation or a region specified.
+  - code: '410191'
+    type: Client
+    message: The screening request contained zero hits and the GetHitCounts parameter was false.
+  - code: '410192'
+    type: Client
+    message: Failed to parse company smart search criteria.
+  - code: '410193'
+    type: Client
+    message: The minimum/minimumNonAuditFees value for the auditor renumeration criteria type must be
+      less than or equal to the maximum/maximumNonAuditFees value.
+  - code: '410194'
+    type: Client
+    message: The auditor renumeration criteria type must have a minimum/minimumNonAuditFees or maximum/maximumNonAuditFees
+      value specified.
+  - code: '410195'
+    type: Server
+    message: We are unable to process your request at this time. Database connection failed for Factiva
+      Asset Server. Please try again in a few minutes.
+  - code: '410196'
+    type: Server
+    message: Unable to get Radar View definition from the Factiva Asset Server.
+  - code: '410197'
+    type: Server
+    message: Invalid query type returned from the Factiva Asset Server.
+  - code: '410198'
+    type: Server
+    message: Invalid query returned from the Factiva Asset Server.
+  - code: '410199'
+    type: Server
+    message: Invalid structured query XML returned from the Factiva Asset Server.
+  - code: '410200'
+    type: Client
+    message: The college degree criteria type must have a factivaCode specified.
+  - code: '410201'
+    type: Client
+    message: Failed to parse college degree criteria.
+  - code: '410203'
+    type: Client
+    message: The executive college degree year criteria cannot have both a “Value” and an earliest year
+      or latest year specified.
+  - code: '410204'
+    type: Client
+    message: The executive college degree year criteria must have a “Value” or an earliest year or latest
+      year specified.
+  - code: '410205'
+    type: Client
+    message: Failed to parse college degree year criteria.
+  - code: '410206'
+    type: Client
+    message: Failed to parse college degree year criteria.
+  - code: '410207'
+    type: Client
+    message: The college major criteria must have an search operator of; ‘BeginsWith’, ‘Contains’ or ‘Equals’.
+  - code: '410208'
+    type: Client
+    message: The college major criteria must have a value specified.
+  - code: '410209'
+    type: Client
+    message: Failed to parse college major criteria.
+  - code: '410210'
+    type: Client
+    message: The college name criteria must have an search operator of; ‘BeginsWith’, ‘Contains’ or ‘Equals’.
+  - code: '410211'
+    type: Client
+    message: The college name criteria must have a value specified.
+  - code: '410212'
+    type: Client
+    message: Failed to parse college name criteria.
+  - code: '410213'
+    type: Client
+    message: The first name criteria must have an search operator of; ‘BeginsWith’, ‘Contains’ or ‘Equals’.
+  - code: '410214'
+    type: Client
+    message: The first name criteria must have a value specified.
+  - code: '410215'
+    type: Client
+    message: Failed to parse first name criteria.
+  - code: '410216'
+    type: Client
+    message: The last name criteria must have an search operator of; ‘BeginsWith’, ‘Contains’ or ‘Equals’.
+  - code: '410217'
+    type: Client
+    message: The last name criteria must have a value specified.
+  - code: '410218'
+    type: Client
+    message: Failed to parse last name criteria.
+  - code: '410219'
+    type: Client
+    message: The complete name criteria must have an search operator of; ‘BeginsWith’, ‘Contains’ or ‘Equals’.
+  - code: '410220'
+    type: Client
+    message: The complete name criteria must have a value specified.
+  - code: '410221'
+    type: Client
+    message: Failed to parse complete name criteria.
+  - code: '410222'
+    type: Client
+    message: The job function criteria type must have a factivaCode specified.
+  - code: '410223'
+    type: Client
+    message: Failed to parse job function criteria.
+  - code: '410224'
+    type: Client
+    message: The job title criteria must have an search operator of; ‘BeginsWith’, ‘Contains’ or ‘Equals’.
+  - code: '410225'
+    type: Client
+    message: The job title criteria must have a value specified.
+  - code: '410226'
+    type: Client
+    message: Failed to parse job title criteria.
+  - code: '410233'
+    type: Client
+    message: The bank criteria type must have a factivaCode specified.
+  - code: '410234'
+    type: Client
+    message: Failed to parse bank criteria.
+  - code: '410235'
+    type: Client
+    message: The legal status criteria type must have a factivaCode specified.
+  - code: '410236'
+    type: Client
+    message: Failed to parse legal status criteria.
+  - code: '410237'
+    type: Client
+    message: Failed to get DJID code hierarchy from database.
+  - code: '410238'
+    type: Client
+    message: The ExecCode criteria must have a value specified.
+  - code: '410239'
+    type: Client
+    message: Failed to parse Executive execCode criteria.
+  - code: '410300'
+    type: Client
+    message: The company factiva code is invalid or was not found.
+  - code: '410403'
+    type: Client
+    message: General use of the Reuters Instrument Code (ric) has been deprecated in FDK. Please use a
+      different code scheme and try again.
+  - code: '410999'
+    type: Server
+    message: We are unable to process your request at this time. For assistance, please contact Factiva
+      Customer Service.
+- id: fdk
+  name: Factiva Developer Kit (internal)
+  docs: https://developer.dowjones.com/documents/site-docs-factiva_apis-factiva_workflow_apis_soap-soap-error_codes_and_messages-errors_fdk
+  code_count: 85
+  codes:
+  - code: '361103'
+    type: Client
+    message: You must select a project code to track your usage prior to using factiva.com.
+  - code: '361104'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '361105'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '361106'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '361305'
+    type: Client
+    message: You are not authorized to perform this action. Please contact Factiva Customer Service for
+      further assistance.
+  - code: '361300'
+    type: Client
+    message: You are not authorized to perform this action. Please contact Factiva Customer Service for
+      further assistance.
+  - code: '361400'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '361401'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '361402'
+    type: Client
+    message: You must select a user ID in order to switch users. Please try again.
+  - code: '361500'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '361600'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '361601'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '361602'
+    type: Client
+    message: The client code you have entered contains too many characters. The client code must contain
+      a maximum of 70 characters. Please try again.
+  - code: '361700'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '361701'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '361800'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '361801'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '362300'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '362301'
+    type: Client
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '362302'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '362400'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '362401'
+    type: Client
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '362402'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '362600'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '362601'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '362602'
+    type: Client
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '362701'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '362702'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '362800'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '362801'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '362802'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '362900'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '363001'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '363002'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '363100'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '363101'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '363103'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '363301'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '363303'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '363304'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '363305'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '363401'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '364507'
+    type: Client
+    message: Light weight user credentials are not valid. Please check your user ID, password, and namespace
+      and try again. As a reminder, your user ID and password are case-sensitive. If you continue to have
+      problems, please contact Factiva Customer Service.
+  - code: '365004'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '365005'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '365201'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '365202'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '365203'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '365204'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '365205'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '365800'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '365803'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '365804'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '366000'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '367001'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '368000'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '368001'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '368002'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '368003'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '368004'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '368005'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '368006'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '368007'
+    type: Client
+    message: You are not currently logged in. Please log into factiva.com and try again.
+  - code: '368008'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '368009'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '368500'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '368520'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '368521'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '368540'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '368560'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '368561'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '368600'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '368620'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '368621'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '368622'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '368623'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '368624'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '368625'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '368640'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '368660'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '368661'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '368662'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '368680'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '372735'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '376300'
+    type: Client
+    message: Invalid SearchContext.
+- id: infrastructure
+  name: Infrastructure
+  docs: https://developer.dowjones.com/documents/site-docs-factiva_apis-factiva_workflow_apis_soap-soap-error_codes_and_messages-errors_infrastructure
+  code_count: 19
+  codes:
+  - code: '372288'
+    type: Client
+    message: We are unable to process your request at this time. Please contact Customer Service for more
+      information.
+  - code: '372289'
+    type: Client
+    message: Version Mismatch. Please use version 2.0 on your request document.
+  - code: '372290'
+    type: Client
+    message: NameSpace mismatch. Please use com:factiva:developer on your request document.
+  - code: '372291'
+    type: Server
+    message: We are unable to process your request at this time. Please contact Customer Service for more
+      information.
+  - code: '372292'
+    type: Client
+    message: Invalid Request.
+  - code: '372293'
+    type: Client
+    message: Invalid Request.
+  - code: '372294'
+    type: Client
+    message: Invalid credentials for this transaction.
+  - code: '372735'
+    type: Server
+    message: We are unable to process your request at this time. For assistance, please contact Factiva
+      Customer Service.
+  - code: '374000'
+    type: Server
+    message: We are unable to process your request at this time. For assistance, please contact Factiva
+      Customer Service.
+  - code: '375000'
+    type: Client
+    message: Validation Error Message.
+  - code: '375001'
+    type: Server
+    message: We are unable to process your request at this time. For assistance, please contact Factiva
+      Customer Service.
+  - code: '375002'
+    type: Server
+    message: We are unable to process your request at this time. For assistance, please contact Factiva
+      Customer Service.
+  - code: '375003'
+    type: Client
+    message: Invalid/Empty Request
+  - code: '375004'
+    type: Server
+    message: We are unable to process your request at this time. For assistance, please contact Factiva
+      Customer Service.
+  - code: '375005'
+    type: Client
+    message: Invalid credentials for this transaction. Please refer to help document for type of credentials
+      accepted for this transaction.
+  - code: '375006'
+    type: Server
+    message: We are unable to process your request at this time. For assistance, please contact Factiva
+      Customer Service.
+  - code: '375010'
+    type: Server
+    message: We are unable to process your request at this time. For assistance, please contact Factiva
+      Customer Service.
+  - code: '375011'
+    type: Server
+    message: We are unable to process your request at this time. For assistance, please contact Factiva
+      Customer Service.
+  - code: '375012'
+    type: Server
+    message: We are unable to process your request at this time. For assistance, please contact Factiva
+      Customer Service.
+- id: market_data
+  name: Market Data Service
+  docs: https://developer.dowjones.com/documents/site-docs-factiva_apis-factiva_workflow_apis_soap-soap-error_codes_and_messages-errors_market_data
+  code_count: 40
+  codes:
+  - code: '120001'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '120002'
+    type: Client
+    message: Invalid request parameter.
+  - code: '120010'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '120011'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '120012'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '120013'
+    type: Client
+    message: Invalid symbol.
+  - code: '120014'
+    type: Client
+    message: We are unable to process your request. Please check your entry.
+  - code: '120015'
+    type: Client
+    message: No historical data is available.
+  - code: '120016'
+    type: Client
+    message: We are unable to process your request at this time; no exchange is available. Pleasecheck
+      your entry.
+  - code: '120017'
+    type: Client
+    message: We are unable to process your request; no Factiva code is available. Please check your entry.
+  - code: '120018'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '120020'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '120021'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '120022'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '120023'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '120024'
+    type: Client
+    message: We are unable to process your request; Invalid RIC. Please check your entry.
+  - code: '120025'
+    type: Client
+    message: We are unable to process your request. Please check your entry.
+  - code: '120026'
+    type: Client
+    message: We are unable to process your request at this time. Does not recognize the symbol you have
+      entered. Please check your entry.
+  - code: '120027'
+    type: Client
+    message: You do not have access to this service.
+  - code: '120028'
+    type: Client
+    message: General use of the Reuters Instrument Code (ric) has been deprecated in FDK. Please use a
+      valid DJ Ticker symbol.
+  - code: '120030'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '120031'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '120032'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '120033'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '120034'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '120040'
+    type: Client
+    message: Invalid entry. Please check your input.
+  - code: '120041'
+    type: Client
+    message: Invalid entry. Please check your input.
+  - code: '120042'
+    type: Client
+    message: Invalid entry. Please check your input.
+  - code: '120043'
+    type: Client
+    message: Invalid entry. Please check your input.
+  - code: '120044'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '120045'
+    type: Client
+    message: We are unable to process your request at this time. You have entered an invalid frequency.
+      Please check your entry.
+  - code: '120046'
+    type: Client
+    message: You have entered an invalid date range. Please check your entry.
+  - code: '120047'
+    type: Client
+    message: Invalid entry. Please check your input.
+  - code: '120048'
+    type: Client
+    message: Invalid entry. Please check your input.
+  - code: '120049'
+    type: Client
+    message: You are not authorized to receive this data.
+  - code: '120050'
+    type: Client
+    message: No historical data is available.
+  - code: '120051'
+    type: Client
+    message: We could not find a match for the criteria you entered. Please try again.
+  - code: '120052'
+    type: Client
+    message: We could not find a match for the criteria you entered. Please try again.
+  - code: '120053'
+    type: Client
+    message: You have entered an invalid date. Please re-enter your search.
+  - code: '120054'
+    type: Client
+    message: You have entered an invalid date. Please re-enter your search.
+- id: membership
+  name: Membership Service
+  docs: https://developer.dowjones.com/documents/site-docs-factiva_apis-factiva_workflow_apis_soap-soap-error_codes_and_messages-errors_membership
+  code_count: 93
+  codes:
+  - code: '131000'
+    type: Client
+    message: The user ID or password you have entered are incorrect. Please try again. As a reminder,
+      your user ID and password are case-sensitive. For assistance, please contact Factiva Customer Service.
+  - code: '131001'
+    type: Client
+    message: Your user ID is not active. For assistance, please contact Factiva Customer Service.
+  - code: '131002'
+    type: Server
+    message: We are unable to process your request. Please check your entry and try again.
+  - code: '131003'
+    type: Client
+    message: You must accept the user agreement before entering Factiva.com.
+  - code: '131004'
+    type: Client
+    message: Your credit card information is not valid and cannot be submitted for authorization. Please
+      try again. For assistance, please contact Factiva Customer Service.
+  - code: '131005'
+    type: Client
+    message: The user ID and password you have entered are already in use. Please try again later. For
+      assistance, please contact Factiva Customer Service.
+  - code: '131006'
+    type: Client
+    message: Your connection to Factiva.com is not valid. The third party ID is not recognized.
+  - code: '131007'
+    type: Client
+    message: The password you have entered is incorrect. Pleas try again. If you need to reset your password,
+      select “Forgot your Password?”. For assistance, please contact Factiva Customer Service.
+  - code: '131008'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '131009'
+    type: Client
+    message: The group name you have specified does not exist in the database. Please choose another group
+      and try again.
+  - code: '131010'
+    type: Client
+    message: The user is already in the group.
+  - code: '131011'
+    type: Client
+    message: The group name you have specified does not exist in the database. Please choose another group
+      and try again.
+  - code: '131012'
+    type: Client
+    message: The ItemID specified is not valid.
+  - code: '131013'
+    type: Client
+    message: The Class ID specified is not valid.
+  - code: '131014'
+    type: Client
+    message: You already have an item with that name. Please choose a new name.
+  - code: '131015'
+    type: Client
+    message: A group already exists with that name. Please choose another name.
+  - code: '131016'
+    type: Client
+    message: The group that you have chosen to be the parent group is not a valid group for the account.
+      Please select another group and try again.
+  - code: '131017'
+    type: Client
+    message: The group that you have chosen to be the parent group is not a valid group for the account.
+      Please select another group and try again.
+  - code: '131018'
+    type: Client
+    message: The new group that you have chosen to be the parent group is not a valid group for the account.
+      Please select another group and try again.
+  - code: '131019'
+    type: Client
+    message: This group contains subgroups. You must first delete those subgroups before deleting the
+      parent.
+  - code: '131020'
+    type: Client
+    message: This group name already exists for this account. Please choose another name.
+  - code: '131021'
+    type: Client
+    message: You have entered an invalid account ID or invalid account password. For assistance, please
+      contact Factiva Customer Service.
+  - code: '131022'
+    type: Client
+    message: You are not permissioned to delete this group. Please contact your company account administrator
+      for further assistance.
+  - code: '131023'
+    type: Client
+    message: Your user ID, password, or security word contain special characters (comma, bar, etc.). Please
+      try again.
+  - code: '131024'
+    type: Client
+    message: The address specified is not a valid address. Please try again.
+  - code: '131025'
+    type: Client
+    message: You have previously accepted the user agreement and your account is already active.
+  - code: '131026'
+    type: Client
+    message: Your password contains illegal characters (comma, bar, etc.). Please check and try again.
+  - code: '131027'
+    type: Client
+    message: The new passwords you entered do not match. Please try again by entering your new password
+      twice.
+  - code: '131028'
+    type: Client
+    message: Your account has reached the maximum number of user’s Please contact your company account
+      administrator for more information.
+  - code: '131029'
+    type: Server
+    message: We could no process your request. Check your entry for length, duplicates, or illegal characters.
+  - code: '131030'
+    type: Client
+    message: We could no process your request. Check your entry for length, duplicates, or illegal characters.
+  - code: '131031'
+    type: Client
+    message: The client code you have entered is invalid. Please enter a new code and try again.
+  - code: '131032'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '131033'
+    type: Client
+    message: The user ID you have chosen has already been assigned. Please return to the registration
+      page and choose a new user ID.
+  - code: '131034'
+    type: Client
+    message: The e-mail address you have entered is not valid. Please check it and try again.
+  - code: '131035'
+    type: Client
+    message: You are not currently an active user. For more information, see the Product Support topic.
+  - code: '131036'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '131037'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '131038'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '131039'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '131040'
+    type: Client
+    message: The combination of City, State/Province and Zip/Postal code are invalid. Please check the
+      information and try again.
+  - code: '131042'
+    type: Server
+    message: We are unable to process your request at this time. For assistance, please contact Factiva
+      Customer Service.
+  - code: '131043'
+    type: Server
+    message: We are unable to process your request at this time. For assistance, please contact Factiva
+      Customer Service.
+  - code: '131044'
+    type: Server
+    message: We are unable to process your request at this time. For assistance, please contact Factiva
+      Customer Service.
+  - code: '131045'
+    type: Server
+    message: We are unable to process your request at this time. For assistance, please contact Factiva
+      Customer Service.
+  - code: '131046'
+    type: Client
+    message: Second User ID not provided.
+  - code: '131047'
+    type: Client
+    message: Second User Password not provided.
+  - code: '131048'
+    type: Client
+    message: Invalid Second User.
+  - code: '131049'
+    type: Client
+    message: Invalid User Flavor.
+  - code: '131051'
+    type: Client
+    message: The expiration date you have entered for your credit card information is invalid. Please
+      try again. For assistance, please contact Factiva Customer Service.
+  - code: '131052'
+    type: Client
+    message: You have exceeded the number of attempts allowed. For assistance, please contact Factiva
+      Customer Service.
+  - code: '131053'
+    type: Client
+    message: The credit card number you have entered is not valid. For assistance, please contact Factiva
+      Customer Service.
+  - code: '131054'
+    type: Client
+    message: We did not receive authorization from the credit card information you supplied. Please check
+      the information you entered. For assistance, please contact Factiva Customer Service.
+  - code: '131055'
+    type: Client
+    message: No items found.
+  - code: '131056'
+    type: Client
+    message: The user ID or password you have entered are incorrect. Please try again.
+  - code: '131057'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '131058'
+    type: Client
+    message: You are not authorized to perform this action. Please contact your account administrator.
+  - code: '131059'
+    type: Client
+    message: You are not authorized to perform this action. Please contact your account administrator.
+  - code: '131060'
+    type: Client
+    message: You are not authorized to perform this action. Please contact your account administrator.
+  - code: '131061'
+    type: Client
+    message: You are not authorized to perform this action. Please contact your account administrator.
+  - code: '131062'
+    type: Client
+    message: You are not authorized to perform this action. Please contact your account administrator.
+  - code: '131063'
+    type: Client
+    message: You have already created the maximum allowable entries for this item.
+  - code: '131064'
+    type: Client
+    message: You have entered an illegal character. Please check your data and try again.
+  - code: '131065'
+    type: Client
+    message: Your entry exceeds the maximum number of characters allowed. Please check your data and try
+      again.
+  - code: '131066'
+    type: Client
+    message: Second namespace not provided.
+  - code: '131067'
+    type: Server
+    message: We are unable to process your request at this time. For assistance, please contact Factiva
+      Customer Service.
+  - code: '131068'
+    type: Server
+    message: We are unable to process your request at this time. For assistance, please contact Factiva
+      Customer Service.
+  - code: '131069'
+    type: Server
+    message: We are unable to process your request at this time. For assistance, please contact Factiva
+      Customer Service.
+  - code: '131070'
+    type: Client
+    message: You have an invalid access code. For assistance, please contact Factiva Customer Service.
+  - code: '131071'
+    type: Client
+    message: Your password has expired. For assistance, please contact Factiva Customer Service.
+  - code: '131072'
+    type: Client
+    message: You must be an administrator to perform bulk operations.
+  - code: '131073'
+    type: Client
+    message: Current bulk line is being processed.
+  - code: '131074'
+    type: Client
+    message: No entry found in bulk database.
+  - code: '131075'
+    type: Client
+    message: User ID is invalid. Please check length and that it does not contain invalid characters.
+      For assistance, please contact Factiva Customer Service.
+  - code: '131076'
+    type: Client
+    message: Country is invalid. For assistance, please contact Factiva Customer Service.
+  - code: '131077'
+    type: Client
+    message: State is invalid. For assistance, please contact Factiva Customer Service.
+  - code: '131078'
+    type: Client
+    message: Zip code is invalid. Please check length and that it does not contain invalid characters.
+      For assistance, please contact Factiva Customer Service.
+  - code: '131079'
+    type: Client
+    message: City is invalid. Please check length. For assistance, please contact Factiva Customer Service.
+  - code: '131080'
+    type: Client
+    message: Security Word is invalid. Please check length. For assistance, please contact Factiva Customer
+      Service.
+  - code: '131082'
+    type: Client
+    message: Email address is invalid. Please check length and that it contains an ‘.’ and ‘@’.
+  - code: '131083'
+    type: Client
+    message: The namespace you have entered is invalid. Please check the length of your entry and try
+      again. For assistance, please contact Factiva Customer Service.
+  - code: '131084'
+    type: Client
+    message: An invalid Industry has been entered. Please try again. For assistance, please contact Factiva
+      Customer Service.
+  - code: '131085'
+    type: Client
+    message: The user cannot be added to an account of this type. Please check your account ID and try
+      again. For assistance, please contact Factiva Customer Service.
+  - code: '131086'
+    type: Client
+    message: An unrecognized user type has been encountered. For assistance, please contact Factiva Customer
+      Service.
+  - code: '131087'
+    type: Client
+    message: An invalid Department has been entered. Please select a valid department and try again.
+  - code: '131088'
+    type: Client
+    message: An invalid title has been entered. Please select a valid title and try again.
+  - code: '131089'
+    type: Client
+    message: Invalid fax number. Please select a valid fax number and try again.
+  - code: '131090'
+    type: Server
+    message: We are unable to process your request at this time. For assistance, please contact Factiva
+      Customer Service.
+  - code: '131091'
+    type: Client
+    message: Invalid namespace or account ID. Please select a namespace and account ID and try again.
+  - code: '131092'
+    type: Client
+    message: Invalid first name. Please select a valid first name and try again.
+  - code: '131093'
+    type: Client
+    message: Invalid last name. Please select a valid last name and try again.
+  - code: '131094'
+    type: Client
+    message: Invalid company name. Please select a valid company name and try again.
+  - code: '131196'
+    type: Client
+    message: You are not authorized to log in with the lightweight session application. Please contact
+      Factiva Customer Service.
+- id: newsstand
+  name: Newsstand Service
+  docs: https://developer.dowjones.com/documents/site-docs-factiva_apis-factiva_workflow_apis_soap-soap-error_codes_and_messages-errors_newsstand
+  code_count: 9
+  codes:
+  - code: '031501'
+    type: Server
+    message: We are unable to process your request at this time. Please contact Customer Service for more
+      information.
+  - code: '031502'
+    type: Server
+    message: We are unable to process your request at this time. Please contact Customer Service for more
+      information.
+  - code: '031504'
+    type: Server
+    message: We are unable to process your request at this time. Please contact Customer Service for more
+      information.
+  - code: '031507'
+    type: Server
+    message: We are unable to process your request at this time. Please contact Customer Service for more
+      information.
+  - code: 031508
+    type: Server
+    message: We are unable to process your request at this time. Please contact Customer Service for more
+      information.
+  - code: '031506'
+    type: Server
+    message: Publication date you have entered is incorrect. Please use CCYYMMDD format.
+  - code: 031509
+    type: Server
+    message: You have not entered a Folder ID. Please enter a valid Folder ID.
+  - code: '031510'
+    type: Server
+    message: The Folder ID you have entered is not valid. Please enter a valid Folder ID.
+  - code: '031511'
+    type: Server
+    message: The Folder ID you have entered is currently disabled. Please use other Folder ID.
+- id: registration
+  name: Registration Service
+  docs: https://developer.dowjones.com/documents/site-docs-factiva_apis-factiva_workflow_apis_soap-soap-error_codes_and_messages-errors_registration
+  code_count: 149
+  codes:
+  - code: '131000'
+    type: Client
+    message: The user ID or password you have entered are incorrect. Please try again. As a reminder,
+      your user ID and password are case-sensitive. For assistance, please contact Factiva Customer Service.
+  - code: '131001'
+    type: Client
+    message: Your user ID is not active. For assistance, please contact Factiva Customer Service.
+  - code: '131002'
+    type: Server
+    message: We are unable to process your request. Please check your entry and try again.
+  - code: '131003'
+    type: Client
+    message: You must accept the user agreement before entering Factiva.com.
+  - code: '131004'
+    type: Client
+    message: Your credit card information is not valid and cannot be submitted for authorization. Please
+      try again. For assistance, please contact Factiva Customer Service.
+  - code: '131005'
+    type: Client
+    message: The user ID and password you have entered are already in use. Please try again later. For
+      assistance, please contact Factiva Customer Service.
+  - code: '131006'
+    type: Client
+    message: Your connection to Factiva.com is not valid. The third party ID is not recognized.
+  - code: '131007'
+    type: Client
+    message: The password you have entered is incorrect. Please try again. If you need to reset your password,
+      select “Forgot your Password?” For assistance, please contact Factiva Customer Service.
+  - code: '131008'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '131009'
+    type: Client
+    message: The group name you have specified does not exist in the database. Please choose another group
+      and try again.
+  - code: '131010'
+    type: Client
+    message: The user is already in the group.
+  - code: '131011'
+    type: Client
+    message: The group name you have specified does not exist in the database. Please choose another group
+      and try again.
+  - code: '131012'
+    type: Client
+    message: The ItemID specified is not valid.
+  - code: '131013'
+    type: Client
+    message: The Class ID specified is not valid.
+  - code: '131014'
+    type: Client
+    message: You already have an item with that name. Please choose a new name.
+  - code: '131015'
+    type: Client
+    message: A group already exists with that name. Please choose another name.
+  - code: '131016'
+    type: Client
+    message: The group that you have chosen to be the parent group is not a valid group for the account.
+      Please select another group and try again.
+  - code: '131017'
+    type: Client
+    message: The group that you have chosen to be the parent group is not a valid group for the account.
+      Please select another group and try again.
+  - code: '131018'
+    type: Client
+    message: The new group that you have chosen to be the parent group is not a valid group for the account.
+      Please select another group and try again.
+  - code: '131019'
+    type: Client
+    message: This group contains subgroups. You must first delete those subgroups before deleting the
+      parent.
+  - code: '131020'
+    type: Client
+    message: This group name already exists for this account. Please choose another name.
+  - code: '131021'
+    type: Client
+    message: You have entered an invalid account ID or invalid account password. For assistance, please
+      contact Factiva Customer Service.
+  - code: '131022'
+    type: Client
+    message: You are not permissioned to delete this group. Please contact your company account administrator
+      for further assistance.
+  - code: '131023'
+    type: Client
+    message: Your user ID, password, or security word contain special characters (comma, bar, etc.). Please
+      try again.
+  - code: '131024'
+    type: Client
+    message: The address specified is not a valid address. Please try again.
+  - code: '131025'
+    type: Client
+    message: You have previously accepted the user agreement and your account is already active.
+  - code: '131026'
+    type: Client
+    message: Your password contains illegal characters (comma, bar, etc.). Please check and try again.
+  - code: '131027'
+    type: Client
+    message: The new passwords you entered do not match. Please try again by entering your new password
+      twice.
+  - code: '131028'
+    type: Client
+    message: Your account has reached the maximum number of user’s Please contact your company account
+      administrator for more information.
+  - code: '131029'
+    type: Server
+    message: We could no process your request. Check your entry for length, duplicates, or illegal characters.
+  - code: '131030'
+    type: Client
+    message: We could no process your request. Check your entry for length, duplicates, or illegal characters.
+  - code: '131031'
+    type: Client
+    message: The client code you have entered is invalid. Please enter a new code and try again.
+  - code: '131032'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '131033'
+    type: Client
+    message: The user ID you have chosen has already been assigned. Please return to the registration
+      page and choose a new user ID.
+  - code: '131034'
+    type: Client
+    message: The e-mail address you have entered is not valid. Please check it and try again.
+  - code: '131035'
+    type: Client
+    message: You are not currently an active user. For assistance, please contact Factiva Customer Service.
+  - code: '131036'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '131037'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '131038'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '131039'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '131040'
+    type: Client
+    message: The combination of City, State/Province and Zip/Postal code are invalid. Please check the
+      information and try again.
+  - code: '131042'
+    type: Server
+    message: We are unable to process your request at this time. For assistance, please contact Factiva
+      Customer Service.
+  - code: '131043'
+    type: Server
+    message: We are unable to process your request at this time. For assistance, please contact Factiva
+      Customer Service.
+  - code: '131044'
+    type: Server
+    message: We are unable to process your request at this time. For assistance, please contact Factiva
+      Customer Service.
+  - code: '131045'
+    type: Server
+    message: We are unable to process your request at this time. For assistance, please contact Factiva
+      Customer Service.
+  - code: '131046'
+    type: Client
+    message: Second User ID not provided.
+  - code: '131047'
+    type: Client
+    message: Second User Password not provided.
+  - code: '131048'
+    type: Client
+    message: Invalid Second User.
+  - code: '131049'
+    type: Client
+    message: Invalid User Flavor.
+  - code: '131050'
+    type: Client
+    message: User does not have Super User permissions.
+  - code: '131051'
+    type: Client
+    message: The expiration date you have entered for your credit card information is invalid. Please
+      try again. For assistance, please contact Factiva Customer Service.
+  - code: '131052'
+    type: Client
+    message: You have exceeded the number of attempts allowed. For assistance, please contact Factiva
+      Customer Service.
+  - code: '131053'
+    type: Client
+    message: The credit card number you have entered is not valid. For assistance, please contact Factiva
+      Customer Service.
+  - code: '131054'
+    type: Client
+    message: We did not receive authorization from the credit card information you supplied. Please check
+      the information you entered. For assistance, please contact Factiva Customer Service.
+  - code: '131055'
+    type: Client
+    message: No items found.
+  - code: '131056'
+    type: Client
+    message: The user ID or password you have entered are incorrect. Please try again.
+  - code: '131057'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '131058'
+    type: Client
+    message: You are not authorized to perform this action. Please contact your account administrator.
+  - code: '131059'
+    type: Client
+    message: You are not authorized to perform this action. Please contact your account administrator.
+  - code: '131060'
+    type: Client
+    message: You are not authorized to perform this action. Please contact your account administrator.
+  - code: '131061'
+    type: Client
+    message: You are not authorized to perform this action. Please contact your account administrator.
+  - code: '131062'
+    type: Client
+    message: You are not authorized to perform this action. Please contact your account administrator.
+  - code: '131063'
+    type: Client
+    message: You have already created the maximum allowable entries for this item.
+  - code: '131064'
+    type: Client
+    message: You have entered an illegal character. Please check your data and try again.
+  - code: '131065'
+    type: Client
+    message: Your entry exceeds the maximum number of characters allowed. Please check your data and try
+      again.
+  - code: '131066'
+    type: Client
+    message: Second namespace not provided.
+  - code: '131067'
+    type: Server
+    message: We are unable to process your request at this time. For assistance, please contact Factiva
+      Customer Service.
+  - code: '131068'
+    type: Server
+    message: We are unable to process your request at this time. For assistance, please contact Factiva
+      Customer Service.
+  - code: '131069'
+    type: Server
+    message: We are unable to process your request at this time. For assistance, please contact Factiva
+      Customer Service.
+  - code: '131070'
+    type: Client
+    message: You have an invalid access code. For assistance, please contact Factiva Customer Service.
+  - code: '131071'
+    type: Client
+    message: Your password has expired. For assistance, please contact Factiva Customer Service.
+  - code: '131072'
+    type: Client
+    message: You must be an administrator to perform bulk operations.
+  - code: '131073'
+    type: Client
+    message: Current bulk line is being processed.
+  - code: '131074'
+    type: Client
+    message: No entry found in bulk database.
+  - code: '131075'
+    type: Client
+    message: User ID is invalid. Please check length and that it does not contain invalid characters.
+      For assistance, please contact Factiva Customer Service.
+  - code: '131076'
+    type: Client
+    message: Country is invalid. For assistance, please contact Factiva Customer Service.
+  - code: '131077'
+    type: Client
+    message: State is invalid. For assistance, please contact Factiva Customer Service.
+  - code: '131078'
+    type: Client
+    message: Zip code is invalid. Please check length and that it does not contain invalid characters.
+      For assistance, please contact Factiva Customer Service.
+  - code: '131079'
+    type: Client
+    message: City is invalid. Please check length. For assistance, please contact Factiva Customer Service.
+  - code: '131080'
+    type: Client
+    message: Security Word is invalid. Please check length. For assistance, please contact Factiva Customer
+      Service.
+  - code: '131082'
+    type: Client
+    message: Email address is invalid. Please check length and that it contains an ‘.’ and ‘@’.
+  - code: '131083'
+    type: Client
+    message: The namespace you have entered is invalid. Please check the length of your entry and try
+      again. For assistance, please contact Factiva Customer Service.
+  - code: '131084'
+    type: Client
+    message: An invalid Industry has been entered. Please try again. For assistance, please contact Factiva
+      Customer Service.
+  - code: '131085'
+    type: Client
+    message: The user cannot be added to an account of this type. Please check your account ID and try
+      again. For assistance, please contact Factiva Customer Service.
+  - code: '131086'
+    type: Client
+    message: An unrecognized user type has been encountered. For assistance, please contact Factiva Customer
+      Service.
+  - code: '131087'
+    type: Client
+    message: An invalid Department has been entered. Please select a valid department and try again.
+  - code: '131088'
+    type: Client
+    message: An invalid title has been entered. Please select a valid title and try again.
+  - code: '131089'
+    type: Client
+    message: Invalid fax number. Please select a valid fax number and try again.
+  - code: '131090'
+    type: Server
+    message: We are unable to process your request at this time. For assistance, please contact Factiva
+      Customer Service.
+  - code: '131091'
+    type: Client
+    message: Invalid namespace or account ID. Please select a namespace and account ID and try again.
+  - code: '131092'
+    type: Client
+    message: Invalid first name. Please select a valid first name and try again.
+  - code: '131093'
+    type: Client
+    message: Invalid last name. Please select a valid last name and try again.
+  - code: '131094'
+    type: Client
+    message: Invalid company name. Please select a valid company name and try again.
+  - code: '131196'
+    type: Client
+    message: You are not authorized to log in with the lightweight session application. Please contact
+      Factiva Customer Service.
+  - code: '131213'
+    type: Client
+    message: E-mail domains are missing from input request.
+  - code: '131214'
+    type: Client
+    message: This account id is not configured for lightweight registration or e-mail address enablement.
+  - code: '131215'
+    type: Client
+    message: Lightweight registration flag is missing from input request.
+  - code: '131216'
+    type: Server
+    message: We are unable to process your request at this time. For assistance, please contact Factiva
+      Customer Service.
+  - code: '131217'
+    type: Client
+    message: The specified account is not configured for lightweight registration or e-mail address enablement.
+  - code: '131218'
+    type: Client
+    message: The account list is missing from the request.
+  - code: '131219'
+    type: Client
+    message: The account id is missing from the request.
+  - code: '131220'
+    type: Client
+    message: A lightweight registration record already exists for the specified set of parameters.
+  - code: '131221'
+    type: Client
+    message: Enablement e-mail domains have already been specified for this account.
+  - code: '131222'
+    type: Client
+    message: Lightweight registration flag contains an illegal value.
+  - code: '131223'
+    type: Client
+    message: A lightweight registration record already exists for the specified set of parameters.
+  - code: '131224'
+    type: Server
+    message: We are unable to process your request at this time. For assistance, please contact Factiva
+      Customer Service.
+  - code: '131225'
+    type: Client
+    message: You are not currently allowed to log in with your e-mail address. Please enable your e-mail
+      address or contact Customer Service for further assistance.
+  - code: '131226'
+    type: Client
+    message: Individual subscription accounts are not allowed to lightweight register.
+  - code: '131227'
+    type: Client
+    message: The e-mail address you have provided does not match Factiva’s records. Please check your
+      entry and try again.
+  - code: '131228'
+    type: Client
+    message: We are unable to process your request at this time. For assistance, please contact Factiva
+      Customer Service.
+  - code: '131229'
+    type: Client
+    message: The information you have provided does not match Factiva’s records. Please check your entry
+      and try again.
+  - code: '131230'
+    type: Client
+    message: You are not allowed to enable your e-mail address for login because your account has a redirect
+      configured.
+  - code: '131231'
+    type: Client
+    message: You are not allowed to enable your e-mail address for login because your account has a redirect
+      configured.
+  - code: '131232'
+    type: Client
+    message: The e-mail address you have specified is not permitted. You must provide a valid e-mail address
+      for your company.
+  - code: '131233'
+    type: Client
+    message: You are not allowed to enable your e-mail address for login because your account has restrictions
+      on modifying your login credentials.
+  - code: '131234'
+    type: Client
+    message: The information you have provided does not match Factiva’s records. Please check your entry
+      and try again.
+  - code: '131235'
+    type: Client
+    message: The specified e-mail address is already used by another user.
+  - code: '131236'
+    type: Client
+    message: You are not allowed to update your e-mail address from this product area because your e-mail
+      address has been enabled for logging in.
+  - code: '131237'
+    type: Client
+    message: The e-mail address you have provided matches more than one of Factiva’s records.
+  - code: '131238'
+    type: Client
+    message: Confirmation page url is not valid. Please check your entry and try again.
+  - code: '131239'
+    type: Client
+    message: We are unable to process your request at this time. For assistance, please contact Factiva
+      Customer Service.
+  - code: '131240'
+    type: Client
+    message: You cannot be registered with the specified e-mail address because it is already in use for
+      another user.
+  - code: '131241'
+    type: Client
+    message: You cannot be registered with the specified e-mail address because it is already in use for
+      another user.
+  - code: '131242'
+    type: Client
+    message: You cannot be registered with the specified e-mail address because it is already in use for
+      another user.
+  - code: '131243'
+    type: Client
+    message: You cannot be registered with the specified e-mail address because it is already in use for
+      another user.
+  - code: '131244'
+    type: Client
+    message: You cannot be registered with the specified e-mail address because it is already in use for
+      another user.
+  - code: '131245'
+    type: Server
+    message: We are unable to process your request at this time. For assistance, please contact Factiva
+      Customer Service.
+  - code: '131246'
+    type: Client
+    message: Invalid email token.
+  - code: '131247'
+    type: Client
+    message: Email token is expired. Please return to your Factiva product and make a new request to enable
+      this feature.
+  - code: '131248'
+    type: Client
+    message: We are unable to process your request at this time. For assistance, please contact Factiva
+      Customer Service.
+  - code: '131249'
+    type: Client
+    message: Please provide an answer to your selected security question.
+  - code: '131250'
+    type: Server
+    message: We are unable to process your request at this time. For assistance, please contact Factiva
+      Customer Service.
+  - code: '131251'
+    type: Client
+    message: We are unable to log you in because another user is currently permitted to log in with this
+      e-mail address. You must contact Customer Service for further assistance.
+  - code: '131252'
+    type: Client
+    message: The specified e-mail address does not match Factiva’s records. Please check your entry and
+      try again.
+  - code: '131253'
+    type: Client
+    message: The specified e-mail address is already used by another user.
+  - code: '131254'
+    type: Client
+    message: Please specify either an e-mail address or a user ID and name space.
+  - code: '131255'
+    type: Client
+    message: More than one user record was found with for specified e-mail address.
+  - code: '131256'
+    type: Client
+    message: No user records were found for the specified e-mail address.
+  - code: '131257'
+    type: Client
+    message: No user records were found for the specified information.
+  - code: '131258'
+    type: Client
+    message: The specified user record is already in a ”disabled” state.
+  - code: '131259'
+    type: Client
+    message: The e-mail address or password you have entered are incorrect. Please try again. As a reminder,
+      your password is case-sensitive.
+  - code: '131260'
+    type: Client
+    message: We are unable to process your request at this time. For assistance, please contact Factiva
+      Customer Service.
+  - code: '131261'
+    type: Client
+    message: We are unable to process your request at this time. For assistance, please contact Factiva
+      Customer Service.
+  - code: '131262'
+    type: Client
+    message: Factiva is unable to process your request with the information you have provided. Please
+      check your information and try again or contact Customer Service.
+  - code: '131263'
+    type: Client
+    message: You are already enabled to login with this e-mail address.
+  - code: '131264'
+    type: Client
+    message: You cannot be registered with the specified e-mail address because it is already in use for
+      another user.
+  - code: '131265'
+    type: Client
+    message: You are not allowed to enable your e-mail address for login because your account has restrictions
+      on modifying your user profile.
+  - code: '131266'
+    type: Client
+    message: You are not currently allowed to log in with your e-mail address. Please enable your factiva
+      account for email address login with email token sent to you or contact Customer Service for further
+      assistance.
+  - code: '131267'
+    type: Client
+    message: We are unable to process your request at this time. For assistance, please contact Factiva
+      Customer Service.
+- id: retrieval
+  name: Retrieval Service
+  docs: https://developer.dowjones.com/documents/site-docs-factiva_apis-factiva_workflow_apis_soap-soap-error_codes_and_messages-errors_retrieval
+  code_count: 40
+  codes:
+  - code: '12000'
+    type: Server
+    message: We are unable to retrieve your document(s) at this time. Please try again in a few minutes.
+  - code: '12001'
+    type: Server
+    message: We are unable to retrieve your document(s) at this time. Please try again in a few minutes.
+  - code: '12002'
+    type: Server
+    message: We are unable to retrieve your document(s) at this time. Please try again in a few minutes.
+  - code: '12003'
+    type: Server
+    message: We are unable to retrieve your document(s) at this time. Please try again in a few minutes.
+  - code: '12004'
+    type: Server
+    message: The document(s) you requested could not be highlighted. Please try again in a few minutes.
+  - code: '12005'
+    type: Server
+    message: We are unable to retrieve your document(s) at this time. Please try again in a few minutes.
+  - code: '12006'
+    type: Server
+    message: We are unable to retrieve your document(s) at this time. Please try again in a few minutes.
+  - code: '12007'
+    type: Server
+    message: We are unable to retrieve your document(s) at this time. Please try again in a few minutes.
+  - code: '12008'
+    type: Server
+    message: We are unable to retrieve your document(s) at this time. Please try again in a few minutes.
+  - code: '12009'
+    type: Server
+    message: We are unable to retrieve your document(s) at this time. Please try again in a few minutes.
+  - code: '13000'
+    type: Client
+    message: Invalid request.
+  - code: '13001'
+    type: Client
+    message: Accession Number is invalid.
+  - code: '13003'
+    type: Client
+    message: Canonical search string supplied with request is invalid.
+  - code: '13004'
+    type: Client
+    message: Progressive disclosure request is invalid.
+  - code: '13005'
+    type: Client
+    message: One or more items in the requested object Type is invalid.
+  - code: '13006'
+    type: Client
+    message: Number of object requests in transaction exceeds maximum configured limit.
+  - code: '13007'
+    type: Client
+    message: The locator reference is invalid.
+  - code: '13008'
+    type: Client
+    message: The locator scheme is unsupported.
+  - code: '14000'
+    type: Client
+    message: We are unable to retrieve your document(s) at this time. Please try again in a few minutes.
+  - code: '14001'
+    type: Client
+    message: A document you have requested is not available.
+  - code: '14002'
+    type: Client
+    message: A document you have requested is not available.
+  - code: '14003'
+    type: Server
+    message: We are unable to retrieve your document(s) at this time. Please try again in a few minutes.
+  - code: '14004'
+    type: Server
+    message: We are unable to retrieve your document(s) at this time. Please try again in a few minutes.
+  - code: '14005'
+    type: Client
+    message: You are not authorized to view this document. Please contact your administrator.
+  - code: '14006'
+    type: Server
+    message: We are unable to retrieve your document(s). Please contact Factiva Customer Service.
+  - code: '14007'
+    type: Server
+    message: We are unable to process your request at this time. For assistance, please contact Factiva
+      Customer Service.
+  - code: '14008'
+    type: Server
+    message: We are unable to retrieve your document(s). Please contact Factiva Customer Service.
+  - code: '14009'
+    type: Server
+    message: We are unable to retrieve your document(s). Please contact Factiva Customer Service.
+  - code: '14010'
+    type: Server
+    message: We are unable to retrieve your document(s). Please contact Factiva Customer Service.
+  - code: '14011'
+    type: Server
+    message: We are unable to retrieve your document(s). Please contact Factiva Customer Service.
+  - code: '14012'
+    type: Server
+    message: We are unable to retrieve your document(s). Please contact Factiva Customer Service.
+  - code: '15000'
+    type: Client
+    message: You are not authorized to view this document. Please contact your administrator.
+  - code: '15001'
+    type: Server
+    message: We are unable to retrieve your document(s). Please contact Factiva Customer Service.
+  - code: '15002'
+    type: Server
+    message: We are unable to retrieve your document(s). Please contact Factiva Customer Service.
+  - code: '15003'
+    type: Server
+    message: We are unable to retrieve your document(s). Please contact Factiva Customer Service.
+  - code: '15004'
+    type: Client
+    message: You are not authorized to view this document. Please contact your administrator.
+  - code: '15005'
+    type: Client
+    message: You are not authorized to view this document. Please contact your administrator.
+  - code: '15006'
+    type: Client
+    message: You are not authorized to view this document. Please contact your administrator.
+  - code: '372736'
+    type: Client
+    message: highlightString is not supported for “urn:factiva:developer:v2_0:objects” namespace.
+  - code: '376000'
+    type: Client
+    message: highlightString is not supported for “objects” namespace.
+- id: search
+  name: Search Service
+  docs: https://developer.dowjones.com/documents/site-docs-factiva_apis-factiva_workflow_apis_soap-soap-error_codes_and_messages-errors_search
+  code_count: 95
+  codes:
+  - code: '110001'
+    type: Server
+    message: We are unable to process your request at this time. For assistance, please contact Factiva
+      Customer Service.
+  - code: '110002'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '110003'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '110101'
+    type: Client
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '110102'
+    type: Client
+    message: Your search statement contains two connectors adjacent to each other. Please re-enter your
+      search using the correct syntax.
+  - code: '110103'
+    type: Client
+    message: 'The connector you have entered can only be used to connect two expressions. For example:
+      online banking and japan. Please re-enter your search using the correct syntax.'
+  - code: '110104'
+    type: Client
+    message: The connector NOT can only be used to connect two expressions. Please re-enter your search
+      using the correct syntax.
+  - code: '110105'
+    type: Client
+    message: The search syntax you have entered is invalid.
+  - code: '110106'
+    type: Client
+    message: The term you have entered cannot be searched in the specified document field. Please re-enter
+      your search using the correct syntax.
+  - code: '110107'
+    type: Client
+    message: This document field cannot be searched using free-text.
+  - code: '110108'
+    type: Client
+    message: 'The SAME connector can only be used to connect two expressions. For example: advertising
+      same vodafone. Please re-enter your search using the correct syntax.'
+  - code: '110110'
+    type: Client
+    message: You have used the parentheses/square brackets incorrectly. The number of opening and closing
+      parentheses/square brackets should be the same. Please re-enter your search.
+  - code: '110111'
+    type: Client
+    message: You have used the double quotes incorrectly. Please re-enter your search.
+  - code: '110112'
+    type: Client
+    message: You have used a number in this context. For example, wc>500. Please re-enter your search.
+  - code: '110113'
+    type: Client
+    message: You cannot search for a document field within another document field. Please re-enter your
+      search statement.
+  - code: '110120'
+    type: Client
+    message: A minimum of 2 characters before the wildcard truncation ($ and *) is required. Please re-enter
+      your search using the correct syntax.
+  - code: '110121'
+    type: Client
+    message: A minimum of 2 characters before the wildcard truncation ? is required. Please re-enter your
+      search using the correct syntax.
+  - code: '110122'
+    type: Client
+    message: You have used an invalid character within one of your terms. Please re-enter the character.
+  - code: '110123'
+    type: Client
+    message: The search syntax you have entered is invalid. Please re-enter your search.
+  - code: '110124'
+    type: Client
+    message: A truncation sign can only be used at the end of a word. Please re-enter your search.
+  - code: '110130'
+    type: Client
+    message: You have entered the date field name incorrectly. The correct field name is date. For example,
+      date before mm/dd/yy.
+  - code: '110131'
+    type: Client
+    message: You have entered an incorrect document field name. Please re-enter your search.
+  - code: '110132'
+    type: Client
+    message: You have entered an incorrect field name for performing a numeric comparison. Please re-enter
+      your search.
+  - code: '110140'
+    type: Client
+    message: The Intelligent Identifiers code that you have entered has not been found. Please re-enter
+      your search.
+  - code: '110141'
+    type: Client
+    message: You have entered an invalid date. Please re-enter your search.
+  - code: '110142'
+    type: Client
+    message: Your search statement contains an invalid date format. Please re-enter your date range using
+      the format you have chosen in the Search Preferences.
+  - code: '110143'
+    type: Client
+    message: You have entered an invalid range for comparisons. Please re-enter your search.
+  - code: '110150'
+    type: Client
+    message: You have entered a number after the $ truncation wildcard that is incorrect. Please choose
+      a value between 1 and 9.
+  - code: '110151'
+    type: Client
+    message: You have entered a number after the * truncation wildcard. The * truncation does not take
+      numeric parameter. Please re-enter your search.
+  - code: '110152'
+    type: Client
+    message: 'This number is not within the allowed range for the WITHIN and the ADJ connectors. Please
+      choose a value between 1 and 10. For example: market w/2 survey or market adj2 survey.'
+  - code: '110153'
+    type: Client
+    message: This number is not within the allowed range for the ADJ connector. Please choose a value
+      between 1 and 10. For example, market adj3 survey.
+  - code: '110154'
+    type: Client
+    message: 'This number is not within the allowed range for the NEAR connector. Please choose a value
+      between 1 and 500. For example: market near10 share.'
+  - code: '110155'
+    type: Client
+    message: 'This number is not within the allowed range for the ATLEAST connector. Please choose a value
+      between 1 and 50. For example: atleast5 online banking.'
+  - code: '110156'
+    type: Client
+    message: 'This number is not within the allowed range for the /F/ connector. Please choose a value
+      between 1 and 500. For example: knowledge management/f100/.'
+  - code: '110157'
+    type: Client
+    message: Your search statement contains data that are out of order. Please re-enter your search.
+  - code: '110160'
+    type: Client
+    message: The Intelligent Identifiers code that you have entered has not been found. Please re-enter
+      your search.
+  - code: '110161'
+    type: Server
+    message: We are unable to process your request at this time. Please try again later.
+  - code: '110170'
+    type: Client
+    message: Your search statement exceeds the maximum length allowed. The maximum number of characters
+      is 2,048. Please re-enter your query.
+  - code: '110180'
+    type: Server
+    message: We are unable to process your request at this time. For assistance, please contact Factiva
+      Customer Service.
+  - code: '110181'
+    type: Server
+    message: We are unable to process your request at this time. For assistance, please contact Factiva
+      Customer Service.
+  - code: '110300'
+    type: Client
+    message: We are unable to process your request at this time. For assistance, please contact Factiva
+      Customer Service.
+  - code: '110301'
+    type: Client
+    message: We are unable to process your request at this time. For assistance, please contact Factiva
+      Customer Service.
+  - code: '110302'
+    type: Client
+    message: We are unable to process your request at this time. For assistance, please contact Factiva
+      Customer Service.
+  - code: '110303'
+    type: Client
+    message: We are unable to process your request at this time. For assistance, please contact Factiva
+      Customer Service.
+  - code: '110304'
+    type: Client
+    message: We are unable to process your request at this time. For assistance, please contact Factiva
+      Customer Service.
+  - code: '110305'
+    type: Client
+    message: We are unable to process your request at this time. For assistance, please contact Factiva
+      Customer Service.
+  - code: '110306'
+    type: Client
+    message: We are unable to process your request at this time. For assistance, please contact Factiva
+      Customer Service.
+  - code: '110307'
+    type: Client
+    message: We are unable to process your request at this time. For assistance, please contact Factiva
+      Customer Service.
+  - code: '110308'
+    type: Client
+    message: We are unable to process your request at this time. For assistance, please contact Factiva
+      Customer Service.
+  - code: '110309'
+    type: Client
+    message: We are unable to process your request at this time. For assistance, please contact Factiva
+      Customer Service.
+  - code: '110310'
+    type: Client
+    message: We are unable to process your request at this time. For assistance, please contact Factiva
+      Customer Service.
+  - code: '110311'
+    type: Client
+    message: We are unable to process your request at this time. For assistance, please contact Factiva
+      Customer Service.
+  - code: '110312'
+    type: Client
+    message: We are unable to process your request at this time. For assistance, please contact Factiva
+      Customer Service.
+  - code: '110313'
+    type: Client
+    message: We are unable to process your request at this time. For assistance, please contact Factiva
+      Customer Service.
+  - code: '110314'
+    type: Server
+    message: We are unable to process your request at this time. For assistance, please contact Factiva
+      Customer Service.
+  - code: '110315'
+    type: Server
+    message: We are unable to process your request at this time. For assistance, please contact Factiva
+      Customer Service.
+  - code: '110500'
+    type: Server
+    message: We are unable to process your request at this time. For assistance, please contact Factiva
+      Customer Service.
+  - code: '110501'
+    type: Server
+    message: We are unable to process your request at this time. For assistance, please contact Factiva
+      Customer Service.
+  - code: '110561'
+    type: Server
+    message: We are unable to process your request at this time. For assistance, please contact Factiva
+      Customer Service.
+  - code: '111000'
+    type: Client
+    message: We are unable to process your request at this time. For assistance, please contact Factiva
+      Customer Service.
+  - code: '111010'
+    type: Client
+    message: We are unable to process your request at this time. For assistance, please contact Factiva
+      Customer Service.
+  - code: '111999'
+    type: Client
+    message: We are unable to process your request at this time. For assistance, please contact Factiva
+      Customer Service.
+  - code: '520101'
+    type: Client
+    message: Your search statement contains a general syntax error. Please re-enter your search using
+      the correct syntax.
+  - code: '520102'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '520103'
+    type: Client
+    message: The connector AND can only be used to connect two expressions. Please re-enter your search
+      using the correct syntax.
+  - code: '520104'
+    type: Client
+    message: The connector NOT can only be used to connect two expressions. Please re-enter your search
+      using the correct syntax.
+  - code: '520105'
+    type: Client
+    message: The search syntax you have entered is invalid. Please re-enter your search using the correct
+      syntax.
+  - code: '520107'
+    type: Client
+    message: This document field cannot be searched using phrases. Please re-enter your search.
+  - code: '520108'
+    type: Client
+    message: The connector SAME can only be used to connect two expressions. Please re-enter your search
+      using the correct syntax.
+  - code: '520110'
+    type: Client
+    message: The number of opening and closing parentheses do not match. Please re-enter your search.
+  - code: '520111'
+    type: Client
+    message: You have used the double quotes incorrectly. Please re-enter your search using the correct
+      syntax.
+  - code: '520112'
+    type: Client
+    message: You can only use a number in this context. Please re-enter your search using the correct
+      syntax.
+  - code: '520113'
+    type: Client
+    message: Your search contains a general syntax error. Please re-enter your search using the correct
+      syntax.
+  - code: '520120'
+    type: Client
+    message: A minimum of 3 characters before the wildcard truncation ($ and *) is required. Please re-enter
+      your search using the correct syntax.
+  - code: '520121'
+    type: Client
+    message: A minimum of 3 characters before the wildcard ? is required. Please re-enter your search
+      using the correct syntax.
+  - code: '520124'
+    type: Client
+    message: The truncation sign * or $ can only be used at the end of a word. Please re-enter your search
+      using the correct syntax.
+  - code: '520130'
+    type: Client
+    message: You have entered the date field name incorrectly. The correct field name is date. For example,
+      date before mm/dd/yyyy.
+  - code: '520131'
+    type: Client
+    message: Your search contains an unknown or incorrect field. Please revise your search.
+  - code: '520132'
+    type: Client
+    message: You have entered an incorrect field name for doing numeric comparison. Please re-enter your
+      search using the correct syntax.
+  - code: '520140'
+    type: Client
+    message: The code you have entered has not been found.
+  - code: '520141'
+    type: Client
+    message: Your search contains an invalid date. Please re-enter your search.
+  - code: '520142'
+    type: Client
+    message: Your search contains an invalid date format. Please re-enter your search.
+  - code: '520143'
+    type: Client
+    message: Your search contains an invalid value for doing numeric comparison.
+  - code: '520150'
+    type: Client
+    message: You have entered a number after the truncation sign $ that is incorrect. Please choose a
+      value between 1 and 9.
+  - code: '520151'
+    type: Client
+    message: You have entered a number after the truncation sign * that is incorrect. This operator does
+      not take a numeric parameter. Please re-enter your search.
+  - code: '520152'
+    type: Client
+    message: You have entered an invalid number for the WITHIN connector. Please choose a value between
+      1 and 50.
+  - code: '520153'
+    type: Client
+    message: You have entered an invalid number for the ADJ connector. Please choose a value between 1
+      and 50.
+  - code: '520154'
+    type: Client
+    message: You have entered an invalid number for the NEAR connector. Please choose a value between
+      1 and 500.
+  - code: '520155'
+    type: Client
+    message: You have entered an invalid number for the ATLEAST connector. Please choose a value between
+      1 and 50.
+  - code: '520156'
+    type: Client
+    message: You have entered an invalid number for the /F/ connector. Please choose a number between
+      1 and 500.
+  - code: '520157'
+    type: Client
+    message: Your search statement contains dates that are out of order. Please re-enter your search.
+  - code: '520160'
+    type: Client
+    message: The code you have entered has not been found.
+  - code: '520161'
+    type: Client
+    message: Metadata lookup error.
+  - code: '520170'
+    type: Client
+    message: Your search string is too long.
+  - code: '376600'
+    type: Client
+    message: This request does not support RegionNavigator/AuthorNavigator/ExecutiveNavigator. Please
+      remove it from request and try again.
+- id: taxonomy
+  name: Taxonomy Service
+  docs: https://developer.dowjones.com/documents/site-docs-factiva_apis-factiva_workflow_apis_soap-soap-error_codes_and_messages-errors_taxonomy
+  code_count: 22
+  codes:
+  - code: '1100'
+    type: Server
+    message: We are unable to process your request at this time. For assistance, please contact Factiva
+      Customer Service.
+  - code: '1101'
+    type: Server
+    message: We are unable to process your request at this time. For assistance, please contact Factiva
+      Customer Service.
+  - code: '1102'
+    type: Client
+    message: Your request has not been authorized. Please contact your administrator.
+  - code: '1103'
+    type: Server
+    message: We are experiencing technical difficulties with your request. For assistance, please contact
+      Factiva Customer Service.
+  - code: '1104'
+    type: Client
+    message: Invalid request parameter.
+  - code: '1105'
+    type: Server
+    message: We are experiencing technical difficulties with your request. For assistance, please contact
+      Factiva Customer Service.
+  - code: '1106'
+    type: Server
+    message: We are unable to complete your search at this time. Please try again in a few minutes.
+  - code: '1107'
+    type: Server
+    message: We are unable to complete your search at this time. Please try again in a few minutes.
+  - code: '1108'
+    type: Server
+    message: Your search has exceeded the maximum number of results. Please refine your query.
+  - code: '1111'
+    type: Client
+    message: Invalid Code.
+  - code: '1112'
+    type: Client
+    message: Symbol mapping not available.
+  - code: '1121'
+    type: Client
+    message: Your request is invalid. Please re-enter your query.
+  - code: '1122'
+    type: Client
+    message: Your search has exceeded the maximum number of results. Please refine your query.
+  - code: '1131'
+    type: Client
+    message: The code(s) that you have entered have not been found. Please re-enter your query.
+  - code: '2000'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '2001'
+    type: Client
+    message: Empty request.
+  - code: '2002'
+    type: Server
+    message: We are experiencing technical difficulties with your request. For assistance, please contact
+      Factiva Customer Service.
+  - code: '2003'
+    type: Client
+    message: Invalid subject/category in request.
+  - code: '2004'
+    type: Server
+    message: We are experiencing technical difficulties with your request. For assistance, please contact
+      Factiva Customer Service.
+  - code: '2537'
+    type: Server
+    message: We are unable to process your request at this time. For assistance, please contact Factiva
+      Customer Service.
+  - code: '2538'
+    type: Server
+    message: Invalid search string.
+  - code: '2541'
+    type: Server
+    message: General use of the Reuters Instrument Code (ric) has been deprecated in FDK. Please use a
+      different code scheme and try again.
+- id: track
+  name: Track Service
+  docs: https://developer.dowjones.com/documents/site-docs-factiva_apis-factiva_workflow_apis_soap-soap-error_codes_and_messages-errors_track
+  code_count: 117
+  codes:
+  - code: '30001'
+    type: Client
+    message: The request contains an invalid value.
+  - code: '30002'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '30003'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '30004'
+    type: Client
+    message: You have already created the maximum number of folders you can have on this user ID. Please
+      contact your account administrator if you need additional folders.
+  - code: '30005'
+    type: Client
+    message: The specified e-mail address is already in use for this topic.
+  - code: '30006'
+    type: Client
+    message: You are tracking this topic already. If you need to send results to more than one e-mail
+      address, please contact Factiva Customer Service.
+  - code: '30007'
+    type: Client
+    message: The Topic folder you have requested is no longer available. For assistance, please contact
+      Factiva Customer Service.
+  - code: '30008'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '30026'
+    type: Client
+    message: You can only change the post status for managed folders.
+  - code: '30027'
+    type: Client
+    message: You are not authorized to change the post status.
+  - code: '30051'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '30076'
+    type: Client
+    message: User is not authorized to create an internal article.
+  - code: '30077'
+    type: Client
+    message: The request contains neither document ID nor Accession Number.
+  - code: '30079'
+    type: Client
+    message: Failed to add internal article; document already exists.
+  - code: '30080'
+    type: Client
+    message: Failed to delete internal article; document not found.
+  - code: '30101'
+    type: Client
+    message: You have already created the maximum number of folders you can have on this user id. Please
+      contact your account administrator if you need additional folders.
+  - code: '30102'
+    type: Client
+    message: You already have a folder with this name. Please try again with a different folder name.
+  - code: '30103'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '30104'
+    type: Client
+    message: User does not exist in user table.
+  - code: '30105'
+    type: Client
+    message: Your folder name has exceeded the maximum size limit. Please enter a folder name using up
+      to 25 letters, numbers and spaces.
+  - code: '30106'
+    type: Client
+    message: You may only e-mail the headlines of documents. Please contact your account administrator
+      for additional access.
+  - code: '30107'
+    type: Server
+    message: We are unable to process your request at this time. Please try again in a few minutes.
+  - code: '30108'
+    type: Client
+    message: Your search statement contains a general syntax error. Please re-enter your search using
+      the correct syntax or go to Help for more information.
+  - code: '30109'
+    type: Client
+    message: You are not authorized to create group folders. Please contact your account administrator.
+  - code: '30110'
+    type: Client
+    message: You have entered one or more illegal characters in your folder name. Please try again.
+  - code: '30111'
+    type: Client
+    message: The request contains unsupported feature for TRACK system.
+  - code: '30112'
+    type: Client
+    message: You are not authorized to create TRACK folders. Please contact your account administrator.
+  - code: '30113'
+    type: Client
+    message: You are not authorized to create Fast TRACK folders. Please contact your account administrator.
+  - code: '30114'
+    type: Client
+    message: You are not authorized to create managed folders. Please contact your account administrator.
+  - code: '30115'
+    type: Client
+    message: You are not authorized to create managed folders. Please contact your account administrator.
+  - code: '30116'
+    type: Client
+    message: You are not authorized to receive e-mail delivery of TRACK results. Please contact your account
+      administrator.
+  - code: '30117'
+    type: Client
+    message: You have selected to receive more results per delivery than your administrator has authorized
+      for you. Please contact your account administrator.
+  - code: '30118'
+    type: Client
+    message: Managed folders cannot be revised to regular folders.
+  - code: '30119'
+    type: Client
+    message: Query ID is required for this group folder.
+  - code: '30120'
+    type: Client
+    message: You are not authorized to delete this folder. A group folder can only be deleted by the owner.
+  - code: '30121'
+    type: Client
+    message: Your query string is too long. Please adjust your query length and resubmit it.
+  - code: '30151'
+    type: Client
+    message: The folder you are trying to access either does not belong to you or has been deleted. For
+      assistance, please contact Factiva Customer Service.
+  - code: '30152'
+    type: Client
+    message: The request contains neither folder name nor folder ID.
+  - code: '30156'
+    type: Client
+    message: General use of the Reuters Instrument Code (ric) has been deprecated in FDK. Please revise
+      your query and try again.
+  - code: '30251'
+    type: Client
+    message: Folder not found.
+  - code: '30252'
+    type: Client
+    message: You already have a folder with this name. Please try again with a different folder name.
+  - code: '30253'
+    type: Client
+    message: You do not have access to this folder, and may not revise or view it.
+  - code: '30254'
+    type: Client
+    message: Folder Type cannot be revised.
+  - code: '30301'
+    type: Client
+    message: Query not found.
+  - code: '30305'
+    type: Client
+    message: Your search statement contains references to specific dates or times. Please revise your
+      search and remove this free-text.
+  - code: '31001'
+    type: Server
+    message: We are unable to retrieve your document(s) at this time. Please try again in a few minutes.
+  - code: '31002'
+    type: Server
+    message: We are unable to retrieve your document(s) at this time. Please try again in a few minutes.
+  - code: '31003'
+    type: Server
+    message: The Folder ID is not found.
+  - code: '31004'
+    type: Server
+    message: The Folderheadlines could not be retrieved. Please try again.
+  - code: '31005'
+    type: Server
+    message: The Folderheadlines could not be retrieved. Please try again.
+  - code: '31006'
+    type: Server
+    message: We are unable to retrieve your document(s) at this time. Please try again in a few minutes.
+  - code: '31007'
+    type: Server
+    message: We are unable to retrieve your document(s) at this time. Please try again in a few minutes.
+  - code: '31008'
+    type: Server
+    message: We are unable to retrieve your document(s) at this time. Please try again in a few minutes.
+  - code: '31009'
+    type: Server
+    message: We are unable to retrieve your document(s) at this time. Please try again in a few minutes.
+  - code: '31010'
+    type: Server
+    message: We are unable to retrieve your document(s) at this time. Please try again in a few minutes.
+  - code: '31011'
+    type: Server
+    message: We are unable to retrieve your document(s) at this time. Please try again in a few minutes.
+  - code: '31012'
+    type: Server
+    message: We are unable to retrieve your document(s) at this time. Please try again in a few minutes.
+  - code: '31013'
+    type: Server
+    message: We are unable to retrieve your document(s) at this time. Please try again in a few minutes.
+  - code: '31014'
+    type: Server
+    message: We are unable to retrieve your document(s) at this time. Please try again in a few minutes.
+  - code: '31015'
+    type: Server
+    message: Invalid bookmark value in the request.
+  - code: '31017'
+    type: Server
+    message: We are unable to retrieve your document(s) at this time. Please try again in a few minutes.
+  - code: '31018'
+    type: Server
+    message: We are unable to retrieve your document(s) at this time. Please try again in a few minutes.
+  - code: '31019'
+    type: Server
+    message: We are unable to retrieve your document(s) at this time. Please try again in a few minutes.
+  - code: '31020'
+    type: Server
+    message: We are unable to retrieve your document(s) at this time. Please try again in a few minutes.
+  - code: '31021'
+    type: Server
+    message: We are unable to retrieve your document(s) at this time. Please try again in a few minutes.
+  - code: '31022'
+    type: Server
+    message: We are unable to retrieve your document(s) at this time. Please try again in a few minutes.
+  - code: '31023'
+    type: Server
+    message: sortOrder is invalid
+  - code: '31024'
+    type: Server
+    message: sortOrder is invalid
+  - code: '31025'
+    type: Server
+    message: sortOrder is invalid
+  - code: '31026'
+    type: Server
+    message: sortOrder is invalid
+  - code: '31027'
+    type: Server
+    message: Invalid publicationDate in the response.
+  - code: '31028'
+    type: Server
+    message: Invalid offset in the bookmark.
+  - code: '31029'
+    type: Server
+    message: We are unable to retrieve your document(s) at this time. Please try again in a few minutes.
+  - code: '31030'
+    type: Server
+    message: Unable to retrieve headlines. Please try again in a few minutes.
+  - code: '31031'
+    type: Server
+    message: We are unable to retrieve your document(s) at this time. Please try again in a few minutes.
+  - code: '31032'
+    type: Server
+    message: We are unable to retrieve your document(s) at this time. Please try again in a few minutes.
+  - code: '31033'
+    type: Server
+    message: We are unable to retrieve your document(s) at this time. Please try again in a few minutes.
+  - code: '31034'
+    type: Server
+    message: We are unable to retrieve your document(s) at this time. Please try again in a few minutes.
+  - code: '31035'
+    type: Server
+    message: Invalid contentCategory in the request or response. Please try again.
+  - code: '31036'
+    type: Server
+    message: No folderID provided. Please provide the folderID(s)
+  - code: '31037'
+    type: Server
+    message: Invalid folderID provided. Please provide the folderID(s)
+  - code: '31038'
+    type: Server
+    message: We are unable to retrieve your document(s) at this time. Please try again in a few minutes.
+  - code: '31039'
+    type: Server
+    message: We are unable to retrieve your document(s) at this time. Please try again in a few minutes.
+  - code: '31040'
+    type: Server
+    message: We are unable to retrieve your document(s) at this time. Please try again in a few minutes.
+  - code: '31041'
+    type: Server
+    message: We are unable to retrieve your document(s) at this time. Please try again in a few minutes.
+  - code: '31042'
+    type: Server
+    message: We are unable to retrieve your document(s) at this time. Please try again in a few minutes.
+  - code: '31043'
+    type: Server
+    message: We are unable to retrieve your document(s) at this time. Please try again in a few minutes.
+  - code: '31044'
+    type: Server
+    message: We are unable to retrieve your document(s) at this time. Please try again in a few minutes.
+  - code: '31045'
+    type: Server
+    message: We are unable to retrieve your document(s) at this time. Please try again in a few minutes.
+  - code: '31046'
+    type: Server
+    message: We are unable to retrieve your document(s) at this time. Please try again in a few minutes.
+  - code: '31047'
+    type: Server
+    message: We are unable to retrieve your document(s) at this time. Please try again in a few minutes.
+  - code: '31048'
+    type: Server
+    message: We are unable to retrieve your document(s) at this time. Please try again in a few minutes.
+  - code: '31049'
+    type: Server
+    message: We are unable to retrieve your document(s) at this time. Please try again in a few minutes.
+  - code: '31050'
+    type: Server
+    message: We are unable to retrieve your document(s) at this time. Please try again in a few minutes.
+  - code: '31051'
+    type: Server
+    message: We are unable to retrieve your document(s) at this time. Please try again in a few minutes.
+  - code: '31052'
+    type: Server
+    message: We are unable to retrieve your document(s) at this time. Please try again in a few minutes.
+  - code: '31053'
+    type: Server
+    message: We are unable to retrieve your document(s) at this time. Please try again in a few minutes.
+  - code: '31054'
+    type: Server
+    message: We are unable to retrieve your document(s) at this time. Please try again in a few minutes.
+  - code: '31055'
+    type: Server
+    message: We are unable to retrieve your document(s) at this time. Please try again in a few minutes.
+  - code: '31056'
+    type: Server
+    message: We are unable to retrieve your document(s) at this time. Please try again in a few minutes.
+  - code: '31057'
+    type: Server
+    message: We are unable to retrieve your document(s) at this time. Please try again in a few minutes.
+  - code: '31058'
+    type: Server
+    message: We are unable to retrieve your document(s) at this time. Please try again in a few minutes.
+  - code: '31059'
+    type: Server
+    message: We are unable to retrieve your document(s) at this time. Please try again in a few minutes.
+  - code: '31060'
+    type: Server
+    message: We are unable to retrieve your document(s) at this time. Please try again in a few minutes.
+  - code: '31061'
+    type: Server
+    message: We are unable to retrieve your document(s) at this time. Please try again in a few minutes.
+  - code: '31062'
+    type: Server
+    message: Invalid maxResultsToReturn in the request.
+  - code: '31063'
+    type: Server
+    message: Invalid Alerts folderID in the request.
+  - code: '31064'
+    type: Server
+    message: Invalid editorPostStatus in the request.
+  - code: '31065'
+    type: Server
+    message: You do not have privileges to perform this operation.
+  - code: '31066'
+    type: Server
+    message: We are unable to retrieve your document(s) at this time. Please try again in a few minutes.
+  - code: '31067'
+    type: Server
+    message: Article not found.
+  - code: '31068'
+    type: Server
+    message: Article fetch timed out.
+  - code: '31069'
+    type: Server
+    message: Article has been deleted.
+  - code: '31070'
+    type: Server
+    message: You do not have privileges to retrieve this article.
+  - code: '376100'
+    type: Client
+    message: “All” is not a valid option for folderType.
+  - code: '376101'
+    type: Client
+    message: “All” is not a valid option for productID.
+  - code: '376102'
+    type: Client
+    message: The partner id is not valid for this transaction.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

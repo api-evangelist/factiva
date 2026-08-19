@@ -1,0 +1,110 @@
+generated: '2026-08-13'
+method: searched
+source: https://developer.dowjones.com/documents/factiva_integration-factiva_analytics-endpoints-streams
+spec_type: none
+description: >-
+  Factiva ships a real, documented event surface — Factiva Streams — but publishes no AsyncAPI
+  document for it, so this artifact is the harvested event catalog rather than a specification.
+  Delivery is NOT HTTP webhooks: Dow Jones hosts a Streaming Instance that filters the main
+  ingestion pipeline in real time, and the customer consumes events from a Google Cloud Pub/Sub
+  subscription using a Dow Jones-supplied streaming client. Recorded as the provider's event
+  surface with that mechanism stated plainly so nobody reads it as a callback API.
+asyncapi_published: false
+webhooks_published: false
+transport:
+  protocol: google-cloud-pubsub
+  pattern: publish-subscribe
+  delivery: pull (client subscribes; Dow Jones does not POST to a customer URL)
+  message_format: application/json
+  client_required: true
+  client_note: >-
+    Events must be consumed with the Dow Jones streaming client, which requires a Python or
+    Node.js runtime. See packages/factiva-packages.yml (`dnastreaming` on PyPI).
+concepts:
+  streaming_instance: >-
+    An instance hosted in Dow Jones infrastructure that filters news data from the main ingestion
+    pipeline in real time. Filtering criteria use a SQL-like statement and are fixed at creation.
+  subscription: >-
+    The content delivery endpoint, on Google Cloud Pub/Sub, hosted in Dow Jones infrastructure.
+    One subscription is created with the instance; more can be added. Each subscriber receives a
+    copy of the events.
+  streaming_client: >-
+    Software supplied by Dow Jones and run by the customer to consume a single subscription.
+events:
+  - type: article
+    name: Article-specific event
+    discriminator: document_type == "article"
+    description: An action to perform on a single article.
+    actions:
+      - action: add
+        meaning: First version of an article. Equivalent to an INSERT or UPSERT at the database level.
+      - action: rep
+        meaning: >-
+          Replace — an updated version of an article. Equivalent to an UPSERT or UPDATE depending
+          on whether a previous version exists; process as `add` if it does not. Match on `an`.
+      - action: del
+        meaning: >-
+          Delete the article identified by `an`. Ignorable if the article is not held. Hard delete,
+          or a soft-delete availability flag where audit retention is required.
+    key_fields:
+      an: Accession number — the article identifier.
+      document_type: Always "article" for this event type.
+      action: One of add, rep, del.
+      source_code: Publication source code.
+      publication_date: ISO-8601 date.
+      publication_datetime: ISO-8601 timestamp.
+      modification_date: ISO-8601 date.
+      modification_datetime: ISO-8601 timestamp.
+      availability_datetime: ISO-8601 timestamp; when the article became available.
+      ingestion_datetime: ISO-8601 timestamp.
+      title: Article headline.
+      body: Article body text.
+      language_code: ISO language code.
+      copyright: Copyright statement.
+      region_of_origin: Space-separated region codes.
+      publisher_name: Publisher.
+      word_count: Integer.
+      company_codes: Comma-separated Factiva company codes.
+      subject_codes: Comma-separated news subject codes.
+      region_codes: Comma-separated region codes.
+      industry_codes: Comma-separated industry codes.
+      person_codes: Comma-separated person codes.
+      currency_codes: Comma-separated currency codes.
+      market_index_codes: Comma-separated market index codes.
+    note: >-
+      A `del` event carries only an, document_type and action — consumers must not assume the
+      full attribute set is present on every article event.
+  - type: bulk
+    name: Bulk event
+    discriminator: presence of the event_type attribute (absent on article-specific events)
+    description: An action affecting multiple articles at once. Introduced May 2025.
+    event_types:
+      - event_type: source_delete
+        meaning: >-
+          Remove all content associated with a specific source code, due to licensing agreement
+          expiry or other contractual change. Ignorable if no content exists for that source.
+        key_fields:
+          event_type: Always "source_delete".
+          source_code: The source whose content must be removed.
+          modification_datetime: ISO-8601 timestamp.
+          description: Human-readable instruction.
+    note: >-
+      Factiva Analytics customers currently receive only source_delete bulk events. The docs warn
+      explicitly against application logic that assumes a fixed event-type list.
+consumer_guidance:
+  - Identify the event type before processing — check document_type, then event_type.
+  - Do not assume a fixed event-type list; new bulk event types are added over time.
+  - Retransmitted messages are possible; treat `add` as an idempotent upsert on `an`.
+management_api:
+  description: >-
+    Streaming instances and subscriptions are created and managed over the REST surface
+    (Factiva Streams endpoints on api.dowjones.com), which is documented but not published as an
+    OpenAPI document.
+  docs: https://developer.dowjones.com/documents/factiva_integration-factiva_analytics-endpoints-streams-streams_3_0
+  version: '3.1'
+related:
+  - changelog/factiva-changelog.yml
+  - packages/factiva-packages.yml
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

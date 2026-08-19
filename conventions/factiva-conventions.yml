@@ -1,0 +1,148 @@
+generated: '2026-08-13'
+method: searched
+source: https://developer.dowjones.com/documents/site-docs-getting_started-api_essentials-pagination_and_caching
+description: >-
+  Cross-cutting request/response semantics for the Factiva Integration suite, read from the
+  Dow Jones Developer Platform documentation and corroborated against the three harvested
+  OpenAPI/Swagger documents in openapi/ and one live unauthenticated probe of api.dowjones.com.
+docs:
+  - https://developer.dowjones.com/documents/site-docs-getting_started-api_essentials
+  - https://developer.dowjones.com/documents/site-docs-getting_started-api_essentials-pagination_and_caching
+  - https://developer.dowjones.com/documents/factiva_integration-essentials-versioning
+  - https://developer.dowjones.com/documents/factiva_integration-essentials-authentication
+authentication:
+  styles:
+    - api-key-header
+    - bearer-token
+  api_key_header: user-key
+  bearer_header: Authorization
+  detail: authentication/factiva-authentication.yml
+versioning:
+  scheme: header
+  header: X-API-VERSION
+  header_example: 'X-API-VERSION: 3.0'
+  format: >-
+    Two-part number. The first part is a major update that may include breaking changes; the
+    second is a backward-compatible feature, fix or patch release. Examples: 2.0, 2.44, 3.0.
+  media_type_variant:
+    used_by: Factiva Retrieval (GenAI) endpoints
+    header: Accept
+    pattern: application/vnd.dowjones.genai-content.v_[version-number]
+    example: application/vnd.dowjones.genai-content.v_1.0
+  legacy_scheme: uri-path
+  legacy_example: https://api.dowjones.com/api/1.0/Content/search/
+  legacy_surfaces: [REST 1, REST 2, SOAP (FDK), Factiva Select Feed]
+  default_behavior: >-
+    If no version is specified the endpoint serves the default version, which each product's
+    own documentation names. There is no single platform-wide default.
+  maturity_levels:
+    - name: alpha
+      pattern: v1alpha1
+      support: May be withdrawn at any time without notice; may break compatibility without notice.
+    - name: beta
+      pattern: v2beta3
+      support: Enabled by default; schema/semantics may break between beta or stable releases, with migration instructions.
+    - name: stable
+      pattern: vX (e.g. v1.3)
+      support: Will not change; minor changes get a subversion number.
+pagination:
+  style: offset-limit
+  parameters:
+    - name: offset
+      type: integer
+      in: query
+      description: Zero-based index of the number of results to skip, to create each page.
+    - name: limit
+      type: integer
+      in: query
+      description: Number of results to return per page.
+    - name: records
+      type: integer
+      in: response
+      description: >-
+        Number of records returned. Used to implement pagination where neither the Meta nor
+        the Links object is present.
+  post_body_variant:
+    applies_to: screening-style POST requests
+    location: a `paging` object inside the POST body
+  response_objects:
+    - name: meta
+      description: Sub-object carrying pagination information for moving through the dataset.
+    - name: links
+      description: Fully-formed request URLs with the necessary offset values.
+      fields:
+        self: URL of the current search results.
+        prev: URL of the previous set of results.
+        next: URL of the next set of results.
+        first: URL of the first set of results.
+        last: URL of the last set of results.
+  cursor: false
+caching:
+  response_header: Cache-Control
+  description: >-
+    Dow Jones APIs return Cache-Control response header values that indicate the appropriate
+    cache duration for the resource.
+error_envelope:
+  shape: json-api-like
+  root: errors
+  fields:
+    title: Human-readable error title.
+    status: HTTP status code, repeated in the body.
+    code: Numeric Dow Jones error code.
+  observed_example: '{"errors":[{"title":"Authentication parameters missing","status":403,"code":1011001}]}'
+  observed_from: GET https://api.dowjones.com/content/swagger (unauthenticated, 2026-08-13)
+  rfc9457: false
+  detail: errors/factiva-problem-types.yml
+envelope:
+  request_root: data
+  request_shape: >-
+    The newer JSON endpoints (Retrieval, Token Usage, Usage Metrics, Snapshots, Streams) wrap
+    the request in a top-level `data` object carrying `attributes`, and often `id` and `type` —
+    a JSON:API-shaped body.
+  response_root: data
+  response_meta: meta
+  response_links: links
+idempotency:
+  supported: false
+  note: >-
+    No idempotency key header, parameter or retry-safety contract is documented anywhere in the
+    Factiva Integration documentation, and none of the three harvested specs declares one. The
+    write surface is small (create snapshot, create streaming instance, create subscription) and
+    each returns a server-generated job/instance id, so a retried create produces a duplicate
+    job rather than a deduplicated one.
+rate_limit_signaling:
+  documented: false
+  headers: []
+  status_on_exhaustion: unknown
+  note: >-
+    No published rate limits and no documented RateLimit-* / X-RateLimit-* / Retry-After
+    signaling. See rate-limits/factiva-rate-limits.yml.
+request_tracing:
+  request_id_header: null
+  note: >-
+    No request-id / correlation-id response header is documented. The GenAI usage-metrics
+    response does carry a `transaction_id` per usage record, but that is audit data on a
+    reporting endpoint, not a per-request trace header.
+field_selection:
+  supported: true
+  mechanism: >-
+    Streaming instance creation queries accept a SQL-like `select` sentence; the fields named in
+    the select define what the Stream event messages contain.
+  scope: Factiva Streams 3.0 only
+metadata:
+  supported: false
+  note: No customer-defined metadata/annotation field is documented on Factiva resources.
+query_language:
+  name: Factiva query language
+  docs: https://developer.dowjones.com/documents/factiva_integration-essentials-query_language_building_queries
+  description: >-
+    Factiva's own boolean/field query syntax over the Factiva Archive taxonomy (DJID codes for
+    companies, industries, regions, news subjects), used to build Snapshots, Streams and search.
+related:
+  - authentication/factiva-authentication.yml
+  - errors/factiva-problem-types.yml
+  - lifecycle/factiva-lifecycle.yml
+  - rate-limits/factiva-rate-limits.yml
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

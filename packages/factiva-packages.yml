@@ -1,0 +1,141 @@
+generated: '2026-08-13'
+method: searched
+source: PyPI JSON API, npm registry, github.com/dowjones
+description: >-
+  First-party Factiva client libraries. Dow Jones publishes them from the github.com/dowjones
+  organization. The currency picture is the finding here: the only package with a 2026 release is
+  `dnastreaming` (the Streams client). The three `factiva-*` Python packages that wrap Snapshots,
+  Streams, Analytics and Taxonomy last shipped in 2022, and the JavaScript siblings were never
+  published to npm at all — @factiva/core and @factiva/news exist only as GitHub source, and
+  dj-dna-streaming-javascript was published to npm in 2017 and then unpublished. An integrator on
+  JavaScript has no installable first-party client.
+packages:
+  - language: python
+    registry: pypi
+    name: dnastreaming
+    url: https://pypi.org/project/dnastreaming/
+    install: pip install dnastreaming
+    repository: https://github.com/dowjones/dj-dna-streams-python
+    official: true
+    version: 2.4.0
+    published: '2026-04-09'
+    description: Python 3 library for Dow Jones customers to consume data from a Factiva Analytics Stream.
+    covers: [Factiva Streams]
+  - language: python
+    registry: pypi
+    name: factiva-analytics
+    url: https://pypi.org/project/factiva-analytics/
+    install: pip install factiva-analytics
+    repository: https://github.com/dowjones/factiva-analytics-python
+    official: true
+    version: 0.3.0
+    published: '2022-11-29'
+    description: Python package to interact with the Factiva Analytics APIs (Snapshots, Streams, Taxonomy).
+    covers: [Factiva Analytics, Factiva Snapshots, Factiva Streams, Factiva Taxonomy]
+    note: >-
+      Single release on PyPI. The GitHub repository has commits into 2026 but nothing has been
+      published to the registry since 2022-11-29, so `pip install factiva-analytics` returns a
+      three-and-a-half-year-old client for an API that has shipped Streams 3.0 and 3.1 since.
+  - language: python
+    registry: pypi
+    name: factiva-core
+    url: https://pypi.org/project/factiva-core/
+    install: pip install factiva-core
+    repository: https://github.com/dowjones/factiva-core-python
+    official: true
+    version: 0.2.5
+    published: '2022-08-31'
+    description: Root definitions and dictionaries supporting the other Factiva Python packages.
+    release_count: 14
+  - language: python
+    registry: pypi
+    name: factiva-news
+    url: https://pypi.org/project/factiva-news/
+    install: pip install factiva-news
+    repository: https://github.com/dowjones/factiva-news-python
+    official: true
+    version: 0.2.5
+    published: '2022-12-02'
+    description: Python package to interact with the Factiva news-related APIs.
+    release_count: 11
+  - language: python
+    registry: pypi
+    name: factiva-pipelines
+    url: https://pypi.org/project/factiva-pipelines/
+    install: pip install factiva-pipelines
+    repository: https://github.com/dowjones/factiva-pipelines-python
+    official: true
+    version: 0.0.1
+    published: '2020-05-29'
+    description: Tools to read, transform, enrich and load Factiva news data.
+    note: Single 0.0.1 release; repository last pushed 2020.
+  - language: javascript
+    registry: null
+    name: '@factiva/core'
+    url: https://github.com/dowjones/factiva-core-javascript
+    install: null
+    repository: https://github.com/dowjones/factiva-core-javascript
+    official: true
+    version: null
+    published: null
+    note: >-
+      Declares version 1.0.0 in package.json but was never published to npm — the name resolves
+      404 on registry.npmjs.org. Installable only from the git repository. Recorded as null
+      because there is no registry release to date.
+  - language: javascript
+    registry: null
+    name: '@factiva/news'
+    url: https://github.com/dowjones/factiva-news-javascript
+    install: null
+    repository: https://github.com/dowjones/factiva-news-javascript
+    official: true
+    version: null
+    published: null
+    note: >-
+      Declares version 1.0.0 in package.json but was never published to npm (404 on
+      registry.npmjs.org). Installable only from the git repository.
+  - language: javascript
+    registry: npm
+    name: dj-dna-streaming-javascript
+    url: https://www.npmjs.com/package/dj-dna-streaming-javascript
+    install: null
+    repository: https://github.com/dowjones/dj-dna-streams-javascript
+    official: true
+    version: null
+    published: null
+    status: unpublished
+    note: >-
+      Version 0.1.9 was published to npm on 2017-04-11 and unpublished the same day; the registry
+      record survives with an `unpublished` marker and no installable versions. The repository
+      still declares 1.4.0. The JavaScript Streams client must be installed from git.
+containers:
+  - name: factiva-stream-docker-python
+    url: https://github.com/dowjones/factiva-stream-docker-python
+    official: true
+    description: Project template to run the Factiva Streams client as a Docker container (Python).
+    note: Repository template, not a published image. Last pushed 2022-03-31.
+  - name: factiva-stream-docker-javascript
+    url: https://github.com/dowjones/factiva-stream-docker-javascript
+    official: true
+    description: Project template to run the Factiva Streams client as a Docker container (Node.js).
+    note: Repository template, not a published image. Last pushed 2022-03-31.
+samples:
+  - name: factiva-sample-notebooks
+    url: https://github.com/dowjones/factiva-sample-notebooks
+    official: true
+    description: Jupyter notebooks demonstrating the published Factiva packages.
+  - name: factiva-retrievalapi-demo
+    url: https://github.com/dowjones/factiva-retrievalapi-demo
+    official: true
+    description: Factiva Retrieval API demo notebook (private preview).
+summary:
+  official_packages: 8
+  installable_from_registry: 5
+  languages: [python, javascript]
+  registries: [pypi, npm]
+  most_recent_release: '2026-04-09'
+  stalest_release: '2020-05-29'
+  javascript_installable_from_registry: 0
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

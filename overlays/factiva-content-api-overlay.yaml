@@ -1,0 +1,58 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for the Factiva Content API
+  version: 1.0.0
+extends: openapi/factiva-content-api-swagger.json
+x-provenance:
+  generated: '2026-08-13'
+  method: generated
+  source: >-
+    Derived from the harvested Swagger 2.0 document at
+    https://developer.dowjones.com/wp-json/swagger/v1/api/2666 plus the Factiva Integration
+    documentation. Captures API Evangelist annotations only; the harvested document is never
+    mutated.
+x-findings:
+  operations: 16
+  operations_without_summary: 14
+  operations_without_operation_id: 6
+  duplicate_operation_ids:
+    - Collection_Get
+    - Search_Get
+    - Search_Post
+  note: >-
+    Three operationIds are reused across different paths (Search_Get appears on five distinct
+    paths), which makes the document ambiguous for code generation and for binding an agent tool
+    to a single operation. Reported as a finding rather than patched — renaming operationIds in
+    an overlay would create identifiers Dow Jones does not serve.
+actions:
+  - target: $.info
+    update:
+      x-apievangelist-provider: factiva
+      x-apievangelist-harvested: '2026-08-13'
+      x-apievangelist-source: https://developer.dowjones.com/swagger/content_api
+      x-apievangelist-parent-company: Dow Jones
+      x-apievangelist-artifacts:
+        authentication: authentication/factiva-authentication.yml
+        conventions: conventions/factiva-conventions.yml
+        errors: errors/factiva-problem-types.yml
+        error_codes: errors/factiva-error-codes.yml
+        lifecycle: lifecycle/factiva-lifecycle.yml
+        data_model: data-model/factiva-data-model.yml
+  - target: $.info
+    update:
+      x-apievangelist-quality:
+        summaries_present: false
+        descriptions_present: false
+        unique_operation_ids: false
+        response_schemas_on_errors: false
+  - target: $.securityDefinitions.Bearer
+    update:
+      x-apievangelist-note: >-
+        Modelled as an apiKey header in Swagger 2.0. Semantically this is an OAuth 2.0 bearer
+        token obtained from https://accounts.dowjones.com/oauth2/v1/token — see
+        authentication/factiva-authentication.yml.
+  - target: $.paths
+    update:
+      x-apievangelist-note: >-
+        The gateway answers unauthenticated requests with 403 and error code 1011001, not the
+        401 modelled on the operations that declare it.

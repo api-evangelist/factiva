@@ -1,0 +1,37 @@
+generated: '2026-08-13'
+method: generated
+source: openapi/ + https://developer.dowjones.com/documents/factiva_integration
+description: >-
+  Packaged Agent Skills for the three Factiva surfaces that publish a machine-readable
+  specification. Every step is grounded in an operation that exists in the harvested specs;
+  where an operation has no operationId (the Content API and Company News Radar both have
+  unnamed operations) the skill binds by method and path and says so. Factiva publishes no
+  AGENTS.md or skill files of its own.
+skills:
+  - file: factiva-search-and-fetch-article.md
+    name: Search Factiva and fetch a licensed article
+    api: openapi/factiva-content-api-swagger.json
+    operations:
+      - Search_Get
+      - Search_Post
+      - GET /search/refs
+      - GET /refs/{ref}
+      - GET /refs
+      - GET /refs/{ref}/binary
+      - GET /refs/{ref}/redirect
+  - file: factiva-read-newsletter-editions.md
+    name: Read Factiva newsletters and their editions
+    api: openapi/factiva-newsletters-api-openapi.json
+    operations: [NewslettersRead, NewsletterReadById, EditionsRead, EditionReadById]
+  - file: factiva-company-news-radar.md
+    name: Run a Factiva company news radar screen
+    api: openapi/factiva-company-news-radar-api-openapi.json
+    operations: ['POST /content/realtime/search', 'POST /factiva-organizations/company-screening-list']
+not_covered:
+  - >-
+    Snapshots, Streams, Extractions, Analytics, Taxonomy, Retrieval and Sentiment Signals are
+    documented in prose only. No specification exists for them, so no skill is grounded there —
+    writing one would mean inventing operation identifiers.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

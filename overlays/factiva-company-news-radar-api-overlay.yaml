@@ -1,0 +1,47 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for the Factiva Company News Radar API
+  version: 1.0.0
+extends: openapi/factiva-company-news-radar-api-openapi.json
+x-provenance:
+  generated: '2026-08-13'
+  method: generated
+  source: >-
+    Derived from the harvested OpenAPI 3.0.1 document at
+    https://developer.dowjones.com/wp-json/swagger/v1/api/2672. Captures API Evangelist
+    annotations only; the harvested document is never mutated.
+x-findings:
+  operations: 2
+  operations_without_summary: 0
+  operations_without_operation_id: 2
+  duplicate_operation_ids: []
+  note: >-
+    Neither operation declares an operationId, so there is no stable handle to bind a tool or an
+    Arazzo step to. One of the two operations is GET /swagger, a spec self-service endpoint that
+    returns 404 in production — the documented capability is the single POST
+    /content/realtime/search.
+actions:
+  - target: $.info
+    update:
+      x-apievangelist-provider: factiva
+      x-apievangelist-harvested: '2026-08-13'
+      x-apievangelist-source: https://developer.dowjones.com/swagger/company_news_radar
+      x-apievangelist-parent-company: Dow Jones
+      x-apievangelist-documented-at: https://developer.dowjones.com/documents/site-docs-factiva_apis-factiva_workflow_apis_rest-factiva_news_search-news_radar_api-news_radar
+      x-apievangelist-artifacts:
+        authentication: authentication/factiva-authentication.yml
+        conventions: conventions/factiva-conventions.yml
+        errors: errors/factiva-problem-types.yml
+  - target: $.info
+    update:
+      x-apievangelist-quality:
+        summaries_present: true
+        unique_operation_ids: false
+        operation_ids_present: false
+        response_schemas_on_errors: true
+  - target: $.paths['/swagger']
+    update:
+      x-apievangelist-note: >-
+        Declared in the document but returns 404 at
+        https://api.dowjones.com/search-realtime/swagger (probed 2026-08-13). The served copy of
+        this specification lives on the developer portal, not on the API host.

@@ -1,0 +1,121 @@
+generated: '2026-08-13'
+method: derived
+source: openapi/factiva-content-api-swagger.json, openapi/factiva-newsletters-api-openapi.json,
+  openapi/factiva-company-news-radar-api-openapi.json
+docs: https://developer.dowjones.com/documents/factiva_integration-factiva_retrieval_api-endpoints-retrieval
+description: >-
+  HTTP-level error contract for the Factiva API surface, derived from the 4xx/5xx responses in
+  the three harvested specs and corroborated with the documented Retrieval error handling plus
+  one live unauthenticated probe. Factiva does NOT use RFC 9457 problem+json; it uses a
+  JSON:API-shaped `errors[]` envelope, and the Newsletters API returns it under the
+  `application/vnd.api+json` media type.
+format: json-api-errors
+rfc9457: false
+media_types:
+  - application/json
+  - application/vnd.api+json
+envelope:
+  root: errors
+  cardinality: array
+  fields:
+    - name: code
+      type: string
+      description: Numeric Dow Jones error code. See errors/factiva-error-codes.yml for the published registry.
+    - name: title
+      type: string
+      description: Short human-readable summary of the error.
+    - name: status
+      type: string
+      description: HTTP status code, repeated in the body.
+    - name: detail
+      type: string
+      description: Longer explanation of this specific occurrence. Not always present.
+  example: |
+    {
+      "errors": [
+        {
+          "code": "950012",
+          "title": "Gen-ai Malformed Request ",
+          "status": "400",
+          "detail": "Malformed Request The search filter scope should be valid"
+        }
+      ]
+    }
+  example_source: https://developer.dowjones.com/documents/factiva_integration-factiva_retrieval_api-endpoints-retrieval
+problems:
+  - status: 400
+    title: Bad Request — Incorrect Parameters
+    description: Invalid or malformed parameters in the request.
+    media_type: application/vnd.api+json
+    source_operations:
+      - openapi/factiva-newsletters-api-openapi.json#NewslettersRead
+      - openapi/factiva-newsletters-api-openapi.json#NewsletterReadById
+      - openapi/factiva-newsletters-api-openapi.json#EditionsRead
+      - openapi/factiva-newsletters-api-openapi.json#EditionReadById
+      - openapi/factiva-company-news-radar-api-openapi.json#POST /content/realtime/search
+      - openapi/factiva-content-api-swagger.json#POST /search/emerging
+  - status: 401
+    title: Unauthorized
+    description: >-
+      Missing or invalid authentication token. Documented for the Retrieval endpoint and
+      declared on the Company News Radar and Content search operations.
+    source_operations:
+      - openapi/factiva-company-news-radar-api-openapi.json#POST /content/realtime/search
+      - openapi/factiva-content-api-swagger.json#POST /search/portfolio
+      - openapi/factiva-content-api-swagger.json#POST /search/emerging
+  - status: 403
+    title: Authentication parameters missing
+    description: >-
+      Returned by the api.dowjones.com gateway when no credential is presented at all. Note the
+      divergence from the specs, which model the unauthenticated case as 401 — the gateway
+      answers 403 with error code 1011001 before the service is reached.
+    code: '1011001'
+    observed: true
+    observed_request: GET https://api.dowjones.com/content/swagger
+    observed_at: '2026-08-13'
+    source_operations: []
+  - status: 404
+    title: Not Found — No resource found for the request
+    description: >-
+      The named article, alert, newsletter or edition does not exist. The Content API narrows
+      this per operation to "Alert not found" and "Article not found".
+    source_operations:
+      - openapi/factiva-content-api-swagger.json#GET /alerts/{id}
+      - openapi/factiva-content-api-swagger.json#GET /refs/{ref}
+      - openapi/factiva-content-api-swagger.json#GET /refs/{ref}/redirect
+      - openapi/factiva-content-api-swagger.json#GET /refs/{ref}/binary
+      - openapi/factiva-newsletters-api-openapi.json#NewsletterReadById
+      - openapi/factiva-newsletters-api-openapi.json#EditionReadById
+      - openapi/factiva-company-news-radar-api-openapi.json#POST /content/realtime/search
+  - status: 500
+    title: Internal Server Error
+    description: The server encountered an unexpected condition. The Content API also labels this "Application errors".
+    media_type: application/vnd.api+json
+    source_operations:
+      - openapi/factiva-content-api-swagger.json#GET /alerts/{id}
+      - openapi/factiva-content-api-swagger.json#GET /refs/{ref}
+      - openapi/factiva-newsletters-api-openapi.json#NewslettersRead
+      - openapi/factiva-company-news-radar-api-openapi.json#POST /content/realtime/search
+  - status: 503
+    title: Service Unavailable
+    description: The server is currently unable to handle the request.
+    source_operations:
+      - openapi/factiva-content-api-swagger.json#POST /search/emerging
+      - openapi/factiva-newsletters-api-openapi.json#NewslettersRead
+      - openapi/factiva-newsletters-api-openapi.json#NewsletterReadById
+      - openapi/factiva-company-news-radar-api-openapi.json#POST /content/realtime/search
+gaps:
+  - >-
+    No 429 is declared on any operation and no rate-limit error is documented, which is
+    consistent with the absence of any published rate limit.
+  - >-
+    The Content API (Swagger 2.0) declares 4xx/5xx status codes with a description but no
+    response schema, so an agent cannot bind the error body from that document alone.
+  - >-
+    The unauthenticated status diverges between spec (401) and gateway (403).
+related:
+  - errors/factiva-error-codes.yml
+  - conventions/factiva-conventions.yml
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

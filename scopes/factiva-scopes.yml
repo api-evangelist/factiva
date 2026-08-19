@@ -1,0 +1,76 @@
+generated: '2026-08-13'
+method: searched
+source: https://accounts.dowjones.com/.well-known/openid-configuration
+docs: https://developer.dowjones.com/documents/factiva_integration-essentials-authentication
+description: >-
+  The Factiva APIs do not carry per-resource OAuth scopes. Scope on the Dow Jones identity
+  service selects WHICH TOKENS the exchange returns (and whether a refresh token is issued),
+  not which Factiva resources the caller may touch — entitlement to Factiva content is granted
+  on the account/service-account by contract, outside the token. Recorded here because the
+  scope strings are load-bearing for anyone implementing the flow, not because they are a
+  permission model. None of the three harvested OpenAPI documents declares an oauth2
+  securityScheme, so the mechanical derive pass produced nothing.
+schemes:
+  - name: DowJonesIdentityService
+    source: https://accounts.dowjones.com/.well-known/openid-configuration
+    local_copy: well-known/factiva-openid-configuration.json
+    issuer: https://sso.accounts.dowjones.com/
+    flows:
+      - flow: password
+        tokenUrl: https://accounts.dowjones.com/oauth2/v1/token
+        note: The flow the Factiva Integration docs prescribe (connection=service-account).
+      - flow: authorizationCode
+        authorizationUrl: https://sso.accounts.dowjones.com/authorize
+        tokenUrl: https://sso.accounts.dowjones.com/oauth/token
+      - flow: implicit
+        authorizationUrl: https://sso.accounts.dowjones.com/authorize
+scopes:
+  - scope: openid
+    description: Required. Requests an OpenID Connect id_token from the identity service.
+    flows: [password, authorizationCode, implicit]
+    sources: [https://accounts.dowjones.com/.well-known/openid-configuration]
+  - scope: service_account_id
+    description: >-
+      Documented by Factiva for the service-account exchange. Combined with `openid`, it tells
+      the token endpoint to return the two AuthN tokens (id_token and access_token).
+    flows: [password]
+    sources: [https://developer.dowjones.com/documents/factiva_integration-essentials-authentication]
+    note: >-
+      Documented by Factiva but not listed in the identity service's scopes_supported array.
+  - scope: offline_access
+    description: >-
+      Adds a refresh token to the response. When requested, the `device` parameter becomes
+      mandatory and acts as the identifier under which the refresh token can later be revoked.
+    flows: [password, authorizationCode]
+    sources:
+      - https://accounts.dowjones.com/.well-known/openid-configuration
+      - https://developer.dowjones.com/documents/factiva_integration-essentials-authentication
+  - scope: profile
+    description: Standard OIDC profile claims.
+    flows: [authorizationCode, implicit]
+    sources: [https://accounts.dowjones.com/.well-known/openid-configuration]
+  - scope: email
+    description: Standard OIDC email claim.
+    flows: [authorizationCode, implicit]
+    sources: [https://accounts.dowjones.com/.well-known/openid-configuration]
+  - scope: email_verified
+    description: Email verification claim.
+    flows: [authorizationCode, implicit]
+    sources: [https://accounts.dowjones.com/.well-known/openid-configuration]
+  - scope: given_name
+    description: Standard OIDC given-name claim.
+    flows: [authorizationCode, implicit]
+    sources: [https://accounts.dowjones.com/.well-known/openid-configuration]
+  - scope: family_name
+    description: Standard OIDC family-name claim.
+    flows: [authorizationCode, implicit]
+    sources: [https://accounts.dowjones.com/.well-known/openid-configuration]
+summary:
+  scope_count: 8
+  resource_scopes: 0
+  authorization_model: >-
+    Contract/entitlement-based. Access to Factiva content sets is provisioned against the
+    account by Dow Jones; the token conveys identity, not per-resource permission.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

@@ -1,0 +1,204 @@
+generated: '2026-08-13'
+method: derived
+source: openapi/factiva-newsletters-api-openapi.json, openapi/factiva-content-api-swagger.json,
+  openapi/factiva-company-news-radar-api-openapi.json
+docs: https://developer.dowjones.com/documents/factiva_integration-essentials-query_language_building_queries
+description: >-
+  The Factiva entity graph, derived from the $ref links and JSON:API relationship objects in the
+  harvested specs and from the identifier vocabulary the documentation describes. Factiva's data
+  model is a single content core — the Article — hung off a controlled taxonomy of Dow Jones
+  Intelligent Identifiers (DJID / Factiva codes) for companies, industries, regions, news
+  subjects, people, currencies and market indexes. Everything else (search, alerts, newsletters,
+  streams, snapshots) is a different projection over that same core.
+entities:
+  - name: Article
+    aka: [Content Item, Document]
+    identifier: an
+    identifier_name: Accession Number
+    identifier_format: >-
+      Alphanumeric string, e.g. NFINCE0020251008ela8005aj — encodes source code, ingestion date
+      and a sequence.
+    description: The unit of Factiva content. Also carries images, PDFs and HTML renditions.
+    key_fields:
+      - an
+      - title
+      - body
+      - source_code
+      - publication_datetime
+      - modification_datetime
+      - availability_datetime
+      - ingestion_datetime
+      - language_code
+      - copyright
+      - word_count
+    sources:
+      - openapi/factiva-content-api-swagger.json#/refs/{ref}
+      - asyncapi/factiva-streams-events.yml
+  - name: Source
+    identifier: source_code
+    description: The publication that produced an article (WSJ, LBA, ELECON …).
+    note: >-
+      A source_delete bulk event on Streams removes every article carrying that source_code —
+      the only cascade Factiva asks consumers to implement themselves.
+  - name: Company
+    identifier: company_code
+    aka: [Factiva Code, FCode]
+    alternate_identifiers: [Dow Jones Ticker, CUSIP, DUNS, ISIN]
+    description: Organization in the Factiva taxonomy; the join key for company news and screening.
+  - name: Industry
+    identifier: industry_code
+    description: Industry classification in the DJID taxonomy; hierarchical (children lookups exist).
+  - name: Region
+    identifier: region_code
+    description: Geographic classification in the DJID taxonomy; hierarchical.
+  - name: NewsSubject
+    identifier: subject_code
+    description: Subject/topic classification in the DJID taxonomy; hierarchical.
+  - name: Person
+    identifier: person_code
+    description: Executive/person entity in the taxonomy.
+  - name: Currency
+    identifier: currency_code
+  - name: MarketIndex
+    identifier: market_index_code
+  - name: Newsletter
+    identifier: id
+    type: newsletters
+    description: A curated Factiva newsletter available to the account.
+    key_fields: [name, token, shared_status, access_scope, is_owner, total_editions, user_type]
+    enums:
+      shared_status: [User, Account, Factiva]
+      access_scope: [Personal, Account]
+      user_type: [Account, Group, User]
+    sources: [openapi/factiva-newsletters-api-openapi.json#newsletter_attributes]
+  - name: NewsletterEdition
+    identifier: editionId
+    type: editions
+    description: One dated issue of a newsletter, composed of sections and content items.
+  - name: NewsletterDelivery
+    type: deliveries
+    description: A delivery of a newsletter edition to an audience/recipient set.
+  - name: Alert
+    identifier: id
+    description: A saved Factiva alert whose matched articles can be retrieved by id.
+    sources:
+      - openapi/factiva-content-api-swagger.json#/alerts/{id}
+  - name: NewsPlusCollection
+    identifier: code
+    description: A NewsPlus collection of curated content.
+  - name: StreamingInstance
+    aka: [Topic, Stream]
+    description: A hosted real-time filter over the ingestion pipeline, defined by a SQL-like query.
+    sources: [asyncapi/factiva-streams-events.yml]
+  - name: Subscription
+    description: A Google Cloud Pub/Sub delivery endpoint attached to a Streaming Instance.
+  - name: Snapshot
+    description: A one-time extraction of historical Factiva content matching a query.
+  - name: List
+    description: >-
+      A reusable set of codes (company, subject, region …) referenced by Snapshots, Streams and
+      Explains. Typed since 3.1 (listType), clonable, with listSize reported.
+relationships:
+  - from: Newsletter
+    to: NewsletterEdition
+    type: has_many
+    via: relationships.editions
+    source: openapi/factiva-newsletters-api-openapi.json#newsletter_relationships
+  - from: Newsletter
+    to: NewsletterDelivery
+    type: has_many
+    via: relationships.deliveries
+    source: openapi/factiva-newsletters-api-openapi.json#newsletter_relationships
+  - from: Newsletter
+    to: Article
+    type: has_many
+    via: relationships.content
+    source: openapi/factiva-newsletters-api-openapi.json#newsletter_relationships
+  - from: NewsletterEdition
+    to: Article
+    type: has_many
+    via: relationships.content
+    source: openapi/factiva-newsletters-api-openapi.json#edition_relationships
+  - from: Article
+    to: Source
+    type: belongs_to
+    via: source_code
+  - from: Article
+    to: Company
+    type: has_many
+    via: company_codes
+  - from: Article
+    to: Industry
+    type: has_many
+    via: industry_codes
+  - from: Article
+    to: Region
+    type: has_many
+    via: region_codes
+  - from: Article
+    to: NewsSubject
+    type: has_many
+    via: subject_codes
+  - from: Article
+    to: Person
+    type: has_many
+    via: person_codes
+  - from: Article
+    to: Currency
+    type: has_many
+    via: currency_codes
+  - from: Article
+    to: MarketIndex
+    type: has_many
+    via: market_index_codes
+  - from: Alert
+    to: Article
+    type: has_many
+    via: alert match results
+  - from: StreamingInstance
+    to: Subscription
+    type: has_many
+    via: subscriptions
+  - from: StreamingInstance
+    to: Article
+    type: has_many
+    via: streamed events keyed on an
+  - from: Snapshot
+    to: Article
+    type: has_many
+    via: extraction results
+  - from: List
+    to: Company
+    type: has_many
+    via: list members (typed lists)
+  - from: Industry
+    to: Industry
+    type: has_many
+    via: children (hierarchical taxonomy)
+  - from: Region
+    to: Region
+    type: has_many
+    via: children (hierarchical taxonomy)
+  - from: NewsSubject
+    to: NewsSubject
+    type: has_many
+    via: children (hierarchical taxonomy)
+taxonomy:
+  name: Dow Jones Intelligent Identifiers (DJID)
+  scale: >-
+    Approximately 350,000 taxonomy codes covering industries, regions, news subjects, companies
+    and organizations.
+  download: GET /taxonomies/{taxonomy_category}/{format}?extended={value}
+  formats: [csv, avro, json]
+  docs: https://developer.dowjones.com/documents/factiva_integration-factiva_analytics-endpoints-taxonomy_list_download
+notes:
+  - >-
+    The identifier vocabulary is the actual product. Query, filter, stream and snapshot all bind
+    to the same code sets, which is why the Taxonomy and Code endpoints are prerequisites for
+    every other surface.
+  - >-
+    The Newsletters API is the only Factiva surface that models relationships explicitly, because
+    it is the only one that publishes a JSON:API document.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

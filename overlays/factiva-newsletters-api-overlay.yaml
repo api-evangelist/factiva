@@ -1,0 +1,48 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for the DJ Factiva Newsletters API
+  version: 1.0.0
+extends: openapi/factiva-newsletters-api-openapi.json
+x-provenance:
+  generated: '2026-08-13'
+  method: generated
+  source: >-
+    Derived from the harvested OpenAPI 3.0.2 document at
+    https://developer.dowjones.com/wp-json/swagger/v1/api/2668. Captures API Evangelist
+    annotations only; the harvested document is never mutated.
+x-findings:
+  operations: 4
+  operations_without_summary: 0
+  operations_without_operation_id: 0
+  duplicate_operation_ids: []
+  note: >-
+    The best-formed of the three published Factiva documents: every operation has a summary and a
+    unique operationId, error responses carry schemas, and the media type is
+    application/vnd.api+json. Missing: request/response examples and any 401 declaration, even
+    though the endpoint requires a bearer token.
+actions:
+  - target: $.info
+    update:
+      x-apievangelist-provider: factiva
+      x-apievangelist-harvested: '2026-08-13'
+      x-apievangelist-source: https://developer.dowjones.com/swagger/newsletters_api
+      x-apievangelist-parent-company: Dow Jones
+      x-apievangelist-artifacts:
+        authentication: authentication/factiva-authentication.yml
+        conventions: conventions/factiva-conventions.yml
+        errors: errors/factiva-problem-types.yml
+        data_model: data-model/factiva-data-model.yml
+  - target: $.info
+    update:
+      x-apievangelist-quality:
+        summaries_present: true
+        unique_operation_ids: true
+        response_schemas_on_errors: true
+        examples_in_spec: false
+        auth_failure_declared: false
+  - target: $.components.securitySchemes.bearerAuth
+    update:
+      x-apievangelist-token-source: https://accounts.dowjones.com/oauth2/v1/token
+      x-apievangelist-note: >-
+        Bearer JWT from the Dow Jones identity service. Content entitlement is provisioned per
+        contract; the token carries identity, not per-resource scope.

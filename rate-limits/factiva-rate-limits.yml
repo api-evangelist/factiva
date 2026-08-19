@@ -4,122 +4,93 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Factiva
 providerId: factiva
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-08-13'
+generated: '2026-08-13'
+method: searched
+source:
+  - https://developer.dowjones.com/documents/factiva_integration
+  - https://developer.dowjones.com/documents/site-docs-getting_started-api_essentials
 tags:
   - Business Intelligence
-  - Content Aggregation
-  - Market Data
-  - Media Monitoring
   - News
   - Research
   - Rate Limiting
-  - Quotas
-  - Throttling
-description: Machine-readable rate limit definitions for the Factiva API surface. Captures per-tier quotas,
-  burst behavior, response signaling, and recovery semantics. Defaults are scaffold values to be replaced
-  with published provider limits.
-headers:
-  limit: X-RateLimit-Limit
-  remaining: X-RateLimit-Remaining
-  reset: X-RateLimit-Reset
-  retryAfter: Retry-After
-  policy: RateLimit-Policy
+description: >-
+  Factiva publishes no rate limits. A full-text search of the 337 Factiva documents on the Dow
+  Jones Developer Platform returns zero matches for "rate limit", "rate-limit", "throttle",
+  "X-RateLimit", "RateLimit-Policy" or "Retry-After", and no operation in any of the three
+  published specifications declares a 429 response. An integrator has no published number to
+  design against and no runtime header to react to; the only backpressure signal available is a
+  5xx. Whatever limits exist are enforced silently or set per contract.
+limit_count: 0
+limits: []
+published: false
+headers: {}
+header_note: >-
+  No RateLimit-* or X-RateLimit-* response headers are documented, and no Retry-After is
+  documented. Recorded as absent, not unknown — the docs were searched.
 responseCodes:
-  throttled: 429
-  quotaExceeded: 429
-  serviceUnavailable: 503
-limits:
-  - tier: free
-    name: Free Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 10
-    burst: 20
-    timeFrame: minute
-    applies:
-      - Factiva Snapshots API
-      - Factiva Streams API
-      - Factiva Extractions API
-      - Factiva Analytics API
-      - Factiva DJID Taxonomy API
-      - Factiva Code API
-      - Factiva Retrieval API
-      - Factiva Market Data API
-  - tier: free
-    name: Free Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 1000
-    timeFrame: month
-    applies:
-      - Factiva Snapshots API
-      - Factiva Streams API
-      - Factiva Extractions API
-      - Factiva Analytics API
-      - Factiva DJID Taxonomy API
-      - Factiva Code API
-      - Factiva Retrieval API
-      - Factiva Market Data API
-  - tier: professional
-    name: Professional Tier Default
-    scope: api-key
-    metric: requests_per_minute
+  throttled: null
+  note: >-
+    429 does not appear in any published Factiva specification or documentation. Errors observed
+    and documented are 400, 401, 403 (gateway, code 1011001), 404, 500 and 503.
+documented_quotas:
+  - name: Retrieval response_limit
+    scope: per-request
+    metric: results
     limit: 100
-    burst: 200
-    timeFrame: minute
-    applies:
-      - Factiva Snapshots API
-      - Factiva Streams API
-      - Factiva Extractions API
-      - Factiva Analytics API
-      - Factiva DJID Taxonomy API
-      - Factiva Code API
-      - Factiva Retrieval API
-      - Factiva Market Data API
-  - tier: professional
-    name: Professional Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 100000
-    timeFrame: month
-    applies:
-      - Factiva Snapshots API
-      - Factiva Streams API
-      - Factiva Extractions API
-      - Factiva Analytics API
-      - Factiva DJID Taxonomy API
-      - Factiva Code API
-      - Factiva Retrieval API
-      - Factiva Market Data API
-  - tier: enterprise
-    name: Enterprise Negotiated Limit
-    scope: contract
-    metric: requests_per_minute
-    limit: 1000
-    burst: 5000
-    timeFrame: minute
-    applies:
-      - Factiva Snapshots API
-      - Factiva Streams API
-      - Factiva Extractions API
-      - Factiva Analytics API
-      - Factiva DJID Taxonomy API
-      - Factiva Code API
-      - Factiva Retrieval API
-      - Factiva Market Data API
-policies:
-  - name: Backoff Strategy
-    description: Clients should implement exponential backoff with jitter, honoring the Retry-After header
-      when present.
-  - name: Burst Handling
-    description: Short bursts above the steady-state limit are tolerated up to the documented burst ceiling
-      before throttling engages.
-  - name: Quota Reset
-    description: Monthly quotas reset at the start of each calendar month in UTC. Per-minute and per-second
-      windows reset on a sliding-window basis.
-  - name: Fair Use
-    description: Even on uncapped enterprise tiers, sustained usage that materially impacts shared infrastructure
-      may be subject to fair-use throttling.
+    type: request-cap
+    description: Maximum number of results the Factiva Retrieval endpoint will return in one call.
+    source: https://developer.dowjones.com/documents/factiva_integration-factiva_retrieval_api-endpoints-retrieval
+  - name: Retrieval search filter value length
+    scope: per-request
+    metric: characters
+    limit: 2000
+    type: request-cap
+    description: Maximum length of a single search_filters value on the Retrieval endpoint.
+    source: https://developer.dowjones.com/documents/factiva_integration-factiva_retrieval_api-endpoints-retrieval
+  - name: Retrieval metrics identifier length
+    scope: per-request
+    metric: characters
+    limit: 32
+    type: request-cap
+    description: Maximum length of user_id, work_id and application_id in metrics_data.
+    source: https://developer.dowjones.com/documents/factiva_integration-factiva_retrieval_api-endpoints-retrieval
+  - name: GenAI article deduplication window
+    scope: per-account
+    metric: hours
+    limit: 24
+    type: billing-window
+    description: >-
+      Duplicate consumption of the same article within 24 hours is deduplicated for usage
+      purposes. Note the token-usage endpoint's own caveat that its returned values do not yet
+      apply this rule.
+    source: https://developer.dowjones.com/documents/factiva_integration-factiva_retrieval_api-endpoints-token-usage
+  - name: Retrieval content recency floor
+    scope: per-request
+    metric: date
+    limit: '2025-01-01'
+    type: data-boundary
+    description: >-
+      Retrieval and usage-metrics responses never include items older than 2025-01-01, regardless
+      of the requested date range.
+    source: https://developer.dowjones.com/documents/factiva_integration-factiva_retrieval_api-endpoints-retrieval
+usage_reporting:
+  description: >-
+    In place of rate limiting, Factiva puts the meter in the customer's hands: token consumption
+    is reported through POST /content/gen-ai/token-usage, aggregated twice daily at 02:15 UTC and
+    14:15 UTC. It is a reporting surface, not a throttling one — it tells you what you used, not
+    what you have left.
+  endpoint: https://api.dowjones.com/content/gen-ai/token-usage
+searched:
+  documents_searched: 337
+  keywords: [rate limit, rate-limit, throttle, X-RateLimit, RateLimit-Policy, Retry-After, '429']
+  matches: 0
+  checked: '2026-08-13'
+provenance_note: >-
+  Replaces the 2026-05-04 bulk-sweep scaffold (roadmap#35), which asserted 10/100/1000 requests
+  per minute across invented Free/Professional/Enterprise tiers and a full X-RateLimit-* header
+  set. Dow Jones publishes none of that.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

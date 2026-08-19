@@ -4,7 +4,13 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Factiva
 providerId: factiva
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-08-13'
+generated: '2026-08-13'
+method: searched
+source:
+  - https://www.dowjones.com/business-intelligence/factiva/
+  - https://developer.dowjones.com/request-trial
+  - https://developer.dowjones.com/documents/site-docs-getting_started-quick_start-getting_credentials
 tags:
   - Business Intelligence
   - Content Aggregation
@@ -12,187 +18,63 @@ tags:
   - Media Monitoring
   - News
   - Research
-description: Machine-readable plans and pricing scaffold for this API provider. Conforms to the API Commons
-  Plans schema. Tier limits and prices are scaffold defaults; replace with provider-published values.
-plans:
-  - id: factiva-free
-    name: Free
-    type: freemium
-    description: Free entry tier for the Factiva API surface. Intended for evaluation, prototyping, and
-      low-volume integrations. Real limits and pricing must be reconciled with the provider's published
-      plan documentation.
-    entries:
-      - label: API Requests
-        description: Monthly API request quota across all included endpoints
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: 1000
-        timeFrame: month
-        geo: global
-        domains:
-          - https://api.dowjones.com/factiva/snapshots/v1
-          - https://api.dowjones.com/factiva/streams/v1
-          - https://api.dowjones.com/factiva/extractions/v1
-          - https://api.dowjones.com/factiva/analytics/v1
-          - https://api.dowjones.com
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the free tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 10
-        timeFrame: minute
-        geo: global
-        domains:
-          - https://api.dowjones.com/factiva/snapshots/v1
-          - https://api.dowjones.com/factiva/streams/v1
-          - https://api.dowjones.com/factiva/extractions/v1
-          - https://api.dowjones.com/factiva/analytics/v1
-          - https://api.dowjones.com
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-    elements:
-      - name: Public Documentation
-      - name: Community Support
-      - name: Sandbox Access
-      - name: Factiva Snapshots API
-      - name: Factiva Streams API
-      - name: Factiva Extractions API
-      - name: Factiva Analytics API
-      - name: Factiva DJID Taxonomy API
-      - name: Factiva Code API
-      - name: Factiva Retrieval API
-      - name: Factiva Market Data API
-  - id: factiva-pro
-    name: Professional
-    type: paid
-    description: Production tier for Factiva. Provides higher quotas, priority support, and access to
-      the broader API portfolio. Pricing placeholder; align with the provider's pricing page.
-    entries:
-      - label: API Requests
-        description: Monthly API request quota
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: 100000
-        timeFrame: month
-        geo: global
-        domains:
-          - https://api.dowjones.com/factiva/snapshots/v1
-          - https://api.dowjones.com/factiva/streams/v1
-          - https://api.dowjones.com/factiva/extractions/v1
-          - https://api.dowjones.com/factiva/analytics/v1
-          - https://api.dowjones.com
-        unit: 1
-        price: TBD
-        userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the professional tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 100
-        timeFrame: minute
-        geo: global
-        domains:
-          - https://api.dowjones.com/factiva/snapshots/v1
-          - https://api.dowjones.com/factiva/streams/v1
-          - https://api.dowjones.com/factiva/extractions/v1
-          - https://api.dowjones.com/factiva/analytics/v1
-          - https://api.dowjones.com
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Overage
-        description: Per-request price after monthly quota is exceeded
-        name: overage
-        type: metered
-        metric: requests
-        limit: -1
-        timeFrame: month
-        geo: global
-        domains:
-          - https://api.dowjones.com/factiva/snapshots/v1
-          - https://api.dowjones.com/factiva/streams/v1
-          - https://api.dowjones.com/factiva/extractions/v1
-          - https://api.dowjones.com/factiva/analytics/v1
-          - https://api.dowjones.com
-        unit: 1000
-        price: TBD
-        userMultiplied: false
-    elements:
-      - name: All Production Endpoints
-      - name: Email Support
-      - name: SLA Targets
-      - name: Webhook Subscriptions
-      - name: Factiva Snapshots API
-      - name: Factiva Streams API
-      - name: Factiva Extractions API
-      - name: Factiva Analytics API
-      - name: Factiva DJID Taxonomy API
-      - name: Factiva Code API
-      - name: Factiva Retrieval API
-      - name: Factiva Market Data API
-  - id: factiva-enterprise
-    name: Enterprise
-    type: enterprise
-    description: Custom-negotiated tier for Factiva. Includes dedicated capacity, contractual SLAs, security
-      review, data residency options, and named technical account management.
-    entries:
-      - label: API Requests
-        description: Negotiated request volume; -1 indicates uncapped subject to fair use
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: -1
-        timeFrame: month
-        geo: configurable
-        domains:
-          - https://api.dowjones.com/factiva/snapshots/v1
-          - https://api.dowjones.com/factiva/streams/v1
-          - https://api.dowjones.com/factiva/extractions/v1
-          - https://api.dowjones.com/factiva/analytics/v1
-          - https://api.dowjones.com
-        unit: 1
-        price: custom
-        userMultiplied: false
-      - label: Rate Limit
-        description: Negotiated burst and steady-state rate
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 1000
-        timeFrame: minute
-        geo: configurable
-        domains:
-          - https://api.dowjones.com/factiva/snapshots/v1
-          - https://api.dowjones.com/factiva/streams/v1
-          - https://api.dowjones.com/factiva/extractions/v1
-          - https://api.dowjones.com/factiva/analytics/v1
-          - https://api.dowjones.com
-        unit: 1
-        price: custom
-        userMultiplied: false
-    elements:
-      - name: Unlimited / Negotiated Volume
-      - name: 24/7 Dedicated Support
-      - name: Contractual SLA
-      - name: Security & Compliance Review
-      - name: Dedicated Account Manager
-      - name: Custom Data Residency
-      - name: Factiva Snapshots API
-      - name: Factiva Streams API
-      - name: Factiva Extractions API
-      - name: Factiva Analytics API
-      - name: Factiva DJID Taxonomy API
-      - name: Factiva Code API
-      - name: Factiva Retrieval API
-      - name: Factiva Market Data API
+description: >-
+  Factiva publishes no plans and no prices. There is no tier list, no price page, no per-call
+  rate card and no self-service checkout anywhere on dowjones.com or on the Dow Jones Developer
+  Platform. Every route to the API ends at a sales conversation: the documented onboarding is
+  "submit the Request Trial form, wait for a Dow Jones representative to reach out and match your
+  use case to a product, then receive credentials by email". The product page routes to
+  /contact/sales-inquiry/?product=Factiva. This file records that zero, deliberately, rather than
+  leaving the artifact absent — an enterprise-only commercial model is a real finding about how
+  the API can be adopted.
+plan_count: 0
+plans: []
+pricing_model: enterprise-negotiated
+public_pricing: false
+self_service_signup: false
+free_tier: false
+trial:
+  available: true
+  type: sales-qualified
+  self_service: false
+  url: https://developer.dowjones.com/request-trial
+  note: >-
+    The "trial" is a lead form, not a sandbox. No credentials are issued without a Dow Jones
+    representative first matching the use case to a product.
+onboarding:
+  steps:
+    - Submit the Request Trial form on developer.dowjones.com.
+    - A Dow Jones representative makes contact and matches the use case to a product.
+    - The customer selects the products to use.
+    - Credentials arrive by email.
+  docs: https://developer.dowjones.com/documents/site-docs-getting_started-quick_start-getting_credentials
+sales_contact:
+  url: https://www.dowjones.com/contact/sales-inquiry/?product=Factiva
+metering:
+  note: >-
+    Factiva does meter usage, it just does not publish the price of it. The GenAI surface exposes
+    consumption reporting to the customer — POST /content/gen-ai/token-usage returns tokens
+    consumed over a period, and the deprecated usage-metrics endpoint returned the accession
+    numbers retrieved. Article consumption is deduplicated on a 24-hour rule (not yet applied to
+    the token-usage figures per the endpoint's own caveat). What a token or an article costs is
+    contractual.
+  endpoints:
+    - POST https://api.dowjones.com/content/gen-ai/token-usage
+    - POST https://api.dowjones.com/content/gen-ai/usage-metrics (deprecated)
+  docs: https://developer.dowjones.com/documents/factiva_integration-factiva_retrieval_api-endpoints-token-usage
+probed:
+  - url: https://www.dowjones.com/professional/factiva/pricing/
+    http_status: 404
+    checked: '2026-08-13'
+    note: The pricing URL previously carried in apis.yml does not exist.
+  - url: https://www.dowjones.com/business-intelligence/factiva/
+    http_status: 200
+    checked: '2026-08-13'
+    note: Current Factiva product page. Contains no price, no tier and no plan comparison.
+provenance_note: >-
+  Replaces the 2026-05-04 bulk-sweep scaffold (roadmap#35), which invented a Free/Professional/
+  Enterprise ladder with a 1,000-request monthly quota and a 10-req/min rate limit. None of those
+  numbers were ever published by Dow Jones.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

@@ -1,0 +1,109 @@
+generated: '2026-08-13'
+method: probed
+source: live HTTP probes of every Factiva/Dow Jones host named in apis.yml and in the harvested OpenAPI servers[]
+description: >-
+  Well-known discovery probe for the Factiva API surface. The Factiva APIs are served from
+  api.dowjones.com and authenticated through the Dow Jones identity service at
+  accounts.dowjones.com (sso.accounts.dowjones.com), which is the host documented in the
+  Factiva Integration authentication page for the token-based flow. Only accounts.dowjones.com
+  serves a real well-known document; every other path probed returned 404. Note that the
+  developer portal and the marketing site answer 404 with a full HTML page, which is a
+  soft-404 shell and NOT a served document.
+hosts:
+  - host: https://api.dowjones.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+  - host: https://accounts.dowjones.com
+    note: Dow Jones identity service; the token endpoint documented for Factiva token-based authentication.
+    documents:
+      - path: /.well-known/openid-configuration
+        status: 200
+        content_type: application/json
+        file: factiva-openid-configuration.json
+      - path: /.well-known/jwks.json
+        status: 200
+        content_type: application/json
+        note: JSON Web Key Set for the RS256 id_token/access_token signing keys; not saved (rotating key material).
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+        note: served at the issuer host sso.accounts.dowjones.com instead.
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+  - host: https://sso.accounts.dowjones.com
+    note: The OIDC issuer named by the accounts.dowjones.com discovery document.
+    documents:
+      - path: /.well-known/openid-configuration
+        status: 200
+        content_type: application/json
+      - path: /.well-known/oauth-authorization-server
+        status: 200
+        content_type: application/json
+        note: RFC 8414 authorization-server metadata; identical payload to the OIDC discovery document.
+  - host: https://developer.dowjones.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+        note: soft-404 — returns the portal HTML shell.
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+  - host: https://www.dowjones.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+        note: >-
+          No RFC 9116 security.txt is served, but Dow Jones does publish a vulnerability
+          disclosure program as an HTML page at https://www.dowjones.com/security/ — captured
+          in security/factiva-vulnerability-disclosure.yml.
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+  - host: https://factiva.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+  - host: https://global.factiva.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+summary:
+  hosts_probed: 7
+  documents_found: 4
+  security_txt: false
+  openid_configuration: true
+  oauth_authorization_server: true
+  api_catalog: false
+  ai_plugin: false
+  agent_card: false
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

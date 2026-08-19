@@ -1,0 +1,157 @@
+generated: '2026-08-13'
+method: searched
+source: https://developer.dowjones.com/documents/factiva_integration-essentials-deprecation_and_sunset-policy
+description: >-
+  Factiva publishes an unusually complete lifecycle contract for a subscription data provider:
+  a written versioning policy with alpha/beta/stable support tiers, a deprecation policy with
+  named minimum support windows, and a dated deprecation-and-sunset schedule with per-technology
+  deprecation and sunset dates. What it does not publish is any runtime signal — no Sunset or
+  Deprecation response headers, no status page, no SLA.
+versioning:
+  scheme: header
+  header: X-API-VERSION
+  legacy_scheme: uri-path
+  current:
+    factiva_streams: '3.1'
+    factiva_snapshots: '3.0'
+    factiva_retrieval: '1.0'
+    factiva_content: '1.0'
+    generations:
+      - name: SOAP
+        detail: SOAP v1.x through v3.x. The original Factiva APIs, launched from 2000.
+      - name: REST
+        detail: Second generation. REST v1.x and REST v2.x.
+      - name: REST 3 (PAPI)
+        detail: Current generation, versioned as PAPI v1.x.
+  levels:
+    - name: alpha
+      example: v1alpha1
+      support: Support may be dropped at any time without notice; may become incompatible without notice.
+    - name: beta
+      example: v2beta3
+      support: >-
+        Well tested and enabled by default. Support will not be dropped, but schema and semantics
+        may become incompatible in a later beta or stable release, with migration instructions.
+    - name: stable
+      example: v1, v1.3
+      support: Will not change; minor changes take a subversion number.
+  docs: https://developer.dowjones.com/documents/factiva_integration-essentials-versioning
+deprecation:
+  policy_url: https://developer.dowjones.com/documents/factiva_integration-essentials-deprecation_and_sunset-policy
+  schedule_url: https://developer.dowjones.com/documents/factiva_integration-essentials-deprecation_and_sunset-schedule
+  sunset_header: false
+  deprecation_header: false
+  runtime_signal: none
+  runtime_note: >-
+    RFC 8594 Sunset / Deprecation response headers are not documented and do not appear in any
+    harvested spec. Deprecation is communicated only through the documentation schedule and an
+    email announcement list.
+  announcements:
+    channel: email
+    name: Factiva Integration Suite — Deprecation Announcements
+    subscription: opt-in from the deprecation and sunset schedule page
+  tracks:
+    - SOAP
+    - REST
+    - PAPI
+    - Feeds
+  rules:
+    - id: rule-1
+      text: >-
+        A deprecated API must be supported for no less than — stable: 18 months or three releases,
+        whichever is longer; beta: three months or three releases, whichever is longer; alpha:
+        zero releases.
+    - id: rule-2
+      text: >-
+        An API version must not be deprecated until Dow Jones releases a new API version at least
+        as stable as the one being deprecated.
+  definitions:
+    deprecation: A warning that Dow Jones is turning off a product at a specific date and time.
+    sunset: The date and time at which a specific technology is no longer available.
+  schedule:
+    - technology: Widgets Web Library
+      deprecated: '2025-01-16'
+      sunset: '2025-03-16'
+    - technology: SOAP FDK v3.x Phase 2
+      deprecated: '2023-05-25'
+      sunset: '2023-08-23'
+    - technology: SOAP FDK HTTP protocol
+      deprecated: '2023-05-25'
+      sunset: TBA
+      migration: Use the HTTPS protocol.
+    - technology: REST HTTP protocol
+      deprecated: '2023-05-25'
+      sunset: TBA
+      migration: Use the HTTPS protocol.
+    - technology: REST 1.0 Phase 1
+      deprecated: '2023-03-07'
+      sunset: '2023-06-05'
+    - technology: REST 2.0 Phase 1
+      deprecated: '2023-03-07'
+      sunset: '2023-06-05'
+    - technology: SOAP FDK v3.x Phase 1
+      deprecated: '2022-10-29'
+      sunset: '2023-01-27'
+    - technology: Factiva Select HTTP protocol
+      deprecated: '2021-10-01'
+      sunset: TBA
+      migration: Use the HTTPS protocol.
+    - technology: Factiva Select FTP protocol
+      deprecated: '2021-10-01'
+      sunset: TBA
+      migration: Use the SFTP protocol.
+    - technology: Simplified APIs Beta
+      deprecated: '2021-10-05'
+      sunset: '2022-07-01'
+      migration: Use REST 2.0.
+    - technology: All SOAP APIs v1.x
+      deprecated: '2021-05-01'
+      sunset: '2022-07-01'
+      migration: Use SOAP APIs v3.x.
+    - technology: All SOAP APIs v2.x
+      deprecated: '2021-05-01'
+      sunset: '2022-07-01'
+      migration: Use SOAP APIs v3.x.
+deprecated_operations:
+  - name: Usage Metrics endpoint (Factiva Retrieval)
+    path: POST https://api.dowjones.com/content/gen-ai/usage-metrics
+    status: deprecated
+    replacement: POST https://api.dowjones.com/content/gen-ai/token-usage
+    source: https://developer.dowjones.com/documents/factiva_integration-factiva_retrieval_api-endpoints-usage-metrics
+    note: >-
+      Marked deprecated in prose in the endpoint documentation, not with a `deprecated: true` flag
+      in any published spec — the endpoint is not modelled in openapi/ at all.
+spec_deprecated_operations: []
+spec_deprecated_note: >-
+  None of the three harvested OpenAPI/Swagger documents marks any operation `deprecated: true`.
+status_page:
+  published: false
+  probed:
+    - url: https://status.dowjones.com
+      result: NXDOMAIN
+      checked: '2026-08-13'
+    - url: https://status.factiva.com
+      result: NXDOMAIN
+      checked: '2026-08-13'
+    - url: https://developer.dowjones.com/status
+      http_status: 404
+      checked: '2026-08-13'
+  note: >-
+    Dow Jones publishes no public status page for the Factiva APIs. A `StatusPage` pointer to
+    https://status.dowjones.com previously carried in apis.yml was removed on 2026-08-13 because
+    the host does not resolve — it was crediting a surface that does not exist.
+sla:
+  published: false
+  note: >-
+    No public uptime target or SLA document. Service commitments, if any, sit in the negotiated
+    customer contract; the Enterprise/contract tier is the only route to one.
+support:
+  channel: https://developer.dowjones.com/support-ticket-create
+  email: api.support@dowjones.com
+  vdp_email: VDP@dowjones.com
+related:
+  - changelog/factiva-changelog.yml
+  - conventions/factiva-conventions.yml
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

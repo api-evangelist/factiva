@@ -1,0 +1,112 @@
+generated: '2026-08-13'
+method: derived
+source: openapi/, well-known/factiva-openid-configuration.json, security/factiva-trust-center.yml,
+  https://developer.dowjones.com/documents/factiva_integration-essentials-authentication
+description: >-
+  Which cross-cutting standards the Factiva API surface actually conforms to, derived from the
+  harvested specs, the live identity-service discovery documents, and the published Dow Jones
+  compliance pages. `conforms: false` here means "we checked and it is not there", not "unknown".
+standards:
+  - id: openapi-3.0
+    conforms: true
+    evidence: >-
+      openapi/factiva-newsletters-api-openapi.json is OpenAPI 3.0.2 and
+      openapi/factiva-company-news-radar-api-openapi.json is OpenAPI 3.0.1, both served from the
+      Dow Jones developer portal's own swagger endpoint.
+  - id: swagger-2.0
+    conforms: true
+    evidence: openapi/factiva-content-api-swagger.json is Swagger 2.0 (15 paths, 16 operations).
+  - id: openapi-3.1
+    conforms: false
+    evidence: No 3.1 document is published for any Factiva surface.
+  - id: oauth2
+    conforms: true
+    evidence: >-
+      Token-based authentication is an OAuth 2.0 exchange against
+      https://accounts.dowjones.com/oauth2/v1/token; grant_types_supported includes
+      authorization_code, implicit, refresh_token, password, client_credentials and jwt-bearer.
+  - id: oidc
+    conforms: true
+    evidence: >-
+      https://accounts.dowjones.com/.well-known/openid-configuration returns a full OpenID Connect
+      discovery document (issuer https://sso.accounts.dowjones.com/, userinfo endpoint, jwks_uri,
+      RS256 id_token signing).
+  - id: rfc8414-oauth-authorization-server-metadata
+    conforms: true
+    evidence: >-
+      https://sso.accounts.dowjones.com/.well-known/oauth-authorization-server returns 200 with
+      authorization-server metadata.
+  - id: rfc7636-pkce
+    conforms: true
+    evidence: code_challenge_methods_supported lists S256 and plain in the discovery document.
+  - id: json-api
+    conforms: partial
+    evidence: >-
+      The Newsletters API serves application/vnd.api+json and its schemas use the JSON:API shape
+      (data / type / id / attributes / relationships / included / meta / links), and errors are
+      returned under an `errors[]` root. The Retrieval and Streams request bodies use the same
+      data/attributes/id/type shape. It is not asserted as JSON:API conformance by Dow Jones and
+      the Content API (Swagger 2.0) does not follow it.
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: >-
+      No application/problem+json is declared anywhere. Errors use a JSON:API-style errors[]
+      envelope instead — see errors/factiva-problem-types.yml.
+  - id: rfc8594-sunset-header
+    conforms: false
+    evidence: >-
+      A written deprecation and sunset policy with dated schedules exists, but no Sunset or
+      Deprecation response header is documented or present in any spec.
+  - id: rfc9116-security-txt
+    conforms: false
+    evidence: >-
+      /.well-known/security.txt returns 404 on every Factiva and Dow Jones host probed. The
+      vulnerability disclosure program is published as an HTML page instead.
+  - id: pagination
+    conforms: true
+    evidence: >-
+      Documented platform-wide offset/limit pagination with a meta object and a links object
+      carrying self/prev/next/first/last.
+  - id: idempotency
+    conforms: false
+    evidence: >-
+      No idempotency key or retry-safety contract is documented for any write operation.
+  - id: rate-limit-headers
+    conforms: false
+    evidence: No RateLimit-* / X-RateLimit-* / Retry-After signaling is documented.
+  - id: iso-27001
+    conforms: true
+    evidence: >-
+      Dow Jones' ISMS is certified to ISO 27001 and the published certification scope names
+      Factiva Newsplus explicitly. Auditor Schellman; three-year cycle with annual surveillance
+      audits. https://www.dowjones.com/iso-certification/
+  - id: asyncapi
+    conforms: false
+    evidence: >-
+      Factiva Streams is a real event surface (Google Cloud Pub/Sub) with a documented event
+      catalog, but no AsyncAPI document is published. See asyncapi/factiva-streams-events.yml.
+  - id: mcp
+    conforms: false
+    evidence: >-
+      No Model Context Protocol server is published; nothing in the MCP registry, and no MCP
+      endpoint resolves on any Dow Jones host.
+  - id: a2a
+    conforms: false
+    evidence: >-
+      /.well-known/agent-card.json and /.well-known/agent.json return 404 on every Factiva and
+      Dow Jones host probed.
+  - id: graphql
+    conforms: false
+    evidence: No GraphQL surface is documented or discoverable.
+  - id: grpc
+    conforms: false
+    evidence: No .proto definitions published in the dowjones GitHub organization or on buf.build.
+compliance:
+  published: true
+  certifications:
+    - ISO/IEC 27001
+  page: https://www.dowjones.com/iso-certification/
+  detail: security/factiva-trust-center.yml
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
