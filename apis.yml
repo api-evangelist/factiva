@@ -24,6 +24,18 @@ created: '2024'
 modified: '2026-08-13'
 specificationVersion: '0.23'
 tags:
+- Artificial Intelligence
+- Business Intelligence
+- Content Aggregation
+- Enterprise Data
+- GenAI
+- Market Data
+- Media Monitoring
+- News
+- News API
+- Research
+- Taxonomy
+tags_raw:
 - AI
 - Business Intelligence
 - Content Aggregation
@@ -189,6 +201,11 @@ apis:
   humanURL: https://developer.dowjones.com/documents/factiva_integration-factiva_retrieval_api
   baseURL: https://api.dowjones.com
   tags:
+  - Artificial Intelligence
+  - Content
+  - RAG
+  - Retrieval
+  tags_raw:
   - AI
   - Content
   - RAG
@@ -291,6 +308,11 @@ apis:
   humanURL: https://developer.dowjones.com/documents/site-docs-factiva_apis-factiva_workflow_apis_rest-factiva_news_search-news_radar_api-news_radar
   baseURL: https://api.dowjones.com/search-realtime
   tags:
+  - Companies
+  - News Radar
+  - Real-Time
+  - Screening
+  tags_raw:
   - Companies
   - News Radar
   - Realtime
