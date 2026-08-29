@@ -6,6 +6,18 @@ description: 'Factiva is Dow Jones'' business information and research service, 
   Identifiers taxonomy of companies, industries, regions and news subjects, and feed copyright-compliant content
   into retrieval-augmented generation stacks. Access is contract-based: there is no self-service signup and no published
   pricing, and credentials are issued by Dow Jones after a trial request.'
+deliveryModel:
+  model: unknown
+  open_source: unknown
+  commercial: true
+  callable_host: false
+  label: Delivery model not determined — needs a product licence on record
+  confidence: low
+  source:
+  - pricing
+  - repository-unlicensed
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: unknown
