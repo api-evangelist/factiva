@@ -340,7 +340,8 @@ apis:
   humanURL: >-
     https://developer.dowjones.com/documents/factiva_integration-factiva_analytics-endpoints-snapshots-snapshots_3_0
   baseURL: https://api.dowjones.com/factiva/snapshots/v1
-  tags:
+  tags: []
+  tags_raw:
   - Default
   properties:
   - type: OpenAPI
