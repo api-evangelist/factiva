@@ -1,0 +1,33 @@
+{
+  "provider": "factiva",
+  "sources": [
+    "factiva-company-news-radar-api-openapi.json",
+    "factiva-content-api-swagger.json",
+    "factiva-newsletters-api-openapi.json"
+  ],
+  "outputs": [
+    "factiva-content-search-api-openapi.yml",
+    "factiva-default-api-openapi.yml",
+    "factiva-content-api-openapi.yml",
+    "factiva-editions-api-openapi.yml",
+    "factiva-newsletters-api-openapi.yml"
+  ],
+  "archived": [
+    "archived openapi/factiva-company-news-radar-api-openapi.json",
+    "archived openapi/factiva-content-api-swagger.json",
+    "archived openapi/factiva-newsletters-api-openapi.json"
+  ],
+  "errors": [],
+  "warnings": [],
+  "notes": [
+    "factiva-company-news-radar-api-openapi.json: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
+    "factiva-company-news-radar-api-openapi.json: declared missing tag: Content Search",
+    "factiva-content-api-swagger.json: upgraded swagger 2.0 -> OpenAPI 3.2.0",
+    "factiva-content-api-swagger.json: declared missing tag: Content",
+    "factiva-newsletters-api-openapi.json: upgraded openapi 3.0.2 -> OpenAPI 3.2.0",
+    "factiva-newsletters-api-openapi.json: declared missing tag: Editions",
+    "factiva-newsletters-api-openapi.json: declared missing tag: Newsletters",
+    "apis.yml register: written (+5 apis, 13 total)"
+  ],
+  "skipped": []
+}
