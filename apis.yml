@@ -40,7 +40,7 @@ tags:
 - Business Intelligence
 - Content Aggregation
 - Enterprise Data
-- GenAI
+- Generative AI
 - Market Data
 - Media Monitoring
 - News
@@ -260,6 +260,11 @@ apis:
     https://developer.dowjones.com/documents/factiva_integration-factiva_workflow_toolkit-endpoints-company_executives-market_data
   baseURL: https://api.dowjones.com
   tags:
+  - Financial
+  - Market Data
+  - Quotes
+  - Time Series
+  tags_raw:
   - Financials
   - Market Data
   - Quotes
