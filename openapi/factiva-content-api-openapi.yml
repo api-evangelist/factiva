@@ -5998,6 +5998,10 @@ paths:
                       type: integer
                       format: int64
       deprecated: false
+      summary: Get alerts by id
+      x-summary-source: derived
+      operationId: getAlertsById
+      x-operation-id-source: derived
   /refs/{ref}:
     get:
       security:
@@ -12413,6 +12417,10 @@ paths:
                       type: integer
                       format: int64
       deprecated: false
+      summary: Get refs by ref
+      x-summary-source: derived
+      operationId: getRefsByRef
+      x-operation-id-source: derived
   /refs:
     get:
       security:
@@ -18802,6 +18810,10 @@ paths:
                               type: boolean
                               description: Indicates if translation is permitted
       deprecated: false
+      summary: Get refs
+      x-summary-source: derived
+      operationId: getRefs
+      x-operation-id-source: derived
   /refs/{ref}/redirect:
     get:
       security:
@@ -25150,6 +25162,10 @@ paths:
                       type: integer
                       format: int64
       deprecated: false
+      summary: Get refs by ref redirect
+      x-summary-source: derived
+      operationId: getRefsByRefRedirect
+      x-operation-id-source: derived
   /refs/{ref}/binary:
     get:
       security:
@@ -25331,6 +25347,10 @@ paths:
                       type: integer
                       format: int64
       deprecated: false
+      summary: Get refs by ref binary
+      x-summary-source: derived
+      operationId: getRefsByRefBinary
+      x-operation-id-source: derived
   /newsletter/editions/{id}:
     get:
       security:
@@ -31177,6 +31197,8 @@ paths:
                             self:
                               type: string
       deprecated: false
+      summary: Collection get
+      x-summary-source: derived
   /newsplus/collections/{code}:
     get:
       security:
@@ -37023,6 +37045,8 @@ paths:
                             self:
                               type: string
       deprecated: false
+      summary: Collection get
+      x-summary-source: derived
   /search:
     get:
       security:
@@ -43139,6 +43163,8 @@ paths:
                             self:
                               type: string
       deprecated: false
+      summary: Search get
+      x-summary-source: derived
     post:
       security:
       - Bearer: []
@@ -49267,6 +49293,8 @@ paths:
               required:
               - data
         description: Search Request
+      summary: Search post
+      x-summary-source: derived
   /search/refs:
     get:
       security:
@@ -54790,6 +54818,8 @@ paths:
                             self:
                               type: string
       deprecated: false
+      summary: Search get
+      x-summary-source: derived
   /search/realtime:
     get:
       security:
@@ -60843,6 +60873,8 @@ paths:
                             self:
                               type: string
       deprecated: false
+      summary: Search get
+      x-summary-source: derived
   /search/people/{code}:
     get:
       security:
@@ -66928,6 +66960,8 @@ paths:
                             self:
                               type: string
       deprecated: false
+      summary: Search get
+      x-summary-source: derived
   /search/organization/{code}:
     get:
       security:
@@ -73013,6 +73047,8 @@ paths:
                             self:
                               type: string
       deprecated: false
+      summary: Search get
+      x-summary-source: derived
   /search/consumer:
     get:
       security:
@@ -78987,6 +79023,8 @@ paths:
                             self:
                               type: string
       deprecated: false
+      summary: Search get
+      x-summary-source: derived
   /search/portfolio:
     post:
       security:
@@ -81954,6 +81992,8 @@ paths:
               - data
         description: Search filters
         required: true
+      operationId: postSearchPortfolio
+      x-operation-id-source: derived
   /search/emerging:
     post:
       security:

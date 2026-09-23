@@ -1,9 +1,9 @@
 {
   "provider": "factiva",
   "sources": [
-    "factiva-company-news-radar-api-openapi.json",
-    "factiva-content-api-swagger.json",
-    "factiva-newsletters-api-openapi.json"
+    "_original/factiva-company-news-radar-api-openapi.json",
+    "_original/factiva-content-api-swagger.json",
+    "_original/factiva-newsletters-api-openapi.json"
   ],
   "outputs": [
     "factiva-content-search-api-openapi.yml",
@@ -12,14 +12,11 @@
     "factiva-editions-api-openapi.yml",
     "factiva-newsletters-api-openapi.yml"
   ],
-  "archived": [
-    "archived openapi/factiva-company-news-radar-api-openapi.json",
-    "archived openapi/factiva-content-api-swagger.json",
-    "archived openapi/factiva-newsletters-api-openapi.json"
-  ],
+  "archived": [],
   "errors": [],
   "warnings": [],
   "notes": [
+    "sourced from openapi/_original/ (3 archived document(s)); previously refined output at the top level was skipped rather than re-split",
     "factiva-company-news-radar-api-openapi.json: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
     "factiva-company-news-radar-api-openapi.json: declared missing tag: Content Search",
     "factiva-content-api-swagger.json: upgraded swagger 2.0 -> OpenAPI 3.2.0",
@@ -27,7 +24,13 @@
     "factiva-newsletters-api-openapi.json: upgraded openapi 3.0.2 -> OpenAPI 3.2.0",
     "factiva-newsletters-api-openapi.json: declared missing tag: Editions",
     "factiva-newsletters-api-openapi.json: declared missing tag: Newsletters",
-    "apis.yml register: written (+5 apis, 13 total)"
+    "apis.yml register: already-registered"
   ],
-  "skipped": []
+  "skipped": [
+    "factiva-content-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "factiva-content-search-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "factiva-default-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "factiva-editions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "factiva-newsletters-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
