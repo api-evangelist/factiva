@@ -31205,7 +31205,7 @@ paths:
       - Bearer: []
       tags:
       - Content
-      operationId: Collection_Get
+      operationId: getNewsplusCollectionsByCode
       parameters:
       - name: code
         in: path
@@ -37047,6 +37047,8 @@ paths:
       deprecated: false
       summary: Collection get
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: Collection_Get
   /search:
     get:
       security:
@@ -49301,7 +49303,7 @@ paths:
       - Bearer: []
       tags:
       - Content
-      operationId: Search_Get
+      operationId: getSearchRefs
       parameters:
       - name: filter.ref
         in: query
@@ -54820,13 +54822,15 @@ paths:
       deprecated: false
       summary: Search get
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: Search_Get
   /search/realtime:
     get:
       security:
       - Bearer: []
       tags:
       - Content
-      operationId: Search_Get
+      operationId: getSearchRealtime
       parameters:
       - name: filter.search_string
         in: query
@@ -60875,13 +60879,15 @@ paths:
       deprecated: false
       summary: Search get
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: Search_Get
   /search/people/{code}:
     get:
       security:
       - Bearer: []
       tags:
       - Content
-      operationId: Search_Get
+      operationId: getSearchPeopleByCode
       parameters:
       - name: code
         in: path
@@ -66962,13 +66968,15 @@ paths:
       deprecated: false
       summary: Search get
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: Search_Get
   /search/organization/{code}:
     get:
       security:
       - Bearer: []
       tags:
       - Content
-      operationId: Search_Get
+      operationId: getSearchOrganizationByCode
       parameters:
       - name: code
         in: path
@@ -73049,13 +73057,15 @@ paths:
       deprecated: false
       summary: Search get
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: Search_Get
   /search/consumer:
     get:
       security:
       - Bearer: []
       tags:
       - Content
-      operationId: Search_Get
+      operationId: getSearchConsumer
       parameters:
       - name: filter.search_string
         in: query
@@ -79025,6 +79035,8 @@ paths:
       deprecated: false
       summary: Search get
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: Search_Get
   /search/portfolio:
     post:
       security:
@@ -82002,7 +82014,7 @@ paths:
       description: Returns discovery navigators of 5 different types (Region, Industry, Subject, Company, People) with the biggest relevance in the last hours
       tags:
       - Content
-      operationId: Search_Post
+      operationId: postSearchEmerging
       parameters:
       - name: accept-language
         in: header
@@ -82206,6 +82218,8 @@ paths:
               - data
         description: Search Request
         required: true
+      x-operation-id-source: normalized
+      x-operation-id-original: Search_Post
 components:
   securitySchemes:
     Bearer:
