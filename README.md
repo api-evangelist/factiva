@@ -1,4 +1,4 @@
-# Factiva (factiva)
+# Factiva
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,141 +64,161 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Factiva is a business information and research tool from Dow Jones that provides access to global news, company information, and market data from thousands of sources.
+Factiva is Dow Jones' business information and research service, providing licensed access to a global news and data archive drawn from more than 33,000 sources across 200 countries and 28 languages. Its API suite lets organizations search and retrieve licensed articles, run one-time historical extractions (Snapshots), subscribe to real-time filtered news streams over Google Cloud Pub/Sub, resolve the ~350,000-code Dow Jones Intelligent Identifiers taxonomy of companies, industries, regions and news subjects, and feed copyright-compliant content into retrieval-augmented generation stacks. Access is contract-based: there is no self-service signup and no published pricing, and credentials are issued by Dow Jones after a trial request.
 
-**URL:** [https://www.dowjones.com/professional/factiva/](https://www.dowjones.com/professional/factiva/)
+**Areas:** Artificial Intelligence · Business Intelligence · Content Aggregation · Enterprise Data · Generative AI · Market Data · Media Monitoring · News · News API · Research · Taxonomy
 
-## Tags
+## Factiva on APIs.io
 
-- Business Intelligence
-- Content Aggregation
-- Market Data
-- Media Monitoring
-- News
-- Research
+Everything profiled for Factiva is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/factiva/](https://apis.io/providers/factiva/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (13)
 
-- **Created:** 2024
-- **Modified:** 2026-03-16
+- [Factiva Snapshots API](https://apis.io/apis/factiva/factiva-snapshots-api/) — Provides programmatic access to create, retrieve, and manage news snapshots based on search queries and filters. Supports analytics explain jobs and time…
+- [Factiva Streams API](https://apis.io/apis/factiva/factiva-streams-api/) — Real-time streaming API that delivers continuous feeds of news content matching specified criteria and filters. Supports creating and managing stream…
+- [Factiva Extractions API](https://apis.io/apis/factiva/factiva-extractions-api/) — Enables large-scale extraction of historical news articles and content based on complex queries and date ranges. After job validation, a Snapshot ID is…
+- [Factiva Analytics API](https://apis.io/apis/factiva/factiva-analytics-api/) — Provides access to aggregated analytics, trends, and insights derived from Factiva's news and content database. Supports volume estimation, explain jobs,…
+- [Factiva DJID Taxonomy API](https://apis.io/apis/factiva/factiva-djid-taxonomy-api/) — Explores the taxonomy of the Factiva databases using Dow Jones Intelligent Identifiers (DJID). Provides access to approximately 350,000 taxonomy codes…
+- [Factiva Code API](https://apis.io/apis/factiva/factiva-code-api/) — Enables retrieval of codes necessary to search for companies, currencies, exchanges, locations, industries, instruments, and news subjects within Factiva.…
+- [Factiva Retrieval API](https://apis.io/apis/factiva/factiva-retrieval-api/) — Provides retrieval functionality that returns licensed news articles as part of trusted data sources in a retrieval-augmented generation (RAG) stack.…
+- [Factiva Market Data API](https://apis.io/apis/factiva/factiva-market-data-api/) — Retrieves real-time quotes, delayed quotes, and time series market data for US, Canadian, and global companies. Supports lookups by Dow Jones Ticker,…
+- [Factiva Content API](https://apis.io/apis/factiva/factiva-content-api/) — The Content API from Factiva — 15 operation(s) for content.
+- [Factiva Content Search API](https://apis.io/apis/factiva/factiva-content-search-api/) — The Content Search API from Factiva — 1 operation(s) for content search.
+- [Factiva Default API](https://apis.io/apis/factiva/factiva-default-api/) — Default section
+- [Factiva Editions API](https://apis.io/apis/factiva/factiva-editions-api/) — The Editions API from Factiva — 2 operation(s) for editions.
+- [Factiva Newsletters API](https://apis.io/apis/factiva/factiva-newsletters-api/) — The Newsletters API from Factiva — 2 operation(s) for newsletters.
 
-## APIs
+### Published properties
 
-### Factiva Snapshots API
-Provides programmatic access to create, retrieve, and manage news snapshots based on search queries and filters. Supports analytics explain jobs and time series operations for volume estimation and trend analysis over Factiva content.
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-**Human URL:** [https://developer.dowjones.com/site/global/apis/factiva_snapshots/index.gsp](https://developer.dowjones.com/site/global/apis/factiva_snapshots/index.gsp)
+#### AsyncAPI (1)
 
-**Base URL:** `https://api.dowjones.com/factiva/snapshots/v1`
+Event-driven and webhook contracts.
 
-#### Tags
-- Analytics
-- News
-- Search
-- Snapshots
+- [Factiva Streams Events](https://apis.io/asyncapis/factiva/factiva-streams-events/)
 
-### Factiva Streams API
-Real-time streaming API that delivers continuous feeds of news content matching specified criteria and filters. Supports creating and managing stream subscriptions with listener methods for pushing content to downstream systems in high-availability setups.
+#### MCP servers (1)
 
-**Human URL:** [https://developer.dowjones.com/site/global/apis/factiva_streams/index.gsp](https://developer.dowjones.com/site/global/apis/factiva_streams/index.gsp)
+Model Context Protocol servers that expose the API to agents.
 
-**Base URL:** `https://api.dowjones.com/factiva/streams/v1`
+- [factiva](https://apis.io/servers/factiva/factiva/)
 
-#### Tags
-- News Feed
-- Real-Time
-- Streaming
+#### Agentic access (1)
 
-### Factiva Extractions API
-Enables large-scale extraction of historical news articles and content based on complex queries and date ranges. After job validation, a Snapshot ID is provided along with a list of files to download for offline analysis.
+Which operations an agent can call, which act, and which need a human in the loop.
 
-**Human URL:** [https://developer.dowjones.com/site/global/apis/factiva_extractions/index.gsp](https://developer.dowjones.com/site/global/apis/factiva_extractions/index.gsp)
+- [Factiva Agentic Access](https://apis.io/agentic-access/factiva/factiva-agentic-access/)
 
-**Base URL:** `https://api.dowjones.com/factiva/extractions/v1`
+#### Overlays (3)
 
-#### Tags
-- Bulk Data
-- Extractions
-- Historical Data
+OpenAPI overlays, including conversational phrasing for each operation.
 
-### Factiva Analytics API
-Provides access to aggregated analytics, trends, and insights derived from Factiva's news and content database. Supports volume estimation, explain jobs, and time series analysis for understanding news coverage patterns.
+- [Factiva Company News Radar Api Overlay](https://apis.io/overlays/factiva/factiva-company-news-radar-api-overlay/)
+- [Factiva Content Api Overlay](https://apis.io/overlays/factiva/factiva-content-api-overlay/)
+- [Factiva Newsletters Api Overlay](https://apis.io/overlays/factiva/factiva-newsletters-api-overlay/)
 
-**Human URL:** [https://developer.dowjones.com/site/global/apis/factiva_analytics/index.gsp](https://developer.dowjones.com/site/global/apis/factiva_analytics/index.gsp)
+#### Security (4)
 
-**Base URL:** `https://api.dowjones.com/factiva/analytics/v1`
+Authentication, trust centre, and vulnerability disclosure.
 
-#### Tags
-- Analytics
-- Insights
-- Trends
+- [Factiva Authentication](https://apis.io/security/factiva/factiva-authentication/)
+- [Factiva Domain Security](https://apis.io/security/factiva/factiva-domain-security/)
+- [Factiva Trust Center](https://apis.io/security/factiva/factiva-trust-center/)
+- [Factiva Vulnerability Disclosure](https://apis.io/security/factiva/factiva-vulnerability-disclosure/)
 
-### Factiva DJID Taxonomy API
-Explores the taxonomy of the Factiva databases using Dow Jones Intelligent Identifiers (DJID). Provides access to approximately 350,000 taxonomy codes covering industries, regions, news subjects, companies, and organizations used to classify Factiva content.
+#### OAuth scopes (1)
 
-**Human URL:** [https://dowjones.developerprogram.org/site/docs/factiva_apis/factiva_djid_taxonomy_api/index.gsp](https://dowjones.developerprogram.org/site/docs/factiva_apis/factiva_djid_taxonomy_api/index.gsp)
+The permissions the API asks for.
 
-#### Tags
-- Classification
-- Metadata
-- Reference Data
-- Taxonomy
+- [Factiva Scopes](https://apis.io/scopes/factiva/factiva-scopes/)
 
-### Factiva Code API
-Enables retrieval of codes necessary to search for companies, currencies, exchanges, locations, industries, instruments, and news subjects within Factiva. Each data item is identified by a unique Factiva Code and supports lookups by Dow Jones Ticker, CUSIP, DUNS, and ISIN identifiers.
+#### Plans and pricing (1)
 
-**Human URL:** [https://dowjones.developerprogram.org/site/docs/factiva_apis/factiva_code_api/index.gsp](https://dowjones.developerprogram.org/site/docs/factiva_apis/factiva_code_api/index.gsp)
+Published plans, tiers and prices.
 
-#### Tags
-- Codes
-- Companies
-- Identifiers
-- Reference Data
+- [Factiva Plans Pricing](https://apis.io/plans/factiva/factiva-plans-pricing/)
 
-### Factiva Retrieval API
-Provides retrieval functionality that returns licensed news articles as part of trusted data sources in a retrieval-augmented generation (RAG) stack. Designed for enterprise customers building chatbots, research tools, and other AI applications using copyright-compliant Factiva content.
+#### Rate limits (1)
 
-**Human URL:** [https://www.postman.com/dj-cse/factiva-developer/collection/7qbhcvz/factiva-retrieval-api](https://www.postman.com/dj-cse/factiva-developer/collection/7qbhcvz/factiva-retrieval-api)
+Published request limits.
 
-#### Tags
-- AI
-- Content
-- RAG
-- Retrieval
+- [Factiva Rate Limits](https://apis.io/rate-limits/factiva/factiva-rate-limits/)
 
-### Factiva Market Data API
-Retrieves real-time quotes, delayed quotes, and time series market data for US, Canadian, and global companies. Supports lookups by Dow Jones Ticker, Factiva Code, CUSIP, DUNS, or ISIN to retrieve market fundamentals such as revenue, earnings, assets, liabilities, and growth.
+#### FinOps (1)
 
-**Human URL:** [https://developer.dowjones.com](https://developer.dowjones.com)
+What the API costs to run, by operation.
 
-#### Tags
-- Financials
-- Market Data
-- Quotes
-- Time Series
+- [Factiva Finops](https://apis.io/finops/factiva/factiva-finops/)
 
-## Common Properties
+## Where to find this API
 
-- [Portal](https://developer.dowjones.com)
-- [Sign Up](https://developer.dowjones.com/site/global/register/index.gsp)
-- [Getting Started](https://www.postman.com/dj-cse/dow-jones-apis/collection/l9tpql6/factiva-apis)
-- [Authentication](https://developer.dowjones.com/site/global/apis/authentication/index.gsp)
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.dowjones.com/business-intelligence/factiva/)
 - [Documentation](https://www.postman.com/dj-cse/dow-jones-apis/documentation/l9tpql6/factiva-apis)
-- [Postman Collection](https://www.postman.com/dj-cse/dow-jones-apis/documentation/l9tpql6/factiva-apis)
-- [Terms of Service](https://www.dowjones.com/terms-of-use/)
-- [Privacy Policy](https://www.dowjones.com/privacy-policy/)
-- [Status](https://status.dowjones.com)
+- [Getting started](https://www.postman.com/dj-cse/dow-jones-apis/collection/l9tpql6/factiva-apis)
+- [API reference](https://www.postman.com/dj-cse/dow-jones-apis/documentation/l9tpql6/factiva-apis)
+- [Sign up](https://developer.dowjones.com/request-trial)
 - [Support](https://developer.dowjones.com/support)
-- [Website](https://www.dowjones.com/professional/factiva/)
 - [Blog](https://medium.com/dowjones)
-- [GitHub Organization](https://github.com/dowjones)
-- [GitHub Repository](https://github.com/dowjones/developer-platform)
-- [SDKs](https://github.com/dowjones/factiva-news-python)
-- [LinkedIn](https://www.linkedin.com/company/dow-jones)
-- [X](https://twitter.com/DowJones)
+- [Security](https://www.dowjones.com/security/)
+- [Compliance](https://www.dowjones.com/iso-certification/)
+- [Terms of service](https://www.dowjones.com/terms-of-use/)
+- [Privacy policy](https://www.dowjones.com/privacy-notice/)
+- [GitHub](https://github.com/dowjones)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
+**Kin Score 52.7** — developing · rubric 0.25.0 · scored 2026-10-23
 
-**Email:** kin@apievangelist.com
+| Facet | Score |
+|---|---|
+| Discoverability | 78.6 |
+| Contract quality | 53.6 |
+| Contract governance | 4.5 |
+| Operational transparency | 44.7 |
+| Developer ergonomics | 68.5 |
+| Access clarity | 42.1 |
+
+**Agent readiness 44.4** — agent-ready (gated down from agent-native)
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | served (partial credit) |
+| Idempotency | — |
+| Error Semantics | verified |
+| OpenAPI Examples | — |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | yes |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | served (partial credit) |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | yes |
+| Agentic Commerce | — |
+| Pagination Ratio | paginated |
+| Operation Distinctiveness | — |
+
+**Regulatory alignment 44.8** — Securities & Market Data
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/factiva/](https://apis.io/providers/factiva/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Factiva: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/factiva/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
